@@ -67,17 +67,17 @@ _斜体_
 ![Github](https://github.com/fluidicon.png)
 ```
 ## 表格
-head1|head2|head3
+A | B | C
 --|--|--
-11|12|13
-21|22|23
-31|32|33
+A1 | B1 | C1
+A2 | B2 | C2
+A3 | B3 | C3
 ```
-head1|head2|head3
+A | B | C
 --|--|--
-11|12|13
-21|22|23
-31|32|33
+A1 | B1 | C1
+A2 | B2 | C2
+A3 | B3 | C3
 ```
 ## 代码
 `code`
