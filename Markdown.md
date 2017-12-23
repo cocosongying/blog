@@ -1,6 +1,7 @@
 Markdown 语法简介
 ===
-[语法详解](https://guides.github.com/features/mastering-markdown/)
+>[语法详解](https://guides.github.com/features/mastering-markdown/)
+
 ## 标题
 ```
 # 一级标题 #
@@ -29,13 +30,16 @@ _斜体_
 ~~删除线~~
 ```
 ## 分割线
-
-***
----
+_________
 
 ```
 ***
 ---
+```
+## 上标下标
+H<sub>2</sub>O X<sup>2</sup>
+```
+H<sub>2</sub>O X<sup>2</sup>
 ```
 ## 有序列表
 1. 第一
