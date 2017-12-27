@@ -1,4 +1,4 @@
-Markdown 语法简介
+## Markdown 语法简介
 ===
 >[语法详解](https://guides.github.com/features/mastering-markdown/)
 
