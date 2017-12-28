@@ -1,0 +1,38 @@
+/* Custom CSS styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+pre {
+  background-color: #eeeeee;
+  border: 0px solid;
+}
+.code-tag {
+  background-color: #eeeeee;
+  color: #666666;
+}
+.fixed-table-container {
+  border: 0px solid;
+}
+#main {
+  margin:0 auto;
+  margin-bottom: 60px;
+  max-width: 60rem;
+  padding: 5.5rem 1.5rem;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 50px;
+  background-color: #333333;
+}
+#thanks {
+  margin:0 auto;
+  text-align:center;
+}
+.pull-right.pagination-detail{
+  display:none;
+}
