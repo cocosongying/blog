@@ -75,6 +75,7 @@ if(search !=null && search.toString().length>0) {
             searchjson.push({blog: marked(article_list[i])});
         }
     };
+    $("#search").val(search);
     showBlogList(searchjson);
 }else if(file !=null && file.toString().length>0) {
     // Show Markdown content
