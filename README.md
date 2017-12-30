@@ -32,4 +32,4 @@
 
 + 新增文章需要在file文件夹创建新的markdown文件，并在list.js中添加该文章的描述信息
 
-<center><hr><h4>磨叽熊猫感谢有您的支持和关注<h4><h3>👇<h3><img src="img/wechatpay.jpeg" width="320" height="320" /></center>
+<center><hr/><h4>磨叽熊猫感谢有您的支持和关注</h4><h3>👇</h3><img src="img/wechatpay.jpeg" width="320" height="320" /></center>
