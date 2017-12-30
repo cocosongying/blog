@@ -3,7 +3,7 @@
  * @author cocosongying 2017/12/28
  * https://github.com/cocosongying/blog
  */
-var thanksContent = '<center><hr><h4>磨叽熊猫感谢有您的支持和关注<h4><h3>👇<h3><img src="img/wechatpay.jpeg" width="320" height="320" /></center>';
+var thanksContent = '<center><hr/><h4>磨叽熊猫感谢有您的支持和关注</h4><h3>👇</h3><img src="img/wechatpay.jpeg" width="320" height="320" /></center>';
 /* Generate json data */
 var json = [];
 for (var i = article_list.length - 1; i >= 0; i--) {
