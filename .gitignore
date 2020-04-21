@@ -65,3 +65,4 @@ typings/
 # hexo
 public
 db.json
+.deploy_git
