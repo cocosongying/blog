@@ -183,7 +183,7 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar: img/author.jpg
+    avatar: /blog/img/author.jpg
     name: SongYing
     # url: https://xaoxuu.com
   # 文章创建日期
