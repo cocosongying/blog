@@ -183,7 +183,7 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar: /img/author.jpg
+    avatar: img/author.jpg
     name: SongYing
     # url: https://xaoxuu.com
   # 文章创建日期
@@ -261,7 +261,7 @@ widget:
   blogger:
     class: blogger
     display: [desktop] # [desktop, mobile]
-    avatar: /img/author.jpg
+    avatar: img/author.jpg
     title:
     subtitle:
     jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
@@ -285,7 +285,7 @@ widget:
     header:
       icon: fas fa-folder-open
       title: 文章分类
-      url: /categories/
+      url: categories/
   # ---------------------------------------
   # tagcloud widget
   tagcloud:
@@ -294,7 +294,7 @@ widget:
     header:
       icon: fas fa-tags
       title: 热门标签
-      url: /tags/
+      url: tags/
     min_font: 14
     max_font: 24
     color: true
@@ -327,8 +327,8 @@ widget:
     height: 64px  # Automatic height if not set
     fancybox: true
     images:
-      - /img/wxpay.jpeg
-      - /img/alipay.jpeg
+      - img/wxpay.jpeg
+      - img/alipay.jpeg
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
 
@@ -345,7 +345,7 @@ footer:
     - icon: fab fa-weibo
       url: https://weibo.com/cocosongying
     - icon: fas fa-rss
-      url: /atom.xml
+      url: atom.xml
   copyright: '[Copyright © 2020 磨叽熊猫]()'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
