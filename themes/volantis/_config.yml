@@ -99,12 +99,15 @@ cover:
   subtitle: ''
   search: # search bar placeholder
   features:
-    #- name: 文档
-    #  icon: fas fa-book
-    #  url: https://volantis.js.org/getting-started/
-    #- name: 博文
-    #  icon: fas fa-rss
-    #  url: https://volantis.js.org/archives/
+    - name: 博文
+      icon: fas fa-rss
+      url: /
+    - name: 文档
+      icon: fas fa-book
+      url: /wiki/
+      rel: external nofollow noopener noreferrer
+      target: _blank
+    
     #- name: 示例
     #  icon: fas fa-play-circle
     #  url: https://volantis.js.org/examples/
@@ -183,7 +186,7 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar: /blog/img/author.jpg
+    avatar: /img/author.jpg
     name: SongYing
     # url: https://xaoxuu.com
   # 文章创建日期
