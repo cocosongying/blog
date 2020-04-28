@@ -16,12 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>博客个性化-背景线条动画 - 磨叽熊猫</title>
+    <title>博客个性化-鼠标点击效果 - 磨叽熊猫</title>
   
     <meta name="keywords" content="Hexo,个性化">
   
   
-    <meta name="description" content="博客背景添加线条动画效果">
+    <meta name="description" content="添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果">
   
 
   <!-- feed -->
@@ -267,8 +267,8 @@
         
   
     <h1 class="title">
-      <a href="/p/9844/">
-        博客个性化-背景线条动画
+      <a href="/blog/22e3/">
+        博客个性化-鼠标点击效果
       </a>
     </h1>
   
@@ -329,39 +329,23 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>博客背景添加线条动画效果</p>
+          <p>添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果</p>
 <a id="more"></a>
 
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--动态线条背景--&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;</span><br><span class="line">  color&#x3D;&quot;220,220,220&quot; opacity&#x3D;&#39;0.7&#39; zIndex&#x3D;&quot;-2&quot; count&#x3D;&quot;200&quot; src&#x3D;&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;canvas-nest.js&#x2F;1.0.0&#x2F;canvas-nest.min.js&quot;&gt;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="爱心效果"><a href="#爱心效果" class="headerlink" title="爱心效果"></a>爱心效果</h2><p>新建文件 love.js，在 love.js 文件中添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!function(e,t,a)&#123;function n()&#123;c(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 500%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),o(),r()&#125;function r()&#123;for(var e&#x3D;0;e&lt;d.length;e++)d[e].alpha&lt;&#x3D;0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+&#x3D;.004,d[e].alpha-&#x3D;.013,d[e].el.style.cssText&#x3D;&quot;left:&quot;+d[e].x+&quot;px;top:&quot;+d[e].y+&quot;px;opacity:&quot;+d[e].alpha+&quot;;transform:scale(&quot;+d[e].scale+&quot;,&quot;+d[e].scale+&quot;) rotate(45deg);background:&quot;+d[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(r)&#125;function o()&#123;var t&#x3D;&quot;function&quot;&#x3D;&#x3D;typeof e.onclick&amp;&amp;e.onclick;e.onclick&#x3D;function(e)&#123;t&amp;&amp;t(),i(e)&#125;&#125;function i(e)&#123;var a&#x3D;t.createElement(&quot;div&quot;);a.className&#x3D;&quot;heart&quot;,d.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()&#125;),t.body.appendChild(a)&#125;function c(e)&#123;var a&#x3D;t.createElement(&quot;style&quot;);a.type&#x3D;&quot;text&#x2F;css&quot;;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText&#x3D;e&#125;t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;function s()&#123;return&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;var d&#x3D;[];e.requestAnimationFrame&#x3D;function()&#123;return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3&#x2F;60)&#125;&#125;(),n()&#125;(window,document);</span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>color</td>
-<td>线条颜色，(R,G,B)，默认：(0,0,0)</td>
-</tr>
-<tr>
-<td>opacity</td>
-<td>线条透明度（0~1），默认：0.5</td>
-</tr>
-<tr>
-<td>count</td>
-<td>线条的总数量，默认：150</td>
-</tr>
-<tr>
-<td>zIndex</td>
-<td>背景的z-index属性，默认：-1</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 样式一（鼠标点击更换样式） --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;g.joyinshare.com&#x2F;hc&#x2F;ribbon.min.js&quot; type&#x3D;&quot;text&#x2F;javascript&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;love.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 样式二（飘动的彩带） --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;g.joyinshare.com&#x2F;hc&#x2F;piao.js&quot; type&#x3D;&quot;text&#x2F;javascript&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="字体效果"><a href="#字体效果" class="headerlink" title="字体效果"></a>字体效果</h2><p>新建文件 click_show_text.js，在 click_show_text.js 文件中添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var a_idx &#x3D; 0;</span><br><span class="line">jQuery(document).ready(function($) &#123;</span><br><span class="line">    $(&quot;body&quot;).click(function(e) &#123;</span><br><span class="line">        var a &#x3D; new Array</span><br><span class="line">        (&quot;富强&quot;, &quot;民主&quot;, &quot;文明&quot;, &quot;和谐&quot;, &quot;自由&quot;, &quot;平等&quot;, &quot;公正&quot;, &quot;法治&quot;, &quot;爱国&quot;, &quot;敬业&quot;, &quot;诚信&quot;, &quot;友善&quot;);</span><br><span class="line">        var $i &#x3D; $(&quot;&lt;span&#x2F;&gt;&quot;).text(a[a_idx]);</span><br><span class="line">        a_idx &#x3D; (a_idx + 1) % a.length;</span><br><span class="line">        var x &#x3D; e.pageX,</span><br><span class="line">        y &#x3D; e.pageY;</span><br><span class="line">        $i.css(&#123;</span><br><span class="line">            &quot;z-index&quot;: 5,</span><br><span class="line">            &quot;top&quot;: y - 20,</span><br><span class="line">            &quot;left&quot;: x,</span><br><span class="line">            &quot;position&quot;: &quot;absolute&quot;,</span><br><span class="line">            &quot;font-weight&quot;: &quot;bold&quot;,</span><br><span class="line">            &quot;color&quot;: &quot;#FF0000&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">        $(&quot;body&quot;).append($i);</span><br><span class="line">        $i.animate(&#123;</span><br><span class="line">            &quot;top&quot;: y - 180,</span><br><span class="line">            &quot;opacity&quot;: 0</span><br><span class="line">        &#125;,</span><br><span class="line">            3000,</span><br><span class="line">            function() &#123;</span><br><span class="line">                $i.remove();</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    setTimeout(&#39;delay()&#39;, 2000);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">function delay() &#123;</span><br><span class="line">    $(&quot;.buryit&quot;).removeAttr(&quot;onclick&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--单击显示文字--&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;click_show_text.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="烟花爆炸效果"><a href="#烟花爆炸效果" class="headerlink" title="烟花爆炸效果"></a>烟花爆炸效果</h2><p>新建文件 fireworks.js，在 fireworks.js 文件中添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;function updateCoords(e)&#123;pointerX&#x3D;(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY&#x3D;e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;function setParticuleDirection(e)&#123;var t&#x3D;anime.random(0,360)*Math.PI&#x2F;180,a&#x3D;anime.random(50,180),n&#x3D;[-1,1][anime.random(0,1)]*a;return&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;function createParticule(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;colors[anime.random(0,colors.length-1)],a.radius&#x3D;anime.random(16,32),a.endPos&#x3D;setParticuleDirection(a),a.draw&#x3D;function()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle&#x3D;a.color,ctx.fill()&#125;,a&#125;function createCircle(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;&quot;#F00&quot;,a.radius&#x3D;0.1,a.alpha&#x3D;0.5,a.lineWidth&#x3D;6,a.draw&#x3D;function()&#123;ctx.globalAlpha&#x3D;a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth&#x3D;a.lineWidth,ctx.strokeStyle&#x3D;a.color,ctx.stroke(),ctx.globalAlpha&#x3D;1&#125;,a&#125;function renderParticule(e)&#123;for(var t&#x3D;0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;function animateParticules(e,t)&#123;for(var a&#x3D;createCircle(e,t),n&#x3D;[],i&#x3D;0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:function(e)&#123;return e.endPos.x&#125;,y:function(e)&#123;return e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:&quot;linear&quot;,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule,offset:0&#125;)&#125;function debounce(e,t)&#123;var a;return function()&#123;var n&#x3D;this,i&#x3D;arguments;clearTimeout(a),a&#x3D;setTimeout(function()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl&#x3D;document.querySelector(&quot;.fireworks&quot;);if(canvasEl)&#123;var ctx&#x3D;canvasEl.getContext(&quot;2d&quot;),numberOfParticules&#x3D;30,pointerX&#x3D;0,pointerY&#x3D;0,tap&#x3D;&quot;mousedown&quot;,colors&#x3D;[&quot;#FF1461&quot;,&quot;#18FF92&quot;,&quot;#5A87FF&quot;,&quot;#FBF38C&quot;],setCanvasSize&#x3D;debounce(function()&#123;canvasEl.width&#x3D;2*window.innerWidth,canvasEl.height&#x3D;2*window.innerHeight,canvasEl.style.width&#x3D;window.innerWidth+&quot;px&quot;,canvasEl.style.height&#x3D;window.innerHeight+&quot;px&quot;,canvasEl.getContext(&quot;2d&quot;).scale(2,2)&#125;,500),render&#x3D;anime(&#123;duration:1&#x2F;0,update:function()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,function(e)&#123;&quot;sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;toggle-sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;A&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;&quot;IMG&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(&quot;resize&quot;,setCanvasSize,!1)&#125;&quot;use strict&quot;;function updateCoords(e)&#123;pointerX&#x3D;(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY&#x3D;e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;function setParticuleDirection(e)&#123;var t&#x3D;anime.random(0,360)*Math.PI&#x2F;180,a&#x3D;anime.random(50,180),n&#x3D;[-1,1][anime.random(0,1)]*a;return&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;function createParticule(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;colors[anime.random(0,colors.length-1)],a.radius&#x3D;anime.random(16,32),a.endPos&#x3D;setParticuleDirection(a),a.draw&#x3D;function()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle&#x3D;a.color,ctx.fill()&#125;,a&#125;function createCircle(e,t)&#123;var a&#x3D;&#123;&#125;;return a.x&#x3D;e,a.y&#x3D;t,a.color&#x3D;&quot;#F00&quot;,a.radius&#x3D;0.1,a.alpha&#x3D;0.5,a.lineWidth&#x3D;6,a.draw&#x3D;function()&#123;ctx.globalAlpha&#x3D;a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth&#x3D;a.lineWidth,ctx.strokeStyle&#x3D;a.color,ctx.stroke(),ctx.globalAlpha&#x3D;1&#125;,a&#125;function renderParticule(e)&#123;for(var t&#x3D;0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;function animateParticules(e,t)&#123;for(var a&#x3D;createCircle(e,t),n&#x3D;[],i&#x3D;0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:function(e)&#123;return e.endPos.x&#125;,y:function(e)&#123;return e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:&quot;linear&quot;,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,update:renderParticule,offset:0&#125;)&#125;function debounce(e,t)&#123;var a;return function()&#123;var n&#x3D;this,i&#x3D;arguments;clearTimeout(a),a&#x3D;setTimeout(function()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl&#x3D;document.querySelector(&quot;.fireworks&quot;);if(canvasEl)&#123;var ctx&#x3D;canvasEl.getContext(&quot;2d&quot;),numberOfParticules&#x3D;30,pointerX&#x3D;0,pointerY&#x3D;0,tap&#x3D;&quot;mousedown&quot;,colors&#x3D;[&quot;#FF1461&quot;,&quot;#18FF92&quot;,&quot;#5A87FF&quot;,&quot;#FBF38C&quot;],setCanvasSize&#x3D;debounce(function()&#123;canvasEl.width&#x3D;2*window.innerWidth,canvasEl.height&#x3D;2*window.innerHeight,canvasEl.style.width&#x3D;window.innerWidth+&quot;px&quot;,canvasEl.style.height&#x3D;window.innerHeight+&quot;px&quot;,canvasEl.getContext(&quot;2d&quot;).scale(2,2)&#125;,500),render&#x3D;anime(&#123;duration:1&#x2F;0,update:function()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,function(e)&#123;&quot;sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;toggle-sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;A&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;&quot;IMG&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(&quot;resize&quot;,setCanvasSize,!1)&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas class&#x3D;&quot;fireworks&quot; style&#x3D;&quot;position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;&quot; &gt;&lt;&#x2F;canvas&gt; </span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;animejs&#x2F;2.2.0&#x2F;anime.min.js&quot;&gt;&lt;&#x2F;script&gt; </span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;fireworks.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
           
             <br>
             
@@ -387,7 +371,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://yoursite.com/p/9844/>http://yoursite.com/p/9844/</a></p>
+            <p>本文永久链接是：<a href=http://yoursite.com/blog/22e3/>http://yoursite.com/blog/22e3/</a></p>
           
         
       </blockquote>
@@ -436,7 +420,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-07T21:38:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-07T21:39:51+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2019年5月7日</p>
@@ -466,7 +450,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/p/9844/&title=博客个性化-背景线条动画 - 磨叽熊猫&summary=博客背景添加线条动画效果"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/blog/22e3/&title=博客个性化-鼠标点击效果 - 磨叽熊猫&summary=添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果"
           
           >
           
@@ -478,7 +462,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/p/9844/&title=博客个性化-背景线条动画 - 磨叽熊猫&summary=博客背景添加线条动画效果"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/blog/22e3/&title=博客个性化-鼠标点击效果 - 磨叽熊猫&summary=添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果"
           
           >
           
@@ -490,7 +474,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/p/9844/&title=博客个性化-背景线条动画 - 磨叽熊猫&summary=博客背景添加线条动画效果"
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/blog/22e3/&title=博客个性化-鼠标点击效果 - 磨叽熊猫&summary=添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果"
           
           >
           
@@ -514,23 +498,24 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/p/22e3/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>博客个性化-鼠标点击效果</p>
-                <!--<p class='content'>添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果
+              <a class='prev' href='/blog/5645/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>博客个性化-看板娘</p>
+                <!--<p class='content'>在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头
 
 
-爱心效果新建文件 love.js，在 love.js 文件中添加以下代码：
-1!function(e,t,a)&#123;func...</p>-->
+如何添加以本博客为例
+输入如下命令获取 live2d :
+1npm install --save hexo-helper-live2d
+...</p>-->
               </a>
             
             
-              <a class='next' href='/p/3821/'>
-                <p class='title'>博客个性化-打赏按钮<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <!--<p class='content'>在博客页添加一个打赏按钮，点击打赏，弹出赞赏码，扫描赞赏码对博主进行打赏鼓励。
+              <a class='next' href='/blog/9844/'>
+                <p class='title'>博客个性化-背景线条动画<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <!--<p class='content'>博客背景添加线条动画效果
 
 
-代码html 代码
-123456789101112&lt;! -- 添加捐赠图标 --&gt;&lt;div ...</p>-->
+代码1234&lt;!--动态线条背景--&gt;&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;  co...</p>-->
               </a>
             
           </div>
@@ -558,7 +543,7 @@
 
   <script>
     window.subData = {
-      title: '博客个性化-背景线条动画',
+      title: '博客个性化-鼠标点击效果',
       tools: true
     }
   </script>
@@ -584,7 +569,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#爱心效果"><span class="toc-text">爱心效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字体效果"><span class="toc-text">字体效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#烟花爆炸效果"><span class="toc-text">烟花爆炸效果</span></a></li></ol>
     </div>
   </section>
 

@@ -16,12 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>博客个性化-一言 - 磨叽熊猫</title>
+    <title>博客个性化-看板娘 - 磨叽熊猫</title>
   
     <meta name="keywords" content="Hexo,个性化">
   
   
-    <meta name="description" content="一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。">
+    <meta name="description" content="在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头">
   
 
   <!-- feed -->
@@ -267,8 +267,8 @@
         
   
     <h1 class="title">
-      <a href="/p/489f/">
-        博客个性化-一言
+      <a href="/blog/5645/">
+        博客个性化-看板娘
       </a>
     </h1>
   
@@ -307,7 +307,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月5日</p>
+    <p>发布于：2019年5月8日</p>
   </a>
 </div>
 
@@ -329,95 +329,28 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p><a href="https://hitokoto.cn/" target="_blank" rel="noopener">一言网(Hitokoto.cn)</a>创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。</p>
+          <p>在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头</p>
 <a id="more"></a>
 
-<h2 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h2><p id="hitokoto">:D 获取中...</p>
-<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+<h2 id="如何添加"><a href="#如何添加" class="headerlink" title="如何添加"></a>如何添加</h2><p>以本博客为例</p>
+<p>输入如下命令获取 live2d :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id&#x3D;&quot;hitokoto&quot;&gt;:D 获取中...&lt;&#x2F;p&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?encode&#x3D;js&amp;select&#x3D;%23hitokoto&quot; defer&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>输入如下命令获取 shizuku 模型:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure>
 
-<h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><p>请求地址：<a href="https://v1.hitokoto.cn/" target="_blank" rel="noopener">https://v1.hitokoto.cn/</a></p>
-<p>参数：</p>
-<table>
-<thead>
-<tr>
-<th>返回参数名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>c=a</td>
-<td>Anime - 动画</td>
-</tr>
-<tr>
-<td>c=b</td>
-<td>Comic – 漫画</td>
-</tr>
-<tr>
-<td>c=c</td>
-<td>Game – 游戏</td>
-</tr>
-<tr>
-<td>c=d</td>
-<td>Novel – 小说</td>
-</tr>
-<tr>
-<td>c=e</td>
-<td>Myself – 原创</td>
-</tr>
-<tr>
-<td>c=f</td>
-<td>Internet – 来自网络</td>
-</tr>
-<tr>
-<td>c=g</td>
-<td>Other – 其他</td>
-</tr>
-</tbody></table>
-<p>更多参数参考：<a href="https://hitokoto.cn/api" target="_blank" rel="noopener">https://hitokoto.cn/api</a></p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">（从7种分类中随机抽取）</span><br><span class="line">https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;</span><br><span class="line"></span><br><span class="line">（请求获得一个分类是漫画的句子）</span><br><span class="line">https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?c&#x3D;b</span><br><span class="line"></span><br><span class="line">（请求获得一个来自网络的句子，并以纯文本格式输出）</span><br><span class="line">https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?c&#x3D;f&amp;encode&#x3D;text</span><br></pre></td></tr></table></figure>
+<p>在站点目录下的 _config.yml 文件，添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  model: </span><br><span class="line">    use: live2d-widget-model-shizuku #模型选择</span><br><span class="line">    scale: 1</span><br><span class="line">  display: </span><br><span class="line">    superSample: 2</span><br><span class="line">    position: right  #模型位置</span><br><span class="line">    hOffset: 90</span><br><span class="line">    width: 200       #模型宽度</span><br><span class="line">    height: 400      #模型高度</span><br><span class="line">  mobile: </span><br><span class="line">    show: false      #是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: 1</span><br><span class="line">  dialog:</span><br><span class="line">    enable: true</span><br><span class="line">    hitokoto: true</span><br></pre></td></tr></table></figure>
 
-<p>接口返回的 JSON 正常数据格式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 540,</span><br><span class="line">  &quot;hitokoto&quot;: &quot;在灾难面前，如果连英雄都逃跑了，那还有谁能站出来？&quot;,</span><br><span class="line">  &quot;type&quot;: &quot;a&quot;,</span><br><span class="line">  &quot;from&quot;: &quot;一拳超人&quot;,</span><br><span class="line">  &quot;creator&quot;: &quot;没了&quot;,</span><br><span class="line">  &quot;created_at&quot;: &quot;1472551464&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><p>点击 <a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">hexo-helper-live2d</a> 进入项目地址</p>
+<p>点击 <a href="https://l2dwidget.js.org/dev.html" target="_blank" rel="noopener">https://l2dwidget.js.org/dev.html</a> 查看官方Demo</p>
+<p>点击 <a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">https://huaji8.top/post/live2d-plugin-2.0/</a> 查看更多模型</p>
+<p>模型设置API参阅 <a href="https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init" target="_blank" rel="noopener">live2d-widget.js API</a></p>
+<p>更多模型包通过如下命令安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install packagename</span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th>返回参数名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>本条一言的id</td>
-</tr>
-<tr>
-<td>hitokoto</td>
-<td>一言正文</td>
-</tr>
-<tr>
-<td>type</td>
-<td>类型</td>
-</tr>
-<tr>
-<td>from</td>
-<td>一言的出处</td>
-</tr>
-<tr>
-<td>creator</td>
-<td>添加者</td>
-</tr>
-<tr>
-<td>created_at</td>
-<td>添加时间</td>
-</tr>
-</tbody></table>
-<p>网页使用示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id&#x3D;&quot;hitokoto&quot;&gt;:D 获取中...&lt;&#x2F;p&gt;</span><br><span class="line">&lt;!-- 以下写法，选取一种即可 --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 现代写法，推荐 --&gt;</span><br><span class="line">&lt;!-- 兼容低版本浏览器 (包括 IE)，可移除 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;bluebird@3&#x2F;js&#x2F;browser&#x2F;bluebird.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;whatwg-fetch@2.0.3&#x2F;fetch.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;!--End--&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  fetch(&#39;https:&#x2F;&#x2F;v1.hitokoto.cn&#39;)</span><br><span class="line">    .then(function (res)&#123;</span><br><span class="line">      return res.json();</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(function (data) &#123;</span><br><span class="line">      var hitokoto &#x3D; document.getElementById(&#39;hitokoto&#39;);</span><br><span class="line">      hitokoto.innerText &#x3D; data.hitokoto; </span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(function (err) &#123;</span><br><span class="line">      console.error(err);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 老式写法，兼容性最忧 --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">  xhr.open(&#39;get&#39;, &#39;https:&#x2F;&#x2F;v1.hitokoto.cn&#39;);</span><br><span class="line">  xhr.onreadystatechange &#x3D; function () &#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D;&#x3D; 4) &#123;</span><br><span class="line">      var data &#x3D; JSON.parse(xhr.responseText);</span><br><span class="line">      var hitokoto &#x3D; document.getElementById(&#39;hitokoto&#39;);</span><br><span class="line">      hitokoto.innerText &#x3D; data.hitokoto;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  xhr.send();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 新 API 方法， 十分简洁 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?encode&#x3D;js&amp;select&#x3D;%23hitokoto&quot; defer&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>感谢 <a href="https://hitokoto.cn/" target="_blank" rel="noopener">一言网(Hitokoto.cn)</a> 为我们提供的服务</p>
+<p>其中 packagename 包括</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">live2d-widget-model-chitose</span><br><span class="line">live2d-widget-model-epsilon2_1</span><br><span class="line">live2d-widget-model-gf</span><br><span class="line">live2d-widget-model-haru</span><br><span class="line">live2d-widget-model-haruto</span><br><span class="line">live2d-widget-model-hibiki</span><br><span class="line">live2d-widget-model-hijiki</span><br><span class="line">live2d-widget-model-izumi</span><br><span class="line">live2d-widget-model-koharu</span><br><span class="line">live2d-widget-model-miku</span><br><span class="line">live2d-widget-model-ni-j</span><br><span class="line">live2d-widget-model-nico</span><br><span class="line">live2d-widget-model-nietzsche</span><br><span class="line">live2d-widget-model-nipsilon</span><br><span class="line">live2d-widget-model-nito</span><br><span class="line">live2d-widget-model-shizuku</span><br><span class="line">live2d-widget-model-tororo</span><br><span class="line">live2d-widget-model-tsumiki</span><br><span class="line">live2d-widget-model-unitychan</span><br><span class="line">live2d-widget-model-wanko</span><br><span class="line">live2d-widget-model-z16</span><br></pre></td></tr></table></figure>
 
           
             <br>
@@ -444,7 +377,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://yoursite.com/p/489f/>http://yoursite.com/p/489f/</a></p>
+            <p>本文永久链接是：<a href=http://yoursite.com/blog/5645/>http://yoursite.com/blog/5645/</a></p>
           
         
       </blockquote>
@@ -493,10 +426,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-05T17:17:29+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-04T21:22:12+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2019年5月5日</p>
+    <p>更新于：2020年4月4日</p>
   </a>
 </div>
 
@@ -523,7 +456,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/p/489f/&title=博客个性化-一言 - 磨叽熊猫&summary=一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/blog/5645/&title=博客个性化-看板娘 - 磨叽熊猫&summary=在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头"
           
           >
           
@@ -535,7 +468,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/p/489f/&title=博客个性化-一言 - 磨叽熊猫&summary=一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/blog/5645/&title=博客个性化-看板娘 - 磨叽熊猫&summary=在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头"
           
           >
           
@@ -547,7 +480,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/p/489f/&title=博客个性化-一言 - 磨叽熊猫&summary=一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。"
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/blog/5645/&title=博客个性化-看板娘 - 磨叽熊猫&summary=在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头"
           
           >
           
@@ -571,19 +504,14 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/p/3821/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>博客个性化-打赏按钮</p>
-                <!--<p class='content'>在博客页添加一个打赏按钮，点击打赏，弹出赞赏码，扫描赞赏码对博主进行打赏鼓励。
+            
+              <a class='next' href='/blog/22e3/'>
+                <p class='title'>博客个性化-鼠标点击效果<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <!--<p class='content'>添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果
 
 
-代码html 代码
-123456789101112&lt;! -- 添加捐赠图标 --&gt;&lt;div ...</p>-->
-              </a>
-            
-            
-              <a class='next' href='/p/d67b/'>
-                <p class='title'>博客个性化-今日诗词<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <!--<p class='content'>今日诗词(https://www.jinrishici.com/) API 是一个可以返回一句古诗词名句的接口。它可以通过图片和 JSON 格式调用。今日诗词 API 根据不同地点、时间、节日、...</p>-->
+爱心效果新建文件 love.js，在 love.js 文件中添加以下代码：
+1!function(e,t,a)&#123;func...</p>-->
               </a>
             
           </div>
@@ -611,7 +539,7 @@
 
   <script>
     window.subData = {
-      title: '博客个性化-一言',
+      title: '博客个性化-看板娘',
       tools: true
     }
   </script>
@@ -637,7 +565,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单示例"><span class="toc-text">简单示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级用法"><span class="toc-text">高级用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#致谢"><span class="toc-text">致谢</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何添加"><span class="toc-text">如何添加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级用法"><span class="toc-text">高级用法</span></a></li></ol>
     </div>
   </section>
 
