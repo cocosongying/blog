@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.4.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>博客个性化-一言 - 磨叽熊猫</title>
+  
+    <meta name="keywords" content="Hexo,个性化">
+  
+  
+    <meta name="description" content="一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/blog/img/logo.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/blog/'>
+          
+          
+          
+            磨叽熊猫
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/blog/
+                  
+                  
+                  
+                    id="blog"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/blog/categories/
+                  
+                  
+                  
+                    id="blogcategories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/blog/tags/
+                  
+                  
+                  
+                    id="blogtags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/blog/
+                  
+                  
+                  
+                    id="blog"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/blog/categories/
+                  
+                  
+                  
+                    id="blogcategories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/blog/tags/
+                  
+                  
+                  
+                    id="blogtags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/blog/p/489f/">
+        博客个性化-一言
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="" rel="nofollow">
+    <img src="/blog/img/author.jpg">
+    <p>SongYing</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/blog/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>实用教程</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年5月5日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><a href="https://hitokoto.cn/" target="_blank" rel="noopener">一言网(Hitokoto.cn)</a>创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。</p>
+<a id="more"></a>
+
+<h2 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h2><p id="hitokoto">:D 获取中...</p>
+<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id&#x3D;&quot;hitokoto&quot;&gt;:D 获取中...&lt;&#x2F;p&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?encode&#x3D;js&amp;select&#x3D;%23hitokoto&quot; defer&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><p>请求地址：<a href="https://v1.hitokoto.cn/" target="_blank" rel="noopener">https://v1.hitokoto.cn/</a></p>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>返回参数名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c=a</td>
+<td>Anime - 动画</td>
+</tr>
+<tr>
+<td>c=b</td>
+<td>Comic – 漫画</td>
+</tr>
+<tr>
+<td>c=c</td>
+<td>Game – 游戏</td>
+</tr>
+<tr>
+<td>c=d</td>
+<td>Novel – 小说</td>
+</tr>
+<tr>
+<td>c=e</td>
+<td>Myself – 原创</td>
+</tr>
+<tr>
+<td>c=f</td>
+<td>Internet – 来自网络</td>
+</tr>
+<tr>
+<td>c=g</td>
+<td>Other – 其他</td>
+</tr>
+</tbody></table>
+<p>更多参数参考：<a href="https://hitokoto.cn/api" target="_blank" rel="noopener">https://hitokoto.cn/api</a></p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">（从7种分类中随机抽取）</span><br><span class="line">https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;</span><br><span class="line"></span><br><span class="line">（请求获得一个分类是漫画的句子）</span><br><span class="line">https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?c&#x3D;b</span><br><span class="line"></span><br><span class="line">（请求获得一个来自网络的句子，并以纯文本格式输出）</span><br><span class="line">https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?c&#x3D;f&amp;encode&#x3D;text</span><br></pre></td></tr></table></figure>
+
+<p>接口返回的 JSON 正常数据格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 540,</span><br><span class="line">  &quot;hitokoto&quot;: &quot;在灾难面前，如果连英雄都逃跑了，那还有谁能站出来？&quot;,</span><br><span class="line">  &quot;type&quot;: &quot;a&quot;,</span><br><span class="line">  &quot;from&quot;: &quot;一拳超人&quot;,</span><br><span class="line">  &quot;creator&quot;: &quot;没了&quot;,</span><br><span class="line">  &quot;created_at&quot;: &quot;1472551464&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>返回参数名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>本条一言的id</td>
+</tr>
+<tr>
+<td>hitokoto</td>
+<td>一言正文</td>
+</tr>
+<tr>
+<td>type</td>
+<td>类型</td>
+</tr>
+<tr>
+<td>from</td>
+<td>一言的出处</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>添加者</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>添加时间</td>
+</tr>
+</tbody></table>
+<p>网页使用示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id&#x3D;&quot;hitokoto&quot;&gt;:D 获取中...&lt;&#x2F;p&gt;</span><br><span class="line">&lt;!-- 以下写法，选取一种即可 --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 现代写法，推荐 --&gt;</span><br><span class="line">&lt;!-- 兼容低版本浏览器 (包括 IE)，可移除 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;bluebird@3&#x2F;js&#x2F;browser&#x2F;bluebird.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;whatwg-fetch@2.0.3&#x2F;fetch.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;!--End--&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  fetch(&#39;https:&#x2F;&#x2F;v1.hitokoto.cn&#39;)</span><br><span class="line">    .then(function (res)&#123;</span><br><span class="line">      return res.json();</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(function (data) &#123;</span><br><span class="line">      var hitokoto &#x3D; document.getElementById(&#39;hitokoto&#39;);</span><br><span class="line">      hitokoto.innerText &#x3D; data.hitokoto; </span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(function (err) &#123;</span><br><span class="line">      console.error(err);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 老式写法，兼容性最忧 --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">  xhr.open(&#39;get&#39;, &#39;https:&#x2F;&#x2F;v1.hitokoto.cn&#39;);</span><br><span class="line">  xhr.onreadystatechange &#x3D; function () &#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D;&#x3D; 4) &#123;</span><br><span class="line">      var data &#x3D; JSON.parse(xhr.responseText);</span><br><span class="line">      var hitokoto &#x3D; document.getElementById(&#39;hitokoto&#39;);</span><br><span class="line">      hitokoto.innerText &#x3D; data.hitokoto;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  xhr.send();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 新 API 方法， 十分简洁 --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;v1.hitokoto.cn&#x2F;?encode&#x3D;js&amp;select&#x3D;%23hitokoto&quot; defer&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>感谢 <a href="https://hitokoto.cn/" target="_blank" rel="noopener">一言网(Hitokoto.cn)</a> 为我们提供的服务</p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      
+        
+          <div class='fancybox'><img src='/blog/img/wxpublic2.png'
+            >
+          </div>
+        
+      
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=http://yoursite.com/p/489f/>http://yoursite.com/p/489f/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='/blog/img/wxpay.jpeg'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='/blog/img/alipay.jpeg'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-05T17:17:29+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年5月5日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/blog/tags/Hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Hexo</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/blog/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>个性化</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/p/489f/&title=博客个性化-一言 - 磨叽熊猫&summary=一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/p/489f/&title=博客个性化-一言 - 磨叽熊猫&summary=一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://yoursite.com/p/489f/&title=博客个性化-一言 - 磨叽熊猫&summary=一言网(Hitokoto.cn)创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/blog/p/3821/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>博客个性化-打赏按钮</p>
+                <!--<p class='content'>在博客页添加一个打赏按钮，点击打赏，弹出赞赏码，扫描赞赏码对博主进行打赏鼓励。
+
+
+代码html 代码
+123456789101112&lt;! -- 添加捐赠图标 --&gt;&lt;div ...</p>-->
+              </a>
+            
+            
+              <a class='next' href='/blog/p/d67b/'>
+                <p class='title'>博客个性化-今日诗词<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <!--<p class='content'>今日诗词(https://www.jinrishici.com/) API 是一个可以返回一句古诗词名句的接口。它可以通过图片和 JSON 格式调用。今日诗词 API 根据不同地点、时间、节日、...</p>-->
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '博客个性化-一言',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单示例"><span class="toc-text">简单示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级用法"><span class="toc-text">高级用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#致谢"><span class="toc-text">致谢</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="mailto:cocosongying@gmail.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/cocosongying"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://weibo.com/cocosongying"
+                class="social fab fa-weibo flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="/blog/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="">Copyright © 2020 磨叽熊猫</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/blog/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/blog/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/blog/js/love.js"></script>
+  <!--动态线条背景-->
+  <script type="text/javascript"
+    color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+  </script>
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"jsonPath":"/blog/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"position":"right","hOffset":90,"width":200,"height":400},"mobile":{"show":false},"react":{"opacity":1},"dialog":{"enable":true,"hitokoto":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
