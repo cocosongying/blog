@@ -1,6 +1,6 @@
 # Hexo 博客
 
-使用 Hexo 搭建的静态博客站点，主题使用 [Volantis](https://volantis.js.org/)
+使用 Hexo 搭建的静态博客站点，主题使用 [Volantis](https://volantis.js.org/) `version 2.6.4`
 
 写写博客，记录生活
 
