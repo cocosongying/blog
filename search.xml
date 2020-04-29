@@ -85,33 +85,6 @@
     
     
     <entry>
-      <title>博客个性化-打赏按钮</title>
-      <link href="/blog/3821/"/>
-      <url>/blog/3821/</url>
-      
-        <content type="html"><![CDATA[<p>在博客页添加一个打赏按钮，点击打赏，弹出赞赏码，扫描赞赏码对博主进行打赏鼓励。</p><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>html 代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;! -- 添加捐赠图标 --&gt;</span><br><span class="line">&lt;div class &#x3D;&quot;post-donate&quot;&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;donate_board&quot; class&#x3D;&quot;donate_bar center&quot;&gt;</span><br><span class="line">        &lt;p style&#x3D;&quot;margin:5px auto;&quot;&gt;&lt;a href&#x3D;&quot;javascript:void(0)&quot; onclick&#x3D;&quot;document.getElementById(&#39;donateModal&#39;).style.display &#x3D; &#39;block&#39;&quot; style&#x3D;&quot;display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;&quot;&gt;打赏&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;br&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;donateModal&quot; class&#x3D;&quot;modal&quot; style&#x3D;&quot;display: none;position: fixed;z-index: 1000;margin-left:-160px;margin-top:-200px;padding: 10px;left: 50%;top: 50%;width: 320px;height: 380px;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6);&quot;&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;https:&#x2F;&#x2F;cocosongying.github.io&#x2F;img&#x2F;wechatpay.jpeg&quot; id&#x3D;&quot;myImg&quot; width&#x3D;&quot;298&quot; height&#x3D;&quot;298&quot; style&#x3D;&quot;border:1px solid #d3d3d3;margin-bottom: 12px;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;p style&#x3D;&quot;margin:5px auto;&quot;&gt;&lt;a href&#x3D;&quot;javascript:void(0)&quot; onclick&#x3D;&quot;document.getElementById(&#39;donateModal&#39;).style.display&#x3D;&#39;none&#39;&quot; style&#x3D;&quot;display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;&quot;&gt;关闭&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;! -- 添加捐赠图标 --&gt;</span><br></pre></td></tr></table></figure><p>css 代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.donate_bar &#123;</span><br><span class="line">  text-align: center;</span><br><span class="line">  margin-top: 5%</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.donate_bar .donate_txt &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  color: #9d9d9d;</span><br><span class="line">  font: 14px&#x2F;2 &quot;Microsoft Yahei&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#donate_guide&#123;</span><br><span class="line">  height: 250px;</span><br><span class="line">  width: 250px;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#donate_guide img&#123;</span><br><span class="line">  height: 240px;</span><br><span class="line">  height: 240px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="赞赏码"><a href="#赞赏码" class="headerlink" title="赞赏码"></a>赞赏码</h2><p>如何获取赞赏码？</p><p>微信可通过 支付 –&gt; 收付款 –&gt; 赞赏码 按照步骤开通并保存</p><p>支付宝可通过 收钱 –&gt; 保存图片 直接得到收钱码</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 实用教程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 个性化 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>博客个性化-一言</title>
       <link href="/blog/489f/"/>
       <url>/blog/489f/</url>
