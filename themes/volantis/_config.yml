@@ -102,10 +102,10 @@ cover:
     others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
   title: 磨叽熊猫
-  subtitle: ''
+  subtitle: 'mojipanda'
   search: # search bar placeholder
   features:
-    - name: 博文
+    - name: 博客
       icon: fas fa-rss
       url: /
     - name: 文档
@@ -113,6 +113,9 @@ cover:
       url: /wiki/
       rel: external nofollow noopener noreferrer
       target: _blank
+    - name: 关于
+      icon: fas fa-info-circle
+      url: /about/
     # - name: 博文
     #   icon: fas fa-rss
     #   url: /archives/
@@ -140,21 +143,26 @@ navbar:
     - name: 博客
       icon: fas fa-rss
       url: /
-    - name: 分类
-      icon: fas fa-folder-open
-      url: categories/
-    - name: 标签
-      icon: fas fa-tags
-      url: tags/
+    - name: 文档
+      icon: fas fa-book
+      url: /wiki/
+      rel: external nofollow noopener noreferrer
+      target: _blank
+    # - name: 分类
+    #   icon: fas fa-folder-open
+    #   url: categories/
+    # - name: 标签
+    #   icon: fas fa-tags
+    #   url: tags/
     # - name: 归档
     #   icon: fas fa-archive
     #   url: archives/
     # - name: 友链
     #   icon: fas fa-link
     #   url: friends/
-    # - name: 关于
-    #   icon: fas fa-info-circle
-    #   url: about/
+    - name: 关于
+      icon: fas fa-info-circle
+      url: about/
   search: 搜索   # Search bar placeholder
 
 
@@ -166,7 +174,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, category, date, wordcount, top]
     # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode]
+    sidebar: [blogger, category, tagcloud, wxpublic]
     # read more button
     readmore: Read More <i class="fas fa-chevron-right"></i>
   # 页面布局
@@ -180,11 +188,11 @@ layout:
       header: [title, author, category, date, top]
       footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
-    sidebar: [qrcode, toc]
+    sidebar: [wxpublic, toc]
   # 文章布局，参数继承自 on_page
   on_post:
     # 文章页脚，自动在每一篇文章末尾添加
-    article_footer: [references, related_repos, copyright, donate]
+    article_footer: [references, related_repos, copyright]
   # 其他的页面布局暂时等于 on_list
 
 
@@ -196,7 +204,7 @@ meta:
   author:
     avatar: /img/author.jpg
     name: SongYing
-    url: /
+    url: /about/
   # 文章创建日期
   date:
     icon: fas fa-calendar-alt
@@ -276,7 +284,7 @@ widget:
     display: [desktop] # [desktop, mobile]
     avatar: img/author.jpg
     shape: rectangle # circle, rectangle
-    # url: /about/
+    url: /about/
     title:
     subtitle:
     jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
@@ -361,10 +369,19 @@ widget:
     header:
       icon: fab fa-github
       title: 源码链接
+  # ---------------------------------------
+  # wxpublic widget
+  wxpublic:
+    class: text
+    display: [desktop] # [desktop, mobile]
+    header:
+      icon: fab fa-weixin
+      title: 关注公众号
+    content:
+      - '![](/img/wxqrcode.jpg)'
 
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
-
 
 
 footer:
@@ -377,8 +394,8 @@ footer:
       url: https://github.com/cocosongying
     - icon: fab fa-weibo
       url: https://weibo.com/cocosongying
-    - icon: fas fa-rss
-      url: atom.xml
+    - icon: fas fa-video
+      url: https://space.bilibili.com/433441983
   copyright: '[Copyright © 2020 磨叽熊猫](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'

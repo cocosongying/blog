@@ -40,6 +40,9 @@
         <%} %>
       </section>
     </article>
+    <% if (page.meta && post.meta.donate != false){ %>
+      <%- partial('../_widget/donate') %>
+    <% } %>
   <% } else if (widget_id == 'comments') { %>
     <%- partial('../_third-party/comments') %>
   <% } else { %>

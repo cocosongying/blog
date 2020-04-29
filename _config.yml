@@ -123,6 +123,9 @@ live2d:
     enable: true
     hitokoto: true
 
+donate:
+  image: /img/wxpay.jpeg
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
