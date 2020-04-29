@@ -26,6 +26,7 @@
       icon: fas fa-video
     - name: 工具
       icon: fas fa-tools
+      url: tools/
     - name: 演示
       icon: fas fa-book-reader
     - name: 娱乐

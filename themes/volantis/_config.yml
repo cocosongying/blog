@@ -113,6 +113,9 @@ cover:
       url: /wiki/
       rel: external nofollow noopener noreferrer
       target: _blank
+    - name: 工具
+      icon: fas fa-tools
+      url: /tools/
     - name: 关于
       icon: fas fa-user-circle
       url: /about/
