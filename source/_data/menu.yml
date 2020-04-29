@@ -1,0 +1,32 @@
+- name: 博客
+  icon: fas fa-rss
+  rows:
+    - name: 分类
+      icon: fas fa-folder-open
+      url: categories/
+    - name: 标签
+      icon: fas fa-tags
+      url: tags/
+    - name: 归档
+      icon: fas fa-archive
+      url: archives/
+- name: 文档
+  icon: fas fa-book
+  url: /wiki/
+  rel: external nofollow noopener noreferrer
+  target: _blank
+- name: 更多
+  icon: fas fa-ellipsis-v
+  rows:
+    - name: 关于
+      icon: fas fa-user-circle
+      url: about/
+    - name: hr
+    - name: 视频
+      icon: fas fa-video
+    - name: 工具
+      icon: fas fa-tools
+    - name: 演示
+      icon: fas fa-book-reader
+    - name: 娱乐
+      icon: fas fa-fan

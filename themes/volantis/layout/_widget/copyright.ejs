@@ -4,11 +4,10 @@
     <% if (item.blockquote == true) { %>
       <% if (item.wxpublic == true) { %>
         <% (item.images||[]).forEach(function(url){ %>
-          <div class='fancybox'><img src='<%- url_for(url) %>'
+          <img src='<%- url_for(url) %>'
             <% if (item.height) { %>
               height='<%- item.height %>'
             <% } %>>
-          </div>
         <% }) %>
       <% } %>
       <blockquote>

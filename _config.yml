@@ -14,7 +14,7 @@ favicon: img/logo.png
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-#url: http://yoursite.com
+url: http://192.168.3.84
 root: /
 #permalink: :year/:month/:day/:title/
 permalink_defaults:
