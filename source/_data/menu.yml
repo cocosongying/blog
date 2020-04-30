@@ -20,16 +20,18 @@
   rows:
     - name: 关于
       icon: fas fa-user-circle
-      url: about/
+      url: /about/
     - name: hr
     - name: 视频
       icon: fas fa-video
+      url: /video/
     - name: 工具
       icon: fas fa-tools
-      url: /tools/
-      rel: external nofollow noopener noreferrer
+      url: /tool/
       target: _blank
-    - name: 演示
+    - name: 文稿
       icon: fas fa-book-reader
+      url: /slide/
     - name: 娱乐
       icon: fas fa-fan
+      url: /
