@@ -346,7 +346,7 @@ widget:
     blockquote: true
     wxpublic: true
     images:
-      - /img/wxpublic2.png
+      - https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxpublic2.png
     permalink: '本文永久链接是：'
     content:
       - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
