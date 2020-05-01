@@ -121,7 +121,7 @@ live2d:
     opacity: 1
   dialog:
     enable: true
-    hitokoto: true
+    # hitokoto: true
 
 donate:
   image: /img/wxpay.jpeg
