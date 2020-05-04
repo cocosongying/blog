@@ -8,6 +8,13 @@
     </url>
     
     <url>
+        <loc>https://mojipanda.com/about/</loc>
+        <lastmod>2020-05-04T11:38:40.565Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>https://mojipanda.com/tool/</loc>
         <lastmod>2020-04-30T05:13:31.631Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,13 +31,6 @@
     <url>
         <loc>https://mojipanda.com/slide/</loc>
         <lastmod>2020-04-30T05:04:55.730Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://mojipanda.com/about/</loc>
-        <lastmod>2020-04-29T07:20:06.270Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
