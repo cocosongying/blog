@@ -25,13 +25,12 @@
     - name: 视频
       icon: fas fa-video
       url: /video/
-    - name: 工具
-      icon: fas fa-tools
-      url: /tool/
-      target: _blank
     - name: 文稿
       icon: fas fa-book-reader
       url: /slide/
+    - name: 收藏
+      icon: fas fa-star
+      url: /collect/
     - name: 娱乐
       icon: fas fa-fan
-      url: /
+      url: /fun/

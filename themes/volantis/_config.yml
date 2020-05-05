@@ -116,9 +116,9 @@ cover:
     - name: 视频
       icon: fas fa-video
       url: /video/
-    - name: 工具
-      icon: fas fa-tools
-      url: /tool/
+    - name: 收藏
+      icon: fas fa-star
+      url: /collect/
     - name: 关于
       icon: fas fa-user-circle
       url: /about/
@@ -182,7 +182,7 @@ layout:
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud]
     # read more button
-    readmore: Read More <i class="fas fa-chevron-right"></i>
+    readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
