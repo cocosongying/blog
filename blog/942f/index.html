@@ -613,18 +613,19 @@
 <li><code>.nojekyll</code> 用于阻止 GitHub Pages 会忽略掉下划线开头的文件</li>
 </ul>
 <p>本地预览</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve .&#x2F;docs</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve ./docs</span><br></pre></td></tr></table></figure>
 
 <p>执行完毕可以通过 <code>http://localhost:3000</code> 访问预览效果，<code>docsify serve</code> 让网站处于实时预览状态，本地有更新，网站会实时刷新。<br>如果不需要实时刷新，可以使用 <code>docsify start</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify start .&#x2F;docs</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify start ./docs</span><br></pre></td></tr></table></figure>
 
 <p>默认端口号是 <code>3000</code>，如果需要更改端口号，可以通过在命令行后加 <code>--port 3001</code> 来指定端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve .&#x2F;docs --port 3001</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve ./docs --port 3001</span><br></pre></td></tr></table></figure>
 
 <p><code>index.html</code> 里插件使用的源文件 cdn 加速地址，可以将文件下载到本地来引用，这样无法连接外网的环境一样可以部署啦。</p>
 <h2 id="高级教程"><a href="#高级教程" class="headerlink" title="高级教程"></a>高级教程</h2><div class="note blue"><p>支持结合 Github 实现在线编辑，添加评论功能等等，更多定制化功能及插件使用请参考官方文档，官方地址见下方参考资料。</p></div>
 
-<h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>我本人还是很喜欢这种简约的文档网站的，文档系统主要是简洁，既方便写也方便看。Markdown 本身就适合写文档，结合 Docsify 使用简直完美。不需要调整复杂的样式，专注于写就好了。我在以前的工作中使用过 Docsify 一手搭建部署了文档系统，既可以通过脚本生成接口文档，也可以人工书写设计文档，迭代文档，优化方案等等。</p>
+<h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>我本人还是很喜欢这种简约的文档网站的，文档系统主要是简洁，既方便写也方便看。Markdown 本身就适合写文档，结合 Docsify 使用简直完美。不需要调整复杂的样式，专注于写就好了。</p>
+<p>我在以前的工作中使用过 Docsify 一手搭建部署了文档系统，既可以通过脚本生成接口文档，也可以人工书写设计文档，迭代文档，优化方案等等。</p>
 
           
             <div class='article_footer'>
@@ -733,7 +734,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-06T23:28:32+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-06T23:41:18+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年5月6日</p>
