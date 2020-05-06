@@ -3,8 +3,15 @@
 
 
     <url>
+        <loc>https://mojipanda.com/tags/%25E5%25BF%2583%25E6%2583%2585/</loc>
+        <lastmod>2020-05-06T13:23:03.024Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mojipanda.com/tags/%25E6%25B3%25A8%25E9%2587%258A/</loc>
-        <lastmod>2020-05-05T11:20:11.959Z</lastmod>
+        <lastmod>2020-05-06T12:50:14.036Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

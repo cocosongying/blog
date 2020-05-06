@@ -8,8 +8,15 @@
     </url>
 
     <url>
+        <loc>https://mojipanda.com/categories/%25E5%25BF%2583%25E6%2583%2585%25E7%2589%25A9%25E8%25AF%25AD/</loc>
+        <lastmod>2020-05-06T13:23:03.024Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mojipanda.com/categories/awesome/</loc>
-        <lastmod>2020-05-05T11:20:11.959Z</lastmod>
+        <lastmod>2020-05-06T12:50:14.036Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
