@@ -392,7 +392,7 @@ footer:
       url: https://weibo.com/cocosongying
     - icon: fas fa-video
       url: https://space.bilibili.com/433441983
-  copyright: '[Copyright © 2020 磨叽熊猫](/)'
+  copyright: '[Copyright © 2020 磨叽熊猫](/) [苏ICP备20024709号-1](http://www.beian.miit.gov.cn/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
