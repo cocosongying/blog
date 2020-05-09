@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>宝宝教爸爸快捷输入</title>
+      <link href="/blog/7055/"/>
+      <url>/blog/7055/</url>
+      
+        <content type="html"><![CDATA[<p>宝宝在爸爸的电脑上随便乱按，意外教会了爸爸一种快捷输入方式。</p><a id="more"></a><p>事情上这样的，我的苹果笔记本打开在一旁，开着一个浏览器的空白页，正在思索着查点资料，然后临时有事离开了座位。</p><p>刚走出房门没一会，就看见宝宝兴冲冲的趴上我的电脑，一边喊着“帮忙，帮忙”，一边在键盘上随便乱按。接着就看到了下面这个样子。</p><p><img src="/assets/img/20200509084728.png" alt=""></p><p>好像也没啥是吧，就是浏览器里输入里几个字符而已。再仔细看看，这个大于等于号，还有这个除号是怎么敲出来的。</p><p>我思索了一会，因为我并不知道这个快捷键，而且输入法并不是智能模式，于是我尝试输入了一下，可单个按键的敲怎么也敲不出来这种组合符号啊。那么只能是组合按键了，最终被我试出来了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;***</span><br><span class="line"> * ┌────────┐   ┌─────┐ </span><br><span class="line"> * │ option │ + │ &gt; . │ &#x3D; ≥</span><br><span class="line"> * └────────┘   └─────┘ </span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;***</span><br><span class="line"> * ┌────────┐   ┌─────┐ </span><br><span class="line"> * │ option │ + │ ? &#x2F; │ &#x3D; ÷</span><br><span class="line"> * └────────┘   └─────┘ </span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure><p>仔细看看这三个键确实在一块呢，也难怪宝宝这小手还能按出组合快捷键来。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;***</span><br><span class="line"> * ┬─┴─┬─┴─┬</span><br><span class="line"> * │&gt; .│? &#x2F;│</span><br><span class="line"> * ┼───┴──┬┴</span><br><span class="line"> * │option│</span><br><span class="line"> * └──────┘</span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure><p>好吧，宝宝你让爸爸奇奇怪怪的知识点又增加了呢。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;***</span><br><span class="line"> * ┌───────┐   ┌────────┐   ┌─────┐ </span><br><span class="line"> * │ shift │ + │ option │ + │  K  │ &#x3D; </span><br><span class="line"> * └───────┘   └────────┘   └─────┘ </span><br><span class="line"> *&#x2F;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker安装MongoDB</title>
       <link href="/blog/ac76/"/>
       <url>/blog/ac76/</url>
