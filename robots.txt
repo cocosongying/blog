@@ -15,4 +15,3 @@ Disallow: /fancybox/
 Disallow: /live2dw/
 
 Sitemap: https://mojipanda.com/sitemap.xml
-Sitemap: https://mojipanda.com/baidusitemap.xml
