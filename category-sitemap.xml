@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://mojipanda.com/categories/%25E5%25BF%2583%25E6%2583%2585%25E7%2589%25A9%25E8%25AF%25AD/</loc>
+        <lastmod>2020-05-10T15:54:09.272Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mojipanda.com/categories/%25E6%2597%25A5%25E5%25B8%25B8%25E7%2594%259F%25E6%25B4%25BB/</loc>
         <lastmod>2020-05-09T13:41:27.491Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,13 +31,6 @@
     <url>
         <loc>https://mojipanda.com/categories/%25E7%25BB%258F%25E9%25AA%258C%25E5%25B0%258F%25E7%25BB%2593/</loc>
         <lastmod>2020-05-08T04:02:38.163Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mojipanda.com/categories/%25E5%25BF%2583%25E6%2583%2585%25E7%2589%25A9%25E8%25AF%25AD/</loc>
-        <lastmod>2020-05-06T13:30:44.155Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
