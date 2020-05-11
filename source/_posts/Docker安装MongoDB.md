@@ -2,11 +2,8 @@
 title: Docker安装MongoDB
 meta:
   donate: true
-categories:
-  - 编程学习
-tag:
-  - docker
-  - mongodb
+categories: [编程学习]
+tag: [docker, mongodb]
 abbrlink: ac76
 date: 2020-05-08 17:00:00
 ---

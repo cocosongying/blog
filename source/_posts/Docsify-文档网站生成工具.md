@@ -2,10 +2,8 @@
 title: Docsify-文档网站生成工具
 meta:
   donate: true
-categories:
-  - 编程学习
-tag:
-  - 工具
+categories: [编程学习]
+tag: [工具]
 references:
   - name: Docsify-官网
     url: 'https://docsify.js.org/#/zh-cn/'

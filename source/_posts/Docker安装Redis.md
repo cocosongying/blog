@@ -2,11 +2,8 @@
 title: Docker安装Redis
 meta:
   donate: true
-categories:
-  - 编程学习
-tag:
-  - docker
-  - redis
+categories: [编程学习]
+tag: [docker, redis]
 abbrlink: a342
 date: 2020-05-08 15:00:00
 ---

@@ -2,10 +2,8 @@
 title: Hexo-快速简约高效的博客框架
 meta:
   donate: true
-categories:
-  - 编程学习
-tag:
-  - 工具
+categories: [编程学习]
+tag: [工具]
 references:
   - name: Hexo-官网
     url: 'https://hexo.io/'

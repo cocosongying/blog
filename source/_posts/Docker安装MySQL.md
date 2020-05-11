@@ -2,11 +2,8 @@
 title: Docker安装MySQL
 meta:
   donate: true
-categories:
-  - 编程学习
-tag:
-  - docker
-  - mysql
+categories: [编程学习]
+tag: [docker, mysql]
 abbrlink: ef32
 date: 2020-05-08 16:00:00
 ---
