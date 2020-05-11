@@ -108,17 +108,20 @@ cover:
     - name: 博客
       icon: fas fa-rss
       url: /
-    - name: 文档
-      icon: fas fa-book
-      url: /wiki/
-      rel: external nofollow noopener noreferrer
-      target: _blank
+    # - name: 文档
+    #   icon: fas fa-book
+    #   url: /wiki/
+    #   rel: external nofollow noopener noreferrer
+    #   target: _blank
     - name: 视频
       icon: fas fa-video
       url: /video/
     - name: 收藏
       icon: fas fa-star
       url: /collect/
+    - name: 娱乐
+      icon: fas fa-fan
+      url: /fun/
     - name: 关于
       icon: fas fa-user-circle
       url: /about/

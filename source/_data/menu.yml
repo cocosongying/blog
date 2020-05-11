@@ -1,20 +1,24 @@
 - name: 博客
   icon: fas fa-rss
   rows:
-    - name: 分类
-      icon: fas fa-folder-open
-      url: categories/
-    - name: 标签
-      icon: fas fa-tags
-      url: tags/
     - name: 归档
       icon: fas fa-archive
-      url: archives/
-- name: 文档
-  icon: fas fa-book
-  url: /wiki/
-  rel: external nofollow noopener noreferrer
-  target: _blank
+      url: /archives/
+    - name: 分类
+      icon: fas fa-folder-open
+      url: /categories/
+    - name: 标签
+      icon: fas fa-tags
+      url: /tags/
+- name: 视频
+  icon: fas fa-video
+  url: /video/
+- name: 收藏
+  icon: fas fa-star
+  url: /collect/
+- name: 娱乐
+  icon: fas fa-fan
+  url: /fun/
 - name: 更多
   icon: fas fa-ellipsis-v
   rows:
@@ -22,15 +26,11 @@
       icon: fas fa-user-circle
       url: /about/
     - name: hr
-    - name: 视频
-      icon: fas fa-video
-      url: /video/
+    - name: 文档
+      icon: fas fa-book
+      url: /wiki/
+      rel: external nofollow noopener noreferrer
+      target: _blank
     - name: 文稿
       icon: fas fa-book-reader
       url: /slide/
-    - name: 收藏
-      icon: fas fa-star
-      url: /collect/
-    - name: 娱乐
-      icon: fas fa-fan
-      url: /fun/
