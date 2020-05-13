@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：redis - 磨叽熊猫</title>
+    <title>Vue-状态管理模式Vuex - 磨叽熊猫</title>
   
+    <meta name="keywords" content="Vue">
+  
+  
+    <meta name="description" content="简单介绍一下在 Vue 项目中如何使用 Vuex 实现状态管理。比如我从服务端获取的个人信息，有很多模块都用到，这个时候相当于全局存储，方便各个模块调用。">
   
 
   <!-- feed -->
@@ -516,25 +518,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -544,11 +533,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/blog/a342/">
-      Docker安装Redis
+  <h1 class="title">
+    <a href="/blog/6604/">
+      Vue-状态管理模式Vuex
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -584,14 +573,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月8日</p>
+    <p>发布于：2020年5月13日</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -609,40 +593,301 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>简单介绍一下在 Vue 项目中如何使用 Vuex 实现状态管理。比如我从服务端获取的个人信息，有很多模块都用到，这个时候相当于全局存储，方便各个模块调用。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。</p>
+</blockquote>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我在学习使用 <code>Vue</code> 的过程中，遇到了一个存储问题，在登录的时候获取到个人信息，我需要在多个模块展示，容易想到的就是弄个全局变量，各个模块都方便调用。这个时候我查到了 <code>Vuex</code>，下面我们就来看看如何使用。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>先安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br></pre></td></tr></table></figure>
+
+<p>为了结合 <code>cookie</code> 使用我们还可以安装一下 <code>vue-cookies</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-cookies --save</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>src</code> 文件夹下创建文件夹 <code>store</code> 并新建文件 <code>index.js</code></p>
+<p>举个例子用，先上代码，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line">import Vuex from &#39;vuex&#39;;</span><br><span class="line">import cookie from &#39;vue-cookies&#39;;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line">const store &#x3D; new Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        userInfo: &#123;&#125;,</span><br><span class="line">        isLogin: cookie.get(&#39;isLogin&#39;)</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        userInfo: state &#x3D;&gt; state.userInfo,</span><br><span class="line">        isLogin: state &#x3D;&gt; state.isLogin</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        setUserInfo(state, data) &#123;</span><br><span class="line">            state.userInfo &#x3D; data;</span><br><span class="line">        &#125;,</span><br><span class="line">        setLoginState(state, data) &#123;</span><br><span class="line">            state.isLogin &#x3D; data;</span><br><span class="line">            cookie.set(&#39;isLogin&#39;, data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        setUserInfo(&#123; commit &#125;, data) &#123;</span><br><span class="line">            commit(&#39;setUserInfo&#39;, data);</span><br><span class="line">        &#125;,</span><br><span class="line">        setLoginState(&#123; commit &#125;, data) &#123;</span><br><span class="line">            commit(&#39;setLoginState&#39;, data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default store;</span><br></pre></td></tr></table></figure>
+<p>在 <code>main.js</code> 中将 <code>store</code> 引入进来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  store,</span><br><span class="line">  router,</span><br><span class="line">  render: h &#x3D;&gt; h(App),</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>在 <code>store/index.js</code> 文件中</p>
+<p><code>state</code> 表示要要管理的状态，以 key-value 键值对的形式存储。</p>
+<p><code>getters</code> 是提供我们获取状态的入口。可以使用下面的语句获取信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let userInfo &#x3D; this.$store.getters.userInfo;</span><br></pre></td></tr></table></figure>
+<p><code>mutations</code> 是用来修改 <code>state</code> 管理的值。</p>
+<p><code>actions</code> 支持异步操作，官方简易通过这里提交修改信息，最终会调用 <code>mutations</code>。可以使用下面的语句修改信息，这里就是调用的 <code>actions</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.dispatch(&quot;setLoginState&quot;, true);</span><br></pre></td></tr></table></figure>
+
+<h2 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h2><p>使用上面的方法操作之后，我发现刷新一下页面就会导致之前存储的状态全部丢失。然后找到了下面的解决方案，就是在 <code>localStorage</code> 中存储 <code>store</code> 的值，创建的时候再获取。这样前端的状态信息就不会丢了。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;router-view &#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;App&quot;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    if (localStorage.getItem(&quot;store&quot;)) &#123;</span><br><span class="line">      this.$store.replaceState(</span><br><span class="line">        Object.assign(</span><br><span class="line">          &#123;&#125;,</span><br><span class="line">          this.$store.state,</span><br><span class="line">          JSON.parse(localStorage.getItem(&quot;store&quot;))</span><br><span class="line">        )</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    window.addEventListener(&quot;beforeunload&quot;, () &#x3D;&gt; &#123;</span><br><span class="line">      localStorage.setItem(&quot;store&quot;, JSON.stringify(this.$store.state));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>数据生命周期</th>
+<th>数据存放大小</th>
+<th>与服务器通信</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cookie</td>
+<td>一般由服务器生成，可设置失效时间。如果在浏览器端生成Cookie，默认是关闭浏览器后失效</td>
+<td>4K左右</td>
+<td>每次都会携带在HTTP头中，如果使用cookie保存过多数据，会带来性能问题</td>
+</tr>
+<tr>
+<td>sessionStorage</td>
+<td>仅在当前会话下有效，关闭页面或浏览器后被清除</td>
+<td>一般5M</td>
+<td>仅在浏览器中保存，不参与和服务器的通信</td>
+</tr>
+<tr>
+<td>localStorage</td>
+<td>除非被清除，否则永久保存</td>
+<td>同上</td>
+<td>同上</td>
+</tr>
+</tbody></table>
+<h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>当 <code>store/index.js</code> 管理的状态越来越多时，这个文件肯定会很长，不方便维护。可以将 <code>getters</code> <code>mutations</code> <code>actions</code> 单独拆分出来。</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+  
+
+<section class="widget list references  desktop mobile">
+  
+  <header>
+    
+      <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i><span class='name'>参考资料</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <ul class="list entry navigation">
       
-        <p>介绍一下如何通过 docker 安装 redis</p>
+        <li><a class="flat-box" title="https://vuex.vuejs.org/zh/" href="https://vuex.vuejs.org/zh/"
+          
+          
+          id="https:vuexvuejsorgzh"
+          >
+          <div class='name'>
+            
+            Vuex-官网
+          </div>
+          
+        </a></li>
       
-    </div>
+    </ul>
+  </div>
+</section>
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
     
       
-        <div class="button readmore">
-          <a href="/blog/a342/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
+        
+          <img src='https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxpublic2.png'
+            >
+        
+      
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://mojipanda.com/blog/6604/>https://mojipanda.com/blog/6604/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-13T17:43:35+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Vue/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Vue</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mojipanda.com/blog/6604/&title=Vue-状态管理模式Vuex - 磨叽熊猫&summary=简单介绍一下在 Vue 项目中如何使用 Vuex 实现状态管理。比如我从服务端获取的个人信息，有很多模块都用到，这个时候相当于全局存储，方便各个模块调用。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mojipanda.com/blog/6604/&title=Vue-状态管理模式Vuex - 磨叽熊猫&summary=简单介绍一下在 Vue 项目中如何使用 Vuex 实现状态管理。比如我从服务端获取的个人信息，有很多模块都用到，这个时候相当于全局存储，方便各个模块调用。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://mojipanda.com/blog/6604/&title=Vue-状态管理模式Vuex - 磨叽熊猫&summary=简单介绍一下在 Vue 项目中如何使用 Vuex 实现状态管理。比如我从服务端获取的个人信息，有很多模块都用到，这个时候相当于全局存储，方便各个模块调用。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qrcode.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACU0lEQVR42u3cQVLDQAwEwPz/03CHoqyR1lSs9N5wYlu9XAZpi9fXh64XODg4ODj4IviruX498OL6z8/T75+qFxwcHBwcfCO8HAD+AFxdr97X3bByveDg4ODg4Ivh1YLTYFEtPA1K6fvAwcHBwcHB8wZC2rjoBihwcHBwcHDw4EFhw+HU98DBwcHBwcHnDfpqAd0BxNtOUsDBwcHBwd8Inq6rQHH3z+16wcHBwcHBF8HvWt3GQ3dAUa4LHBwcHBx8EXwaKE43MFJ4esAAHBwcHBx8I/z0BkwLT99bvQ4ODg4ODr4JnhZePQDQHRDc3uAABwcHBwdfBO/C/utgYLdR0e7AgIODg4ODPxCeNhbSADE9GJBC45ON4ODg4ODgD4SnDYi4gT88yDcNVODg4ODg4J8ATxv/XUj3gMB0w8HBwcHBwTfCp3/oTwf4dx8QKA8UwMHBwcHBHwhPg8S0kXB68HB8oAAODg4ODr4AXn3hXY2FLvwyKIGDg4ODgy+Cp8GiHBQObVT3+eWBAjg4ODg4+IPhacOgel/a+D/1eTxQAAcHBwcHfzA8LTgd9E+DUlrHZVACBwcHBwdfBJ+u6qC++pwUFgcecHBwcHDwRfBTgaE7UJg2GOL7wcHBwcHBF8KngSUNIt1BwXjjwMHBwcHBF8Ong4Pp9e7gYTxJAQcHBwcH/0D4tBGRBpbuRoGDg4ODg4P3/wFdt+FQDTzlXwg4ODg4OPhieHeg0G0kTDc0rhMcHBwcHHwhPF3dBkQaSI4HJnBwcHBw8EXwT1vg4ODg4OAL1jeCFMVQMzuHvAAAAABJRU5ErkJggg==">
+          </div>
         </div>
       
     
-  </section>
-</article>
+  </div>
+</div>
 
-          </div>
+
+
         
       
-    
+    </div>
   </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
 
 
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/blog/3c0d/'>
+                <p class='title'>Vue-集成AdminLTE<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <!-- <p class='content'>本文介绍使用 vue-cli3 集成 AdminLTE-2.4.18
+
+
+
+AdminLTE 是基于 Bootstrap 的开源响应式前端模板。
+
+我个人比较喜欢这套模板的原因主要有：
+
+美观，...</p> -->
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+    
+      <! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display = 'block'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">打赏</a></p>
+        <br/>
+    </div>
+    <div id="donateModal" class="modal" style="display: none;position: fixed;z-index: 1000;margin-left:-160px;margin-top:-200px;padding: 8px;left: 50%;top: 50%;width: 320px;height: 390px;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6);text-align:center;">
+        <img src="/img/wxpay.jpeg" id="myImg" width="298" height="298" style="border:1px solid #d3d3d3;margin-bottom: 12px;" />
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display='none'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">关闭</a></p>
+    </div>
+</div>
+<! -- 添加捐赠图标 -->
+
     
   
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Vue-状态管理模式Vuex',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -650,128 +895,18 @@
     
     
 
-<section class="widget blogger shadow desktop">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='/img/author.jpg'/>
-        </a>
-      
-    
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:cocosongying@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/cocosongying"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/cocosongying"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://space.bilibili.com/433441983"
-              class="social fas fa-video flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/awesome/" href="/categories/awesome/"
-            id="categoriesawesome"
-            ><div class='name'>awesome</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"
-            id="categoriesE5AE9EE794A8E69599E7A88B"
-            ><div class='name'>实用教程</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/" href="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/"
-            id="categoriesE5BF83E68385E789A9E8AFAD"
-            ><div class='name'>心情物语</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"
-            id="categoriesE697A5E5B8B8E7949FE6B4BB"
-            ><div class='name'>日常生活</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/" href="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/"
-            id="categoriesE7BB8FE9AA8CE5B08FE7BB93"
-            ><div class='name'>经验小结</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"
-            id="categoriesE7BC96E7A88BE5ADA6E4B9A0"
-            ><div class='name'>编程学习</div><div class='badge'>(7)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Hexo/" style="font-size: 24px; color: #555">Hexo</a> <a href="/tags/Vue/" style="font-size: 17.33px; color: #828282">Vue</a> <a href="/tags/docker/" style="font-size: 20.67px; color: #6c6c6c">docker</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/" style="font-size: 24px; color: #555">个性化</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 17.33px; color: #828282">工具</a> <a href="/tags/%E5%BF%83%E6%83%85/" style="font-size: 17.33px; color: #828282">心情</a> <a href="/tags/%E6%B3%A8%E9%87%8A/" style="font-size: 14px; color: #999">注释</a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码分析"><span class="toc-text">代码分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地存储"><span class="toc-text">本地存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用心得"><span class="toc-text">使用心得</span></a></li></ol>
     </div>
   </section>
 
