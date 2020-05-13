@@ -2,8 +2,8 @@
 title: Vue-集成AdminLTE
 meta:
   donate: true
-categories: []
-tag: []
+categories: [编程学习]
+tag: [Vue]
 references:
   - name: AdminLTE-官网
     url: 'https://adminlte.io/'
