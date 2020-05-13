@@ -2,10 +2,8 @@
 title: Vue-状态管理模式Vuex
 meta:
   donate: true
-categories:
-  - 编程学习
-tag:
-  - Vue
+categories: [编程学习]
+tag: [Vue]
 references:
   - name: Vuex-官网
     url: 'https://vuex.vuejs.org/zh/'
@@ -77,8 +75,8 @@ export default store;
 ```
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router';
-import store from './store';
+import router from './router'
+import store from './store'
 
 Vue.config.productionTip = false
 
