@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Nodejs-基于Koa框架写个简单的接口</title>
+      <link href="/blog/fb4f/"/>
+      <url>/blog/fb4f/</url>
+      
+        <content type="html"><![CDATA[<p>本文主要介绍如何使用 Nodejs 快速搭建服务端并提供简单的接口程序。</p><a id="more"></a><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先我们创建一个项目文件夹 <code>demo</code>，进入这个文件夹，运行 <code>npm init</code> 初始化项目</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir demo</span><br><span class="line"><span class="built_in">cd</span> demo</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure><p>执行 <code>npm init</code> 命令会让你填写项目相关信息，可以一路默认，之后再改都可以。它主要就是在项目中新建一个 <code>package.json</code> 的文件并初始化一些项目信息。</p><p>其次需要安装 <code>Koa</code> 框架及一些插件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install koa --save</span><br><span class="line">npm install koa-router --save</span><br><span class="line">npm install koa-bodyparser --save</span><br></pre></td></tr></table></figure><h2 id="编写主程序"><a href="#编写主程序" class="headerlink" title="编写主程序"></a>编写主程序</h2><p>新建文件 <code>index.js</code>，这个文件名可以修改，同步修改一下 <code>package.json</code> 里 <code>main</code>项对应的文件名，表示这个文件是启动入口。<code>index.js</code> 代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const router &#x3D; require(&#39;koa-router&#39;)();</span><br><span class="line">const bodyParser &#x3D; require(&#39;koa-bodyparser&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">const index &#x3D; router.get(&#39;&#x2F;demo&#39;, ctx &#x3D;&gt; &#123;</span><br><span class="line">    ctx.response.body &#x3D; &#123; code: 0, data: &#39;Hello World!&#39; &#125;;</span><br><span class="line">&#125;).routes();</span><br><span class="line"></span><br><span class="line">app.use(index);</span><br><span class="line">app.use(bodyParser());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 捕获未定义路由</span><br><span class="line">app.use((ctx) &#x3D;&gt; &#123;</span><br><span class="line">    ctx.response.body &#x3D; &#123; code: 404 &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 启动项目</span><br><span class="line">app.listen(3000, () &#x3D;&gt; &#123;</span><br><span class="line">    console.log(&#96;Server is starting at port 3000&#96;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="运行使用"><a href="#运行使用" class="headerlink" title="运行使用"></a>运行使用</h2><p>在 node 环境中可以直接通过下面的命令启动</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node index.js</span><br></pre></td></tr></table></figure><p>项目启动完毕就可以访问我们刚刚定义的接口 <code>http://localhost:3000/demo</code> 来查看返回信息了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;code: 0, data: &quot;Hello World!&quot;&#125;</span><br></pre></td></tr></table></figure><h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>前端页面调用接口可能会有跨域问题，解决方案有好几种，这里介绍简单一点的。</p><p>先安装一个插件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa2-cors --save</span><br></pre></td></tr></table></figure><p>在启动入口文件 <code>index.js</code> 加上这两句就可以了。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const cors = require(<span class="string">'koa2-cors'</span>);</span><br><span class="line">app.use(cors());</span><br></pre></td></tr></table></figure><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>Nodejs 这个脚本语言还是很强大的，能写前端就算了，居然还能写服务端。想想之前用 java 的时候要写好多东西，还有各种配置，最后打包运行花费好长时间。</p><p>当然 java 有它的强大，如果只是学习写写简单的接口，像 <code>Nodejs</code> <code>Python</code> <code>Go</code> 都有很简单的操作方法，也够简单的使用了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nodejs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue-使用全局静态常量</title>
       <link href="/blog/aa27/"/>
       <url>/blog/aa27/</url>
