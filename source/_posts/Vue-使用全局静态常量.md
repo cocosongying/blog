@@ -2,10 +2,8 @@
 title: Vue-使用全局静态常量
 meta:
   donate: true
-categories:
-  - 编程学习
-tag:
-  - Vue
+categories: [编程学习]
+tag: [Vue]
 abbrlink: aa27
 date: 2020-05-13 18:17:37
 ---

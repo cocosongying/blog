@@ -409,9 +409,9 @@ seo:
   robots:
     home_first_page: index,follow
     home_other_pages: noindex,follow
-    archive: noindex,follow
-    category: noindex,follow
-    tag: noindex,follow
+    archive: index,follow
+    category: index,follow
+    tag: index,follow
     # robots can be written in front-matter
 
 
