@@ -31,6 +31,10 @@ date: 2020-05-05 18:26:28
   <i class="fas fa-fan"></i>井字棋
   <p>可以人机PK，也可以双人PK。</p>
 </a>
+<a target="_blank" rel="external nofollow noopener noreferrer" href="/play/cube3v.html">
+  <i class="fas fa-fan"></i>魔方3阶
+  <p>在线玩的3阶魔方，Amazing!</p>
+</a>
 {% endbtns %}
 
 <!-- endtab -->
