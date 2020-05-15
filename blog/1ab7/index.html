@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="index,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：redis - 磨叽熊猫</title>
+    <title>Nodejs-如何使用Redis - 磨叽熊猫</title>
   
+    <meta name="keywords" content="Nodejs">
+  
+  
+    <meta name="description" content="本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。">
   
 
   <!-- feed -->
@@ -516,25 +518,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -544,11 +533,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/blog/a342/">
-      Docker安装Redis
+  <h1 class="title">
+    <a href="/blog/1ab7/">
+      Nodejs-如何使用Redis
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -584,14 +573,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月8日</p>
+    <p>发布于：2020年5月15日</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -609,40 +593,233 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>介绍一下如何通过 docker 安装 redis</p>
-      
-    </div>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。</p>
+<a id="more"></a>
+
+<h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><p>我们需要安装 <code>redis</code> 依赖包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install redis --save</span><br></pre></td></tr></table></figure>
+
+<p>可以在项目中新建一个 <code>cache</code> 文件夹用来管理 <code>redis</code> 的相关操作。</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>在 <code>cache</code> 文件夹下新建 <code>connection.js</code>，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> redis = <span class="built_in">require</span>(<span class="string">'redis'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; promisify &#125; = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">const</span> client = redis.createClient(&#123;</span><br><span class="line">    host: <span class="string">"localhost"</span>,</span><br><span class="line">    password: <span class="string">"123456"</span>,</span><br><span class="line">    db: <span class="number">1</span>,</span><br><span class="line">    retry_strategy: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (options.error &amp;&amp; options.error.code === <span class="string">'ECONNREFUSED'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'The server refused the connection'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (options.total_retry_time &gt; <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Retry time exhausted'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (options.attempt &gt; <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.min(options.attempt * <span class="number">100</span>, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> expire = promisify(client.expire).bind(client);</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">get</span> = promisify(client.<span class="keyword">get</span>).bind(client);</span><br><span class="line">const <span class="keyword">set</span> = promisify(client.<span class="keyword">set</span>).bind(client);</span><br><span class="line">const del = promisify(client.del).bind(client);</span><br><span class="line"></span><br><span class="line">class Cache &#123;</span><br><span class="line">    Timeout = &#123;</span><br><span class="line">        Default: <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">get</span>(key) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> <span class="keyword">get</span>(key);</span><br><span class="line">    &#125;</span><br><span class="line">    async <span class="keyword">set</span>(key, value, timeout) &#123;</span><br><span class="line">        <span class="keyword">let</span> res = <span class="keyword">await</span> <span class="keyword">set</span>(key, value);</span><br><span class="line">        if (timeout) &#123;</span><br><span class="line">            <span class="keyword">await</span> expire(key, timeout);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">async</span> del(key) &#123;</span><br><span class="line">        <span class="keyword">await</span> del(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> Cache();</span><br></pre></td></tr></table></figure>
+
+<p>这里主要是 <code>redis</code> 的连接以及 <code>redis</code> 的几个简单操作，如获取，设置，删除，如果需要其他功能可以继续封装。</p>
+<p>关于 <code>redis</code> 的连接配置可以单独写到配置文件里，这里为了方便介绍，把配置写死在示例代码里了。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>在需要操作 <code>redis</code> 的文件中先引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const Cache &#x3D; require(&#39;.&#x2F;connection&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>获取某个 key 对应的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await Cache.get(key);</span><br></pre></td></tr></table></figure>
+
+<p>设置一个 key 对应的 value：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await Cache.set(key, value);</span><br></pre></td></tr></table></figure>
+
+<p>如果需要指定缓存有效期限，比如 1 天：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await Cache.set(key, value, 24 * 60 * 60);</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>推荐在 <code>cache</code> 文件夹下为每个 <code>key</code> 新建对应的文件程序来操作 <code>redis</code>，把这个 <code>cache</code> 当成一个缓存模块，其他地方使用只要引入这个模块操作就好了。这样管理起来方便，代码看起来更清晰。</p>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
     
       
-        <div class="button readmore">
-          <a href="/blog/a342/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
+        
+          <img src='https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxpublic2.png'
+            >
+        
+      
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://mojipanda.com/blog/1ab7/>https://mojipanda.com/blog/1ab7/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-15T22:43:42+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月15日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Nodejs/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Nodejs</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mojipanda.com/blog/1ab7/&title=Nodejs-如何使用Redis - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mojipanda.com/blog/1ab7/&title=Nodejs-如何使用Redis - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://mojipanda.com/blog/1ab7/&title=Nodejs-如何使用Redis - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qrcode.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACUUlEQVR42u3aSXaDQAwFQO5/6WSfPB6aPCCqd8Y2dLU335KOn4euAxwcHBwcfBH8KK6/3//3gJPrpxs6uf/V59L7BQcHBwcHXwjPbrALiH4+etDR/YKDg4ODg2+GZwNLN3hU71PeLzg4ODg4OPiRDTjdgwEHBwcHBwd/H3zq4LIBChwcHBwc/MnwdIE+GTym4R/rpICDg4ODg38RfGrA712vv26yERwcHBwc/APw6RUNKt0GRXl/4ODg4ODgi+DdhkE0aEwVJrLX050UcHBwcHDwG8Krg3XdxsDVQUYLDOEfCBwcHBwcfBE8+sXuBrOAaCAqD/iBg4ODg4MvhJf/4Acf3IW0Gxjg4ODg4OCL4NVGfrVA0B0M6A4egIODg4ODb4JXA8hU4OgGnHZDARwcHBwcfBE8GyCqBYlucBkPMODg4ODg4AvgYw9oFiayjYnw/cHBwcHBwRfBsw3/agFhKqiMd1LAwcHBwcFvDM9uKFtYqA7yVeGX9wUHBwcHB18Erzb2s9e7AwfZHyqc3MDBwcHBwW8MH7thMYBMv5/upICDg4ODg98YHm0YRN/PNuy7DY30IAE4ODg4OPgieHeNb6xZsLg8SHBwcHBw8EXwo7im4dVglG2AgIODg4ODb4RPNxiywWcKBg4ODg4O/mT4dAEhGmi6BY5yJwUcHBwcHBw8HWTSwePiwMsNBXBwcHBw8AfDuwdUDSjZAwEHBwcHB38CfKqh8KqCRrXxAA4ODg4Ovhn+6kG9aMDIFhrSBwkODg4ODr4I/rQFDg4ODg6+YP0C4OtBG+RkmIcAAAAASUVORK5CYII=">
+          </div>
         </div>
       
     
-  </section>
-</article>
+  </div>
+</div>
 
-          </div>
+
+
         
       
-    
+    </div>
   </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
 
 
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/blog/fb4f/'>
+                <p class='title'>Nodejs-基于Koa框架写个简单的接口<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <!-- <p class='content'>本文主要介绍如何使用 Nodejs 快速搭建服务端并提供简单的接口程序。
+
+
+准备工作首先我们创建一个项目文件夹 demo，进入这个文件夹，运行 npm init 初始化项目
+123mkdir ...</p> -->
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+    
+      <! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display = 'block'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">打赏</a></p>
+        <br/>
+    </div>
+    <div id="donateModal" class="modal" style="display: none;position: fixed;z-index: 1000;margin-left:-160px;margin-top:-200px;padding: 8px;left: 50%;top: 50%;width: 320px;height: 390px;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6);text-align:center;">
+        <img src="/img/wxpay.jpeg" id="myImg" width="298" height="298" style="border:1px solid #d3d3d3;margin-bottom: 12px;" />
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display='none'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">关闭</a></p>
+    </div>
+</div>
+<! -- 添加捐赠图标 -->
+
     
   
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Nodejs-如何使用Redis',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -650,128 +827,18 @@
     
     
 
-<section class="widget blogger shadow desktop">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='/img/author.jpg'/>
-        </a>
-      
-    
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:cocosongying@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/cocosongying"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/cocosongying"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://space.bilibili.com/433441983"
-              class="social fas fa-video flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/awesome/" href="/categories/awesome/"
-            id="categoriesawesome"
-            ><div class='name'>awesome</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"
-            id="categoriesE5AE9EE794A8E69599E7A88B"
-            ><div class='name'>实用教程</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/" href="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/"
-            id="categoriesE5BF83E68385E789A9E8AFAD"
-            ><div class='name'>心情物语</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"
-            id="categoriesE697A5E5B8B8E7949FE6B4BB"
-            ><div class='name'>日常生活</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/" href="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/"
-            id="categoriesE7BB8FE9AA8CE5B08FE7BB93"
-            ><div class='name'>经验小结</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"
-            id="categoriesE7BC96E7A88BE5ADA6E4B9A0"
-            ><div class='name'>编程学习</div><div class='badge'>(10)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Hexo/" style="font-size: 24px; color: #555">Hexo</a> <a href="/tags/Nodejs/" style="font-size: 17.33px; color: #828282">Nodejs</a> <a href="/tags/Vue/" style="font-size: 20.67px; color: #6c6c6c">Vue</a> <a href="/tags/docker/" style="font-size: 20.67px; color: #6c6c6c">docker</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 14px; color: #999">mysql</a> <a href="/tags/redis/" style="font-size: 14px; color: #999">redis</a> <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/" style="font-size: 24px; color: #555">个性化</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 17.33px; color: #828282">工具</a> <a href="/tags/%E5%BF%83%E6%83%85/" style="font-size: 17.33px; color: #828282">心情</a> <a href="/tags/%E6%B3%A8%E9%87%8A/" style="font-size: 14px; color: #999">注释</a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装准备"><span class="toc-text">安装准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-text">具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用心得"><span class="toc-text">使用心得</span></a></li></ol>
     </div>
   </section>
 
