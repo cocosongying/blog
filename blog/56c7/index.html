@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="index,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：redis - 磨叽熊猫</title>
+    <title>Nodejs-如何使用MySQL - 磨叽熊猫</title>
   
+    <meta name="keywords" content="mysql,Nodejs">
+  
+  
+    <meta name="description" content="本文主要介绍在 Nodejs 中如何连接并使用 MySQL">
   
 
   <!-- feed -->
@@ -516,27 +518,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -546,11 +533,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/blog/1ab7/">
-      Nodejs-如何使用Redis
+  <h1 class="title">
+    <a href="/blog/56c7/">
+      Nodejs-如何使用MySQL
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -586,14 +573,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月15日</p>
+    <p>发布于：2020年5月16日</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -611,139 +593,231 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/blog/1ab7/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>本文主要介绍在 Nodejs 中如何连接并使用 MySQL</p>
+<a id="more"></a>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+<h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><p>我们需要安装 <code>mysql2</code> 依赖包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql2 --save</span><br></pre></td></tr></table></figure>
+
+<p>可以在项目中新建一个 <code>mysql</code> 文件夹用来管理 <code>mysql</code> 的相关操作。</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>在 <code>mysql</code> 文件夹下新建 <code>connection.js</code>，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql2'</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>);</span><br><span class="line"><span class="keyword">const</span> pool = mysql.createPool(config.mysql);</span><br><span class="line"><span class="keyword">const</span> client = pool.promise();</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    pool,</span><br><span class="line">    client</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这里 <code>mysql</code> 的连接配置写在 <code>config.js</code> 文件中，示例配置项如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const initVal &#x3D; &#123;</span><br><span class="line">    mysql: &#123;</span><br><span class="line">        host: &#39;localhost&#39;,</span><br><span class="line">        port: 3306,</span><br><span class="line">        user: &#39;username&#39;,</span><br><span class="line">        password: &#39;123456&#39;,</span><br><span class="line">        database: &#39;demo&#39;,</span><br><span class="line">        charset: &#39;utf8mb4&#39;,</span><br><span class="line">        connectionLimit: 5,</span><br><span class="line">        dateStrings: true,</span><br><span class="line">        decimalNumbers: true,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; initVal;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>在需要操作 <code>mysql</code> 的文件中先引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; client &#125; &#x3D; require(&#39;.&#x2F;connection&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以使用 sql 语句进行愉快的操作了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">async function getById(id) &#123;</span><br><span class="line">    let sql &#x3D; &#96;select * from demo where id &#x3D; ?&#96;;</span><br><span class="line">    let args &#x3D; [id];</span><br><span class="line">    let res &#x3D; await client.query(sql, args);</span><br><span class="line">    return res[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是 <code>return res[0]</code> 是返回的结果集，即对于查询有数据时，它返回的是数组。</p>
+<h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>推荐在 <code>mysql</code> 文件夹下编写数据库连接操作部分，这样代码看起来更清晰。</p>
+<p>在接口服务中使用 <code>mysql</code> 操作按照上面操作就可以了，如果是脚本操作，使用完毕需要关闭连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.end();</span><br></pre></td></tr></table></figure>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
   
 
+  
+    
+    
 
-  <section class='meta'>
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
     
       
+        
+          <img src='https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxpublic2.png'
+            >
+        
       
-      <div class="meta" id="header-meta">
+      <blockquote>
         
           
-  <h2 class="title">
-    <a href="/blog/a342/">
-      Docker安装Redis
-    </a>
-  </h2>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
 
-
+          
         
-        <div class='new-meta-box'>
           
-            
+            <p>本文永久链接是：<a href=https://mojipanda.com/blog/56c7/>https://mojipanda.com/blog/56c7/</a></p>
           
-            
-              
-<div class='new-meta-item author'>
-  <a href="/about/" rel="nofollow">
-    <img src="/img/author.jpg">
-    <p>SongYing</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>编程学习</p>
-    </a>
+        
+      </blockquote>
+    
   </div>
+</section>
+
+  
 
 
-            
+              
+            </div>
           
-            
-              <div class="new-meta-item date">
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-16T15:50:05+08:00">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月8日</p>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月16日</p>
   </a>
 </div>
 
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
         
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>介绍一下如何通过 docker 安装 redis</p>
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/mysql/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>mysql</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Nodejs/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Nodejs</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mojipanda.com/blog/56c7/&title=Nodejs-如何使用MySQL - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 MySQL"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mojipanda.com/blog/56c7/&title=Nodejs-如何使用MySQL - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 MySQL"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://mojipanda.com/blog/56c7/&title=Nodejs-如何使用MySQL - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 MySQL"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qrcode.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACR0lEQVR42u3cy23EMAwFQPffdFKBYf6U7NKj2yK2zNHpgSJy/bx0XeDg4ODg4IvgV3FNv/+039j3wMHBwcHBF8LDASBYePX97PfT9YKDg4ODgy+GZwPH3Yee9pk+6HBAAgcHBwcHBy8fRDcIgYODg4ODg58LMFPBZvoCAhwcHBwc/A3wqYZ+NoCcOnhwcHBwcPA3wKcH9E7//pjJRnBwcHBw8H+Ed9dTYd3npxc4ODg4OPgmeLSQ7MDe1IVAt8FRvkkBBwcHBwf/Qng2qEQLiv492vioHhQ4ODg4OPgmeLdxH30+etDdhsTjQYODg4ODgy+CZ4NFt9FQbShkg1M5uYGDg4ODg38RvNo4qF5AVMHd4AIODg4ODr4R3g0m3WDRDTjpfcHBwcHBwRfBo0GgelGfDTDZA0nXAw4ODg4OvhCeBUeDRTeIdAcEwhMR4ODg4ODgXwivDvBNNzK6gSrcyAAHBwcHB18Ezzbkqxfy1UGA6oACODg4ODj4G+BTFwTVIJQ9uOjFxO374ODg4ODgi+CnAkN3ECBbBzg4ODg4+JvhUwN82QAydUDhxgk4ODg4OPhCeHVVg0Z3/2oQAgcHBwcH3wSfviA4Xnjw++HBAHBwcHBw8AXwaqDIFhgNPuHGQrYRAg4ODg4OvhieDRDVQqoBqfo8ODg4ODg4eD/A/BXwtg5wcHBwcHDw8X94U21AZAcSwMHBwcHBN8O7A3dVyPTFw/HBAHBwcHBw8A+CZ9d08DgdZMDBwcHBwTfC37bAwcHBwcEXrF+BZ0Pu6I/sLgAAAABJRU5ErkJggg==">
+          </div>
+        </div>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      
-        <div class="button readmore">
-          <a href="/blog/a342/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
   </section>
-</article>
 
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/blog/1ab7/'>
+                <p class='title'>Nodejs-如何使用Redis<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <!-- <p class='content'>本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。
+
+
+安装准备我们需要安装 redis 依赖包
+1npm install...</p> -->
+              </a>
+            
           </div>
         
-      
+      </section>
+    </article>
     
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+      <! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display = 'block'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">打赏</a></p>
+        <br/>
+    </div>
+    <div id="donateModal" class="modal" style="display: none;position: fixed;z-index: 1000;margin-left:-160px;margin-top:-200px;padding: 8px;left: 50%;top: 50%;width: 320px;height: 390px;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6);text-align:center;">
+        <img src="/img/wxpay.jpeg" id="myImg" width="298" height="298" style="border:1px solid #d3d3d3;margin-bottom: 12px;" />
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display='none'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">关闭</a></p>
+    </div>
+</div>
+<! -- 添加捐赠图标 -->
 
-  
-
-
     
   
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Nodejs-如何使用MySQL',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -751,128 +825,18 @@
     
     
 
-<section class="widget blogger shadow desktop">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='/img/author.jpg'/>
-        </a>
-      
-    
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:cocosongying@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/cocosongying"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/cocosongying"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://space.bilibili.com/433441983"
-              class="social fas fa-video flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/awesome/" href="/categories/awesome/"
-            id="categoriesawesome"
-            ><div class='name'>awesome</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"
-            id="categoriesE5AE9EE794A8E69599E7A88B"
-            ><div class='name'>实用教程</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/" href="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/"
-            id="categoriesE5BF83E68385E789A9E8AFAD"
-            ><div class='name'>心情物语</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"
-            id="categoriesE697A5E5B8B8E7949FE6B4BB"
-            ><div class='name'>日常生活</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/" href="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/"
-            id="categoriesE7BB8FE9AA8CE5B08FE7BB93"
-            ><div class='name'>经验小结</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"
-            id="categoriesE7BC96E7A88BE5ADA6E4B9A0"
-            ><div class='name'>编程学习</div><div class='badge'>(11)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Hexo/" style="font-size: 24px; color: #555">Hexo</a> <a href="/tags/Nodejs/" style="font-size: 20.67px; color: #6c6c6c">Nodejs</a> <a href="/tags/Vue/" style="font-size: 20.67px; color: #6c6c6c">Vue</a> <a href="/tags/docker/" style="font-size: 20.67px; color: #6c6c6c">docker</a> <a href="/tags/mongodb/" style="font-size: 14px; color: #999">mongodb</a> <a href="/tags/mysql/" style="font-size: 17.33px; color: #828282">mysql</a> <a href="/tags/redis/" style="font-size: 17.33px; color: #828282">redis</a> <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/" style="font-size: 24px; color: #555">个性化</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 17.33px; color: #828282">工具</a> <a href="/tags/%E5%BF%83%E6%83%85/" style="font-size: 17.33px; color: #828282">心情</a> <a href="/tags/%E6%B3%A8%E9%87%8A/" style="font-size: 14px; color: #999">注释</a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装准备"><span class="toc-text">安装准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-text">具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用心得"><span class="toc-text">使用心得</span></a></li></ol>
     </div>
   </section>
 
