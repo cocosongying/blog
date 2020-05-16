@@ -3,7 +3,7 @@ title: Nodejs-如何使用Redis
 meta:
   donate: true
 categories: [编程学习]
-tag: [Nodejs]
+tag: [Nodejs,redis]
 abbrlink: 1ab7
 date: 2020-05-15 22:14:47
 ---
