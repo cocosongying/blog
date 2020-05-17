@@ -132,3 +132,7 @@ deploy:
   type: git
   repo: https://github.com/cocosongying/blog.git
   branch: master
+
+sitemap:
+  tag: false
+  category: false
