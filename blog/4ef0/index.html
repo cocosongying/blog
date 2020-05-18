@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>分类：实用教程 - 磨叽熊猫</title>
+    <title>Nodejs-如何使用MongoDB - 磨叽熊猫</title>
   
+    <meta name="keywords" content="mongodb,Nodejs">
+  
+  
+    <meta name="description" content="本文主要介绍在 Nodejs 中如何连接并使用 MongoDB">
   
 
   <!-- feed -->
@@ -516,33 +518,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -552,11 +533,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/blog/5645/">
-      博客个性化-看板娘
+  <h1 class="title">
+    <a href="/blog/4ef0/">
+      Nodejs-如何使用MongoDB
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -579,9 +560,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/' rel="nofollow">
+    <a href='/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>实用教程</p>
+      <p>编程学习</p>
     </a>
   </div>
 
@@ -592,14 +573,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月8日</p>
+    <p>发布于：2020年5月18日</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -617,436 +593,231 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/blog/5645/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>本文主要介绍在 Nodejs 中如何连接并使用 MongoDB</p>
+<a id="more"></a>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+<h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><p>我们需要安装 <code>mongoose</code> 依赖包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mongoose --save</span><br></pre></td></tr></table></figure>
+
+<p>可以在项目中新建一个 <code>mongo</code> 文件夹用来管理 <code>mongodb</code> 的相关操作。</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>在 <code>mongo</code> 文件夹下新建 <code>connection.js</code>，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">const</span> mongoUrl = <span class="string">"mongodb://username:123456@localhost:27017/demo"</span>;</span><br><span class="line"></span><br><span class="line">mongoose.Promise = global.Promise;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getOptions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        useCreateIndex: <span class="literal">true</span>,</span><br><span class="line">        useNewUrlParser: <span class="literal">true</span>,</span><br><span class="line">        useFindAndModify: <span class="literal">false</span>,</span><br><span class="line">        useUnifiedTopology: <span class="literal">true</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mongoose.connect(mongoUrl, getOptions());</span><br><span class="line"><span class="keyword">const</span> client = mongoose.connection;</span><br><span class="line">client.on(<span class="string">'connected'</span>, () =&gt; &#123; <span class="built_in">console</span>.log(<span class="string">"mongo connected"</span>) &#125;);</span><br><span class="line">client.on(<span class="string">'reconnected'</span>, () =&gt; &#123; <span class="built_in">console</span>.log(<span class="string">"mongo reconnected"</span>) &#125;);</span><br><span class="line">client.on(<span class="string">'disconnected'</span>, () =&gt; &#123; <span class="built_in">console</span>.log(<span class="string">"mongo disconnected"</span>) &#125;);</span><br><span class="line">client.on(<span class="string">'error'</span>, (error) =&gt; &#123; <span class="built_in">console</span>.log(<span class="string">"connect to "</span> + mongoUrl + <span class="string">"failed"</span>) &#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">close</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    client.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    client,</span><br><span class="line">    close</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>mongo</code> 文件夹下创建文件夹 <code>model</code> 用来记录表定义，<code>mongo/model/demo.js</code> 举例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> demoSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    desc: <span class="built_in">String</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> db = mongoose.model(<span class="string">'demo'</span>, demoSchema, <span class="string">'demo'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = db;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>在需要操作 <code>mongodb</code> 的文件中先引入，如果是 web 接口服务，可以在主程序中引入一次，后面直接操作 <code>model</code> 就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const conn &#x3D; require(&#39;.&#x2F;connection&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>举一个查询的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const DemoDB &#x3D; require(&#39;.&#x2F;model&#x2F;demo&#39;);</span><br><span class="line">async function getAll() &#123;</span><br><span class="line">    let res &#x3D; await DemoDB.find();</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>推荐在 <code>mongo</code> 文件夹下编写数据库连接操作部分，为每个 <code>model</code> 编写好操作方法，统一管理，这样代码看起来更清晰，维护起来更方便。</p>
+<p>在接口服务中使用 <code>mongodb</code> 操作按照上面操作就可以了，如果是脚本操作，使用完毕需要关闭连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conn.close();</span><br></pre></td></tr></table></figure>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
   
 
+  
+    
+    
 
-  <section class='meta'>
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
     
       
+        
+          <img src='https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxpublic2.png'
+            >
+        
       
-      <div class="meta" id="header-meta">
+      <blockquote>
         
           
-  <h2 class="title">
-    <a href="/blog/22e3/">
-      博客个性化-鼠标点击效果
-    </a>
-  </h2>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
 
-
+          
         
-        <div class='new-meta-box'>
           
-            
+            <p>本文永久链接是：<a href=https://mojipanda.com/blog/4ef0/>https://mojipanda.com/blog/4ef0/</a></p>
           
-            
-              
-<div class='new-meta-item author'>
-  <a href="/about/" rel="nofollow">
-    <img src="/img/author.jpg">
-    <p>SongYing</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>实用教程</p>
-    </a>
+        
+      </blockquote>
+    
   </div>
+</section>
+
+  
 
 
-            
+              
+            </div>
           
-            
-              <div class="new-meta-item date">
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-18T10:10:31+08:00">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月7日</p>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月18日</p>
   </a>
 </div>
 
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
         
-          <hr>
+      
         
-      </div>
-    
-  </section>
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/mongodb/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>mongodb</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Nodejs/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Nodejs</p></a></div>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
+        
       
-        <p>添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/blog/22e3/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+        
+          
 
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mojipanda.com/blog/4ef0/&title=Nodejs-如何使用MongoDB - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 MongoDB"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mojipanda.com/blog/4ef0/&title=Nodejs-如何使用MongoDB - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 MongoDB"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://mojipanda.com/blog/4ef0/&title=Nodejs-如何使用MongoDB - 磨叽熊猫&summary=本文主要介绍在 Nodejs 中如何连接并使用 MongoDB"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qrcode.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACUElEQVR42u3dSW7DMBAEQP//08k9gMDZbEej4s2wIrF06kwT8OvnoesFDg4ODg6+CP4qruMD/lx39fen66LfR/cLDg4ODg6+ER4OABfXn0BX10ehU/sFBwcHBwffDK9upLqh6ecfrwcHBwcHBwdPw7PBJBuUwMHBwcHBwefg0SIiW1yAg4ODg4ODzxUK0y+iW1R8rEkBBwcHBwf/R/DygbkvfS7vFxwcHBwcfBG8u7KDg2jQqQaW437BwcHBwcEXwasBIVoMdIuKbAFxPKAADg4ODg6+CB4NHNlgkg042cFHGBodRICDg4ODg98YHr3BdBDpDizSBwXAwcHBwcEXwasbqw4kqoVDOqhc3RccHBwcHHwxvFr0dwNH90DAeJMCDg4ODg5+Q3gWmH5wMBhlV7pQAAcHBwcHXwDvbiA7QOjebyzAgIODg4ODL4Bn/+GPDgSmA1J3H+Dg4ODg4E+ATx2oe1dQ+XiTAg4ODg4OfkN4Nzh0BxfVQuH4GRwcHBwc/IHw7gOrLyYbVMYDDDg4ODg4+A3h3QN7735B1UICHBwcHBz8CfBocJgKKtODiMvvwcHBwcHBF8G7KxpQuoV/tcAABwcHBwffDO8GhmzAyQ4SsvdLFwrg4ODg4OAL4FOBpVvgR+9fHpyAg4ODg4Mvhr+r2I8OENqDhm6TAg4ODg4O/kB4tzjoFhDlQgEcHBwcHBy8/YOtXVg4EIGDg4ODgy+GZwuF6uBhujAIv3BwcHBwcPCF8GowyB7U+3YwAgcHBwcH3wR/2gIHBwcHB1+wfgHzIIK9OSsGgwAAAABJRU5ErkJggg==">
           </div>
-        
+        </div>
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
     
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/blog/9844/">
-      博客个性化-背景线条动画
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="/about/" rel="nofollow">
-    <img src="/img/author.jpg">
-    <p>SongYing</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>实用教程</p>
-    </a>
   </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月7日</p>
-  </a>
 </div>
 
-            
-          
-            
-              
 
-            
-          
-            
-              
 
-            
-          
-        </div>
         
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>博客背景添加线条动画效果</p>
       
     </div>
-    
-      
-        <div class="button readmore">
-          <a href="/blog/9844/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
   </section>
-</article>
 
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/blog/56c7/'>
+                <p class='title'>Nodejs-如何使用MySQL<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <!-- <p class='content'>本文主要介绍在 Nodejs 中如何连接并使用 MySQL
+
+
+安装准备我们需要安装 mysql2 依赖包
+1npm install mysql2 --save
+
+可以在项目中新建一个 mysq...</p> -->
+              </a>
+            
           </div>
         
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
+      </section>
+    </article>
     
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/blog/489f/">
-      博客个性化-一言
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="/about/" rel="nofollow">
-    <img src="/img/author.jpg">
-    <p>SongYing</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>实用教程</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月5日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://hitokoto.cn/" target="_blank" rel="noopener">一言网(Hitokoto.cn)</a>创立于 2016 年，隶属于萌创 Team，目前网站主要提供一句话服务。一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。</p>
-      
+      <! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display = 'block'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">打赏</a></p>
+        <br/>
     </div>
-    
-      
-        <div class="button readmore">
-          <a href="/blog/489f/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/blog/d67b/">
-      博客个性化-今日诗词
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="/about/" rel="nofollow">
-    <img src="/img/author.jpg">
-    <p>SongYing</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>实用教程</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月4日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.jinrishici.com/" target="_blank" rel="noopener">今日诗词(https://www.jinrishici.com/)</a> API 是一个可以返回一句古诗词名句的接口。它可以通过图片和 JSON 格式调用。今日诗词 API 根据不同地点、时间、节日、季节、天气、景观、城市进行智能推荐。</p>
-      
+    <div id="donateModal" class="modal" style="display: none;position: fixed;z-index: 1000;margin-left:-160px;margin-top:-200px;padding: 8px;left: 50%;top: 50%;width: 320px;height: 390px;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.6);text-align:center;">
+        <img src="/img/wxpay.jpeg" id="myImg" width="298" height="298" style="border:1px solid #d3d3d3;margin-bottom: 12px;" />
+        <p style="margin:5px auto;"><a href="javascript:void(0)" onclick="document.getElementById('donateModal').style.display='none'" style="display:block;width:100px;padding:10px;background-color:#E74851;color:#fff;text-align:center;margin:0px auto;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;">关闭</a></p>
     </div>
-    
-      
-        <div class="button readmore">
-          <a href="/blog/d67b/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
+</div>
+<! -- 添加捐赠图标 -->
 
     
   
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Nodejs-如何使用MongoDB',
+      tools: true
+    }
+  </script>
+
 
 </div>
 <aside class='l_side'>
@@ -1055,128 +826,18 @@
     
     
 
-<section class="widget blogger shadow desktop">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='/img/author.jpg'/>
-        </a>
-      
-    
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:cocosongying@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/cocosongying"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/cocosongying"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://space.bilibili.com/433441983"
-              class="social fas fa-video flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/awesome/" href="/categories/awesome/"
-            id="categoriesawesome"
-            ><div class='name'>awesome</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"
-            id="categoriesE5AE9EE794A8E69599E7A88B"
-            ><div class='name'>实用教程</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/" href="/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/"
-            id="categoriesE5BF83E68385E789A9E8AFAD"
-            ><div class='name'>心情物语</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"
-            id="categoriesE697A5E5B8B8E7949FE6B4BB"
-            ><div class='name'>日常生活</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/" href="/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/"
-            id="categoriesE7BB8FE9AA8CE5B08FE7BB93"
-            ><div class='name'>经验小结</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"
-            id="categoriesE7BC96E7A88BE5ADA6E4B9A0"
-            ><div class='name'>编程学习</div><div class='badge'>(12)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Hexo/" style="font-size: 24px; color: #555">Hexo</a> <a href="/tags/Nodejs/" style="font-size: 21.5px; color: #666">Nodejs</a> <a href="/tags/Vue/" style="font-size: 19px; color: #777">Vue</a> <a href="/tags/docker/" style="font-size: 19px; color: #777">docker</a> <a href="/tags/mongodb/" style="font-size: 16.5px; color: #888">mongodb</a> <a href="/tags/mysql/" style="font-size: 16.5px; color: #888">mysql</a> <a href="/tags/redis/" style="font-size: 16.5px; color: #888">redis</a> <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/" style="font-size: 24px; color: #555">个性化</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 16.5px; color: #888">工具</a> <a href="/tags/%E5%BF%83%E6%83%85/" style="font-size: 16.5px; color: #888">心情</a> <a href="/tags/%E6%B3%A8%E9%87%8A/" style="font-size: 14px; color: #999">注释</a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装准备"><span class="toc-text">安装准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-text">具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用心得"><span class="toc-text">使用心得</span></a></li></ol>
     </div>
   </section>
 
