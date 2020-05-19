@@ -133,11 +133,43 @@ deploy:
   repo: https://github.com/cocosongying/blog.git
   branch: master
 
+# npm install hexo-generator-seo-friendly-sitemap --save
 sitemap:
   tag: false
   category: false
 
+# npm install hexo-generator-feed --save
 feed:
   type: atom
   path: atom.xml
   limit: 20
+
+# npm install hexo-lazyload-image --save
+lazyload:
+  enable: true
+  onlypost: false # optional
+  loadingImg: /img/loading.svg
+
+# npm install hexo-offline --save
+# offline config passed to sw-precache.
+offline:
+  maximumFileSizeToCacheInBytes: 5242880
+  staticFileGlobs:
+    - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
+  stripPrefix: public
+  verbose: true
+  runtimeCaching:
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: cdn.jsdelivr.net
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: cdnjs.cloudflare.com
+
+# npm install hexo-autonofollow --save
+nofollow:
+  enable: true
+  exclude:
+    - mojipanda.com
