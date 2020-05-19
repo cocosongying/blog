@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-05-18T02:10:31.658Z</updated>
+  <updated>2020-05-19T14:38:13.126Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo-添加Gitalk评论系统</title>
+    <link href="https://mojipanda.com/blog/da9d/"/>
+    <id>https://mojipanda.com/blog/da9d/</id>
+    <published>2020-05-19T13:17:23.000Z</published>
+    <updated>2020-05-19T14:38:13.126Z</updated>
+    
+    <content type="html"><![CDATA[<p>Gitalk - 一个基于 Github Issue 和 Preact 开发的评论插件</p><a id="more"></a><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>静态博客其实有很多评论系统，每种评论系统都有自己各自的优势。我使用的这套主题已经可以支持下面这些评论系统了。</p><ul><li><a href="https://disqus.com/" target="_blank" rel="external nofollow noopener noreferrer">Disqus</a></li><li><a href="https://github.com/gitalk/gitalk" target="_blank" rel="external nofollow noopener noreferrer">Gitalk</a></li><li><a href="https://valine.js.org" target="_blank" rel="external nofollow noopener noreferrer">Valine</a></li><li><a href="https://github.com/MiniValine/MiniValine/" target="_blank" rel="external nofollow noopener noreferrer">MiniValine</a></li><li><a href="https://www.livere.com/" target="_blank" rel="external nofollow noopener noreferrer">Livere</a></li><li><a href="https://vssue.js.org/zh/" target="_blank" rel="external nofollow noopener noreferrer">Vssue</a></li></ul><h2 id="我为什么选择Gitalk"><a href="#我为什么选择Gitalk" class="headerlink" title="我为什么选择Gitalk"></a>我为什么选择Gitalk</h2><p><code>Disqus</code> 还是不错的，以前使用过，不过现在在国内访问不了。</p><p><code>Valine</code> 第一次看到的时候还是很惊艳的，我也发现有不少博客都在使用，在使用方面，支持 <code>markdown</code> 语法，可以发一些内置表情包，不需要登录认证就可以进行评论。最后一点我个人比较介意，所以忍痛放弃。</p><p><code>Gitalk</code> 是基于 <code>Github Issue</code> 的，评论必须使用 <code>Github</code> 账号登录。我这个博客目前技术内容偏多，所以受众也很明确。即使没有账号进行评论，还是可以通过微博，邮件或者公众号等方式进行联系。而且部署也比较简单，所以就选择它了，剩下几个也就没了解了，感兴趣的可以去看看。</p><h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>首先登录你的 <code>Github</code> 账号，直接访问下面的地址：</p><div class="note link"><p><a href="https://github.com/settings/applications/new" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/settings/applications/new</a></p></div><p>填写 <code>*</code> 号内容并提交，注意这两个 URL 是填写你要使用评论系统的网址。</p><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/da9d/01.png" alt></p><p>提交完成你会获得 <code>Client ID</code> 和 <code>Client Secret</code>，这两个是用来填写在配置里的。</p><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/da9d/02.png" alt></p><p>我用的主题配置文件 <code>themes/volantis/_config.yml</code> 修改下面几项。</p><ul><li><code>clientID</code> 和 <code>clientSecret</code> 是上面获取的</li><li><code>repo</code> 填写你的github建的仓库名称，因为要用到 <code>issues</code></li><li><code>owner</code>和 <code>admin</code> 写自己账号就行了，注意 <code>admin</code> 格式是数组<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># https:&#x2F;&#x2F;gitalk.github.io&#x2F;</span><br><span class="line">gitalk:</span><br><span class="line">  clientID: yourClientID</span><br><span class="line">  clientSecret: yourClientSecret</span><br><span class="line">  repo: blog</span><br><span class="line">  owner: cocosongying</span><br><span class="line">  admin: [cocosongying]</span><br></pre></td></tr></table></figure></li></ul><p>配置完成执行 <code>hexo clean &amp;&amp; hexo g</code> 来重新生成网站，<code>hexo s</code> 本地看一下效果。这个时候显示 <code>未找到相关的 Issues 进行评论</code> <code>请联系 @yourname 初始化创建</code>，点击 <code>使用 Github 登录</code> 会跳转到网站首页，没有用。</p><p>所以，这一步很重要，先执行 <code>hexo d</code> 把网站部署上去。</p><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/da9d/03.png" alt></p><p>在部署到线上的网站点击 <code>使用 Github 登录</code> 会跳转到下面的页面提示你授权。</p><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/da9d/04.png" alt></p><p>授权完成再看你的评论框就已经部署成功了。</p><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/da9d/05.png" alt></p><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>部署起来还是挺简单的，不过我这个流量小的网站，这个评论可能会一直是 <code>0 条评论</code> 吧 😂</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Gitalk - 一个基于 Github Issue 和 Preact 开发的评论插件&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="实用教程" scheme="https://mojipanda.com/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="Hexo" scheme="https://mojipanda.com/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Nodejs-如何使用MongoDB</title>
@@ -35,9 +58,9 @@
       <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
-    
       <category term="mongodb" scheme="https://mojipanda.com/tags/mongodb/"/>
+    
+      <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
     
   </entry>
   
@@ -60,9 +83,9 @@
       <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
-    
       <category term="mysql" scheme="https://mojipanda.com/tags/mysql/"/>
+    
+      <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
     
   </entry>
   
@@ -452,31 +475,6 @@
     <summary type="html">
     
       &lt;p&gt;添加鼠标点击动态效果，包括爱心效果，字体效果，烟花爆炸效果&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="实用教程" scheme="https://mojipanda.com/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="Hexo" scheme="https://mojipanda.com/tags/Hexo/"/>
-    
-      <category term="个性化" scheme="https://mojipanda.com/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客个性化-背景线条动画</title>
-    <link href="https://mojipanda.com/blog/9844/"/>
-    <id>https://mojipanda.com/blog/9844/</id>
-    <published>2019-05-07T13:18:46.000Z</published>
-    <updated>2020-05-10T16:00:48.227Z</updated>
-    
-    <content type="html"><![CDATA[<p>博客背景添加线条动画效果</p><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--动态线条背景--&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;</span><br><span class="line">  color&#x3D;&quot;220,220,220&quot; opacity&#x3D;&#39;0.7&#39; zIndex&#x3D;&quot;-2&quot; count&#x3D;&quot;200&quot; src&#x3D;&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;canvas-nest.js&#x2F;1.0.0&#x2F;canvas-nest.min.js&quot;&gt;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><table><thead><tr><th>参数名称</th><th>描述</th></tr></thead><tbody><tr><td>color</td><td>线条颜色，(R,G,B)，默认：(0,0,0)</td></tr><tr><td>opacity</td><td>线条透明度（0~1），默认：0.5</td></tr><tr><td>count</td><td>线条的总数量，默认：150</td></tr><tr><td>zIndex</td><td>背景的z-index属性，默认：-1</td></tr></tbody></table><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 样式一（鼠标点击更换样式） --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;g.joyinshare.com&#x2F;hc&#x2F;ribbon.min.js&quot; type&#x3D;&quot;text&#x2F;javascript&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 样式二（飘动的彩带） --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;g.joyinshare.com&#x2F;hc&#x2F;piao.js&quot; type&#x3D;&quot;text&#x2F;javascript&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;博客背景添加线条动画效果&lt;/p&gt;
     
     </summary>
     
