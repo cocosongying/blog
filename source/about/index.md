@@ -11,7 +11,7 @@ date: 2020-04-28 21:44:22
 ---
 
 {% btns circle center grid5 %}
-{% cell SongYing, '', /img/author.jpg %}
+{% cell SongYing, '', https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/avatar/sy.jpg %}
 {% endbtns %}
 
 {% note blue, 一花一世界，一叶一追寻。一曲一场叹，一生为一人。 %}
@@ -38,12 +38,12 @@ date: 2020-04-28 21:44:22
   <i class='fab fa-weixin'></i>
   <b>微信公众号</b>
   {% p , 微信扫码求关注 %}
-  <img src='https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxqrcode.jpg'>
+  <img src='https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/wx_p_qrcode.jpg'>
 </a>
 <a>
   <i class='fas fa-award'></i>
   <b>微信赞赏码</b>
   {% p , 喜欢就打个赏吧 %}
-  <img src='https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxpay.jpeg'>
+  <img src='https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/pay_wx_v.jpg'>
 </a>
 {% endbtns %}

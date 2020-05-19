@@ -124,7 +124,7 @@ live2d:
     # hitokoto: true
 
 donate:
-  image: /img/wxpay.jpeg
+  image: https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/pay_wx_v.jpg
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

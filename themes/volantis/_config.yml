@@ -211,7 +211,7 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar: /img/author.jpg
+    avatar: https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/avatar/sy.jpg
     name: SongYing
     url: /about/
   # 文章创建日期
@@ -291,7 +291,7 @@ widget:
   blogger:
     class: blogger
     display: [desktop] # [desktop, mobile]
-    avatar: /img/author.jpg
+    avatar: https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/avatar/sy.jpg
     shape: rectangle # circle, rectangle
     url: /about/
     title:
@@ -349,7 +349,7 @@ widget:
     blockquote: true
     wxpublic: true
     images:
-      - https://cdn.jsdelivr.net/gh/cocosongying/blog/img/wxpublic2.png
+      - https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/wx_p_dark.png
     permalink: '本文永久链接是：'
     content:
       - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
@@ -362,8 +362,8 @@ widget:
     height: 64px  # Automatic height if not set
     fancybox: true
     images:
-      - /img/wxpay.jpeg
-      - /img/alipay.jpeg
+      - https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/pay_wx.jpg
+      - https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/pay_ali.jpg
   # ---------------------------------------
   # references widget
   references:
