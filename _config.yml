@@ -173,3 +173,21 @@ nofollow:
   enable: true
   exclude:
     - mojipanda.com
+
+# npm install hexo-clean-css --save
+clean_css:
+  exclude: 
+    - '*.min.css'
+
+# npm install hexo-html-minifier --save
+html_minifier:
+  exclude: 
+
+# npm install hexo-uglify --save
+uglify:
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '*.min.js'
+  es6: false
