@@ -86,6 +86,9 @@ date: 2020-05-05 17:31:04
 <a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.atoolbox.net/">
   <i class="fas fa-tools"></i>一个工具箱
 </a>
+<a target="_blank" rel="external nofollow noopener noreferrer" href="https://emojipedia.org/">
+  <i class="fas fa-tools"></i>表情符号大全
+</a>
 {% endbtns %}
 
 <!-- endtab -->
