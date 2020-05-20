@@ -192,7 +192,7 @@ layout:
   # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
-    body: [article]
+    body: [article, comments]
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
@@ -511,12 +511,12 @@ plugins:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, livere
+  service: gitalk # valine, minivaline, disqus, gitalk, livere
   # Valine
   # https://valine.js.org/
   valine:
-    appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
-    appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
+    appId: # your appId
+    appKey: # your appKey
     js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link # valine comment header info
@@ -578,11 +578,11 @@ comments:
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
-    clientID:
-    clientSecret:
-    repo:
-    owner:
-    admin: # []
+    clientID: 1d4f3eab40ad3ba582d4
+    clientSecret: 4deba04b214d68e51f928e3b10e453f2c0ee7f71
+    repo: blog
+    owner: cocosongying
+    admin: [cocosongying]
   # Vssue
   # https://vssue.js.org/zh/
   vssue:
