@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-05-20T03:16:53.072Z</updated>
+  <updated>2020-05-20T03:58:27.762Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FireAlpaca-免费绘画软件</title>
+    <link href="https://mojipanda.com/blog/d53d/"/>
+    <id>https://mojipanda.com/blog/d53d/</id>
+    <published>2020-05-20T03:34:08.000Z</published>
+    <updated>2020-05-20T03:58:27.762Z</updated>
+    
+    <content type="html"><![CDATA[<p>推荐一款免费的轻量级图像编辑和图像绘画软件</p><a id="more"></a><blockquote><p>FireAlpaca,是款能立即「轻松且简单」使用的绘画软件。我们为了使世界上更多的人都能亲身体验，所以采用免费下载。当然，也不存在迄今令人困扰的麦金塔用户 / 微软用户的使用限制。希望在向人学习此软件前，您能爱用此软件到能教导他人程度。<br><em>– FireAlpaca</em></p></blockquote><p>先来看看软件首页截图<br><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/d53d/01.png" alt></p><p>这个软件的图标就是一只羊驼</p><p>百闻不如一见，百见不如一用。这款软件本来就是希望让小白都会使用，抖动修正功能还是不错的，手残党最容易手抖了。</p><p>接下来，我可能会使用这款软件试着创作一些漫画，教程就先不列举了，我也是新手小白，都要从头开始熟悉。加油！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;推荐一款免费的轻量级图像编辑和图像绘画软件&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="实用教程" scheme="https://mojipanda.com/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="工具" scheme="https://mojipanda.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>Nginx-记一次http转发https配置错误</title>
@@ -458,31 +481,6 @@
     
     
       <category term="心情" scheme="https://mojipanda.com/tags/%E5%BF%83%E6%83%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客个性化-看板娘</title>
-    <link href="https://mojipanda.com/blog/5645/"/>
-    <id>https://mojipanda.com/blog/5645/</id>
-    <published>2019-05-08T13:52:18.000Z</published>
-    <updated>2020-05-10T16:01:26.656Z</updated>
-    
-    <content type="html"><![CDATA[<p>在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头</p><a id="more"></a><h2 id="如何添加"><a href="#如何添加" class="headerlink" title="如何添加"></a>如何添加</h2><p>以本博客为例</p><p>输入如下命令获取 live2d :</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure><p>输入如下命令获取 shizuku 模型:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure><p>在站点目录下的 _config.yml 文件，添加如下代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  model: </span><br><span class="line">    use: live2d-widget-model-shizuku #模型选择</span><br><span class="line">    scale: 1</span><br><span class="line">  display: </span><br><span class="line">    superSample: 2</span><br><span class="line">    position: right  #模型位置</span><br><span class="line">    hOffset: 90</span><br><span class="line">    width: 200       #模型宽度</span><br><span class="line">    height: 400      #模型高度</span><br><span class="line">  mobile: </span><br><span class="line">    show: false      #是否在手机端显示</span><br><span class="line">  react:</span><br><span class="line">    opacity: 1</span><br><span class="line">  dialog:</span><br><span class="line">    enable: true</span><br><span class="line">    hitokoto: true</span><br></pre></td></tr></table></figure><h2 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h2><p>点击 <a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="external nofollow noopener noreferrer">hexo-helper-live2d</a> 进入项目地址</p><p>点击 <a href="https://l2dwidget.js.org/dev.html" target="_blank" rel="external nofollow noopener noreferrer">https://l2dwidget.js.org/dev.html</a> 查看官方Demo</p><p>点击 <a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="external nofollow noopener noreferrer">https://huaji8.top/post/live2d-plugin-2.0/</a> 查看更多模型</p><p>模型设置API参阅 <a href="https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init" target="_blank" rel="external nofollow noopener noreferrer">live2d-widget.js API</a></p><p>更多模型包通过如下命令安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install packagename</span><br></pre></td></tr></table></figure><p>其中 packagename 包括</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">live2d-widget-model-chitose</span><br><span class="line">live2d-widget-model-epsilon2_1</span><br><span class="line">live2d-widget-model-gf</span><br><span class="line">live2d-widget-model-haru</span><br><span class="line">live2d-widget-model-haruto</span><br><span class="line">live2d-widget-model-hibiki</span><br><span class="line">live2d-widget-model-hijiki</span><br><span class="line">live2d-widget-model-izumi</span><br><span class="line">live2d-widget-model-koharu</span><br><span class="line">live2d-widget-model-miku</span><br><span class="line">live2d-widget-model-ni-j</span><br><span class="line">live2d-widget-model-nico</span><br><span class="line">live2d-widget-model-nietzsche</span><br><span class="line">live2d-widget-model-nipsilon</span><br><span class="line">live2d-widget-model-nito</span><br><span class="line">live2d-widget-model-shizuku</span><br><span class="line">live2d-widget-model-tororo</span><br><span class="line">live2d-widget-model-tsumiki</span><br><span class="line">live2d-widget-model-unitychan</span><br><span class="line">live2d-widget-model-wanko</span><br><span class="line">live2d-widget-model-z16</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在博客右下角放一个萌萌的卡通人物，可根据鼠标位置摇头&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="实用教程" scheme="https://mojipanda.com/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="Hexo" scheme="https://mojipanda.com/tags/Hexo/"/>
-    
-      <category term="个性化" scheme="https://mojipanda.com/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/"/>
     
   </entry>
   
