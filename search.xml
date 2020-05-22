@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Vue-使用axios发起http请求</title>
+      <link href="/blog/9643/"/>
+      <url>/blog/9643/</url>
+      
+        <content type="html"><![CDATA[<p>服务端提供好接口，前端需要发起 http 请求调用服务端接口。本文介绍在 Vue 中如何使用 axios 发起 http 请求来调用服务端接口。</p><a id="more"></a><h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>先安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install axios --save</span><br><span class="line">npm install vue-axios --save</span><br></pre></td></tr></table></figure><p>在 <code>main.js</code> 中引入 axios</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import axios from &#39;axios&#39;</span><br><span class="line">import VueAxios from &#39;vue-axios&#39;</span><br><span class="line"></span><br><span class="line">Vue.use(VueAxios, axios)</span><br></pre></td></tr></table></figure><p>在 <code>component</code> 文件中可以通过下面的方式发起 <code>GET</code> 请求，<code>POST</code> 请求将 <code>get</code> 改成 <code>post</code> 即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.axios.get(api).then((response) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(response.data)</span><br><span class="line">&#125;).catch((error) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">this.axios.get(api).then((response) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(response.data)</span><br><span class="line">&#125;).catch((error) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">this.$http.get(api).then((response) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(response.data)</span><br><span class="line">&#125;).catch((error) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="我的写法"><a href="#我的写法" class="headerlink" title="我的写法"></a>我的写法</h2><p>首先在 <code>consts/api.js</code>里定义好接口名称地址常量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const Api &#x3D; &#123;</span><br><span class="line">    BASE_URL: &#39;http:&#x2F;&#x2F;localhost:3000&#39;,</span><br><span class="line">    USER_LIST: &#39;&#x2F;user&#x2F;list&#39;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Api</span><br></pre></td></tr></table></figure><p>可以在 <code>main.js</code> 里配置好全局 <code>baseURL</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL &#x3D; consts.Api.BASE_URL;</span><br></pre></td></tr></table></figure><p>在 <code>common/user.js</code> 里封装好调用方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import axios from &#39;axios&#39;</span><br><span class="line">import Consts from &#39;..&#x2F;consts&#39;</span><br><span class="line"></span><br><span class="line">const User &#x3D; &#123;</span><br><span class="line">    async list(params) &#123;</span><br><span class="line">        let res &#x3D; await axios.post(Consts.Api.USER_LIST, params);</span><br><span class="line">        return res.data;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default User</span><br></pre></td></tr></table></figure><p>在 <code>component</code> 里先引入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import UserApi from &quot;..&#x2F;..&#x2F;common&#x2F;user&quot;;</span><br></pre></td></tr></table></figure><p>直接调用就可以了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let res &#x3D; await UserApi.list(&#123;&#125;);</span><br></pre></td></tr></table></figure><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>这里先记录一下 Vue 调用服务端接口的方式，关于 <code>axios</code> 的高阶使用还是要看看官方文档的。目前的写法也够基本使用了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>孟母三迁都是为了娃</title>
       <link href="/blog/73d4/"/>
       <url>/blog/73d4/</url>
