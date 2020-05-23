@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-05-22T14:29:13.747Z</updated>
+  <updated>2020-05-23T03:36:15.745Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue-刷新当前页面</title>
+    <link href="https://mojipanda.com/blog/1506/"/>
+    <id>https://mojipanda.com/blog/1506/</id>
+    <published>2020-05-23T02:50:59.000Z</published>
+    <updated>2020-05-23T03:36:15.745Z</updated>
+    
+    <content type="html"><![CDATA[<p>前端页面在用户执行某个动作之后，可能更新了些数据或者状态，此时就需要重新刷新页面来渲染出最新结果。</p><a id="more"></a><h2 id="推荐写法"><a href="#推荐写法" class="headerlink" title="推荐写法"></a>推荐写法</h2><p>这种方式用于执行某个动作之后刷新当前页面，并且页面不会有一闪的不好体验。</p><p>首先，在文件 <code>App.vue</code> 写上如下代码。通过控制 <code>router-view</code> 的显示或隐藏，达到控制页面再次加载的目的。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;router-view v-if&#x3D;&quot;isRouterAlive&quot; &#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;App&quot;,</span><br><span class="line">  provide() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      reload: this.reload</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      isRouterAlive: true</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    reload() &#123;</span><br><span class="line">      this.isRouterAlive &#x3D; false;</span><br><span class="line">      this.$nextTick(function() &#123;</span><br><span class="line">        this.isRouterAlive &#x3D; true;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><p>在需要刷新的页面，先注入 <code>reload</code> 依赖</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  inject: [&quot;reload&quot;],</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><p>在执行操作的动作里直接调用 <code>this.reload();</code> 即可刷新当前页面。</p><h2 id="其他写法"><a href="#其他写法" class="headerlink" title="其他写法"></a>其他写法</h2><p>下面是刷新页面的其他写法，强制刷新页面，会有短暂的闪烁。存储在 <code>store</code> 的数据会丢失，需要注意处理。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.reload();</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$router.go(0);</span><br></pre></td></tr></table></figure><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>我在写登录跳转，并且需要刷新跳转页的时候，使用上面的方法并没有达到我想要的效果，不是没有跳转过去就是跳转之后页面没有刷新。然后找到了下面的写法解决了我的问题。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.open(&quot;&#x2F;dashboard&quot;, &quot;_self&quot;);</span><br></pre></td></tr></table></figure><p>登录之后数据会存储到 <code>localStorage</code> 中，这个跳转，相当于关闭了登录页直接在本页打开新跳转页。在 <code>App.vue</code> 的 <code>created</code> 方法里会从 <code>localStorage</code> 重新加载数据。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;App&quot;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    if (localStorage.getItem(&quot;store&quot;)) &#123;</span><br><span class="line">      this.$store.replaceState(</span><br><span class="line">        Object.assign(</span><br><span class="line">          &#123;&#125;,</span><br><span class="line">          this.$store.state,</span><br><span class="line">          JSON.parse(localStorage.getItem(&quot;store&quot;))</span><br><span class="line">        )</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    window.addEventListener(&quot;beforeunload&quot;, () &#x3D;&gt; &#123;</span><br><span class="line">      localStorage.setItem(&quot;store&quot;, JSON.stringify(this.$store.state));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前端页面在用户执行某个动作之后，可能更新了些数据或者状态，此时就需要重新刷新页面来渲染出最新结果。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Vue" scheme="https://mojipanda.com/tags/Vue/"/>
+    
+  </entry>
   
   <entry>
     <title>如果A，那么B</title>
@@ -461,27 +484,6 @@
       <category term="docker" scheme="https://mojipanda.com/tags/docker/"/>
     
       <category term="redis" scheme="https://mojipanda.com/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录一下阿里云服务器和域名购买以及备案</title>
-    <link href="https://mojipanda.com/blog/ef9e/"/>
-    <id>https://mojipanda.com/blog/ef9e/</id>
-    <published>2020-05-08T01:20:24.000Z</published>
-    <updated>2020-05-10T16:02:08.415Z</updated>
-    
-    <content type="html"><![CDATA[<p>从 <code>2020-05-01</code> 购买阿里云服务器及域名到 <code>2020-05-08</code> 备案成功。记录一下其中的历程。</p><a id="more"></a><blockquote><p>问：为什么突然想要购买服务器和域名搭建网站？</p></blockquote><blockquote><p>答：作为一名开发人员，我觉得能够拥有属于自己的网站是一件很酷的事情。可以搭建博客来记录我想记录的，可以自己实现有趣的内容分享给朋友，可以更加深入的去学习，总之，就是这样了。</p></blockquote><blockquote><p>问：怎么选择的云服务器和域名？</p></blockquote><blockquote><p>答：目前使用阿里云服务器比较普遍，厂商方面就没有特别挑选了。起步阶段除了搭建博客还没想到可以做别的什么，因此配置上不用太挑剔。至于域名，随便搜索了一下 <code>mojipanda</code>，看到还有 <code>.com</code> 域名，那就这样吧。</p></blockquote><table><thead><tr><th align="left">名称</th><th align="left">值</th></tr></thead><tbody><tr><td align="left">实例规格</td><td align="left">ecs.s6-c1m1.small</td></tr><tr><td align="left">CPU</td><td align="left">1核</td></tr><tr><td align="left">内存</td><td align="left">1G</td></tr><tr><td align="left">操作系统</td><td align="left">Ubuntu 18.04 64位</td></tr><tr><td align="left">贷款</td><td align="left">固定带宽 1M</td></tr></tbody></table><blockquote><p>问：一共花费了多少钱？</p></blockquote><blockquote><p>答：听说是购买的年限越长越优惠，阿里云还有券之类的，还有新人优惠，看网上别人在双十一购买的比较便宜，我这个呢，服务器和域名都是买了3年，云服务器 <code>¥937.6</code>，英文域名 <code>¥193.0</code>，因此一共 <code>¥1130.6</code>，差不多一天一块钱的样子。</p></blockquote><blockquote><p>问：从购买到备案成功需要多久？</p></blockquote><blockquote><p>答：感觉比预想中的要快，从 <code>05-01</code> 上午 到 <code>05-08</code> 上午一共 7 整天。</p></blockquote><blockquote><p>问：都是什么流程？</p></blockquote><blockquote><p>答：购买域名需要填写实名认证信息，这个填一下很快就好了，审核也快，之后购买域名，购买云服务器，选好下单付钱就行了。然后把域名绑定到服务器（操作步骤有点忘记了，总之不复杂，就是填信息）。这个时候可以去服务器上随便部署个 <code>Hello World</code> 看看能不能访问。由于域名没有备案，因此只能通过公网IP访问。所以接下来就是备案，在阿里云App搜索备案，然后按照实际信息填吧。由于域名信息需要2-3天才能同步到阿里这边，然后在 <code>05-03</code> 早上我发现可以提交初审了，果断提交，说是24h内有阿里工作人员电话核实备案信息，果然才刚到中午就接到了电话，核实了一下个人信息，网站信息。初审之后阿里自己会复核之后提交到管局，6-20个工作日通知审核结果，本来以为会很长，结果 <code>05-08</code> 上午就收到备案成功的短信了，收到短信之后需要再等一会阿里同步到备案信息，网站域名就可以正式访问了。</p></blockquote><blockquote><p>问：网站如何支持https访问？</p></blockquote><blockquote><p>答：购买阿里云的SSL服务好像有点贵，然后网上搜索了一下免费的，用这个填写下网站信息，下载证书，先提交到阿里云后台（这个网站提供了一键操作），再放到服务器里配置一下。</p></blockquote><div class="note link"><p><a href="https://freessl.cn/" target="_blank" rel="external nofollow noopener noreferrer">免费 SSL</a></p></div><blockquote><p>问：备案成功之后需要做什么？</p></blockquote><blockquote><p>答：我收到备案成功通知之后，先把备案号按照要求放到网页底部链接到备案系统网站，部署到服务器，正好这个时候阿里云已收到备案信息，域名正式可以访问了，然后通知好友网站上线啦，最后写下了这篇博文。</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从 &lt;code&gt;2020-05-01&lt;/code&gt; 购买阿里云服务器及域名到 &lt;code&gt;2020-05-08&lt;/code&gt; 备案成功。记录一下其中的历程。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="经验小结" scheme="https://mojipanda.com/categories/%E7%BB%8F%E9%AA%8C%E5%B0%8F%E7%BB%93/"/>
-    
     
   </entry>
   
