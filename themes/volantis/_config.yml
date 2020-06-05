@@ -298,7 +298,7 @@ widget:
     shape: rectangle # circle, rectangle
     url: /about/
     title:
-    subtitle:
+    subtitle: I am fortunate to have a good wife.
     jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
     social: true
   # ---------------------------------------
