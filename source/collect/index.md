@@ -63,6 +63,9 @@ date: 2020-05-05 17:31:04
 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://colors.ichuantong.cn/">
   <i class="fas fa-fan"></i>中国古典颜色
 </a>
+<a target="_blank" rel="external nofollow noopener noreferrer" href="https://fuun.fun/">
+  <i class="fas fa-fan"></i>FUUN.FUN
+</a>
 {% endbtns %}
 
 <!-- endtab -->
