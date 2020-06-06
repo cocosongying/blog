@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Nodejs-获取命令行参数</title>
+      <link href="/blog/12e9/"/>
+      <url>/blog/12e9/</url>
+      
+        <content type="html"><![CDATA[<p>介绍一下使用 Nodejs 写脚本如何获取命令行参数。</p><a id="more"></a><h2 id="直接获取"><a href="#直接获取" class="headerlink" title="直接获取"></a>直接获取</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> argv = process.argv.slice(<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>比如写个脚本 <code>script.js</code></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> argv = process.argv.slice(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'传递的参数为：'</span>, argv);</span><br></pre></td></tr></table></figure><p>执行脚本并传入参数 a b c</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node script.js a b c</span><br></pre></td></tr></table></figure><p>执行结果为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">传递的参数为： [ &#39;a&#39;, &#39;b&#39;, &#39;c&#39; ]</span><br></pre></td></tr></table></figure><h2 id="使用第三方模块commander"><a href="#使用第三方模块commander" class="headerlink" title="使用第三方模块commander"></a>使用第三方模块commander</h2><p>首先安装 <code>commander</code> 模块</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install commander --save</span><br></pre></td></tr></table></figure><p>写个脚本 <code>script.js</code></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; program &#125; = <span class="built_in">require</span>(<span class="string">'commander'</span>);</span><br><span class="line">program</span><br><span class="line">    .version(<span class="string">'0.0.1'</span>)</span><br><span class="line">    .option(<span class="string">'-d, --debug'</span>, <span class="string">'output extra debugging'</span>)</span><br><span class="line">    .option(<span class="string">'-s, --small'</span>, <span class="string">'small pizza size'</span>)</span><br><span class="line">    .option(<span class="string">'-p, --pizza-type &lt;type&gt;'</span>, <span class="string">'flavour of pizza'</span>);</span><br><span class="line"></span><br><span class="line">program.parse(process.argv);</span><br><span class="line"><span class="built_in">console</span>.log(program.opts());</span><br><span class="line"><span class="keyword">if</span> (program.debug) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'debugging'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node script.js -d</span><br></pre></td></tr></table></figure><p>结果为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  version: &#39;0.0.1&#39;,</span><br><span class="line">  debug: true,</span><br><span class="line">  small: undefined,</span><br><span class="line">  pizzaType: undefined</span><br><span class="line">&#125;</span><br><span class="line">debugging</span><br></pre></td></tr></table></figure><p>执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node script.js -d -s -p abc</span><br></pre></td></tr></table></figure><p>结果为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; version: &#39;0.0.1&#39;, debug: true, small: true, pizzaType: &#39;abc&#39; &#125;</span><br><span class="line">debugging</span><br></pre></td></tr></table></figure><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>使用直接获取的方式需要注意参数顺序。而使用第三方模块则不必关心参数顺序问题，可以更好的设计脚本参数。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nodejs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo-博客文章进行加密</title>
       <link href="/blog/977/"/>
       <url>/blog/977/</url>
