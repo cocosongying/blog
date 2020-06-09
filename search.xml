@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Mac上安装brew</title>
+      <link href="/blog/8d6d/"/>
+      <url>/blog/8d6d/</url>
+      
+        <content type="html"><![CDATA[<p>介绍如何在 Mac 上安装 brew</p><a id="more"></a><p>brew 作为 Mac 平台下一个包管理工具。可以一条命令在 Mac 上安装、卸载和更新各种软件包。</p><h2 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a>安装brew</h2><p>直接运行下面的命令就可以安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure><p>但是如果执行这条命令报错，说是无法连接 <code>https://raw.githubusercontent.com/</code> 之类的</p><p>这个时候可以在浏览器中访问链接</p><p><a href="https://raw.githubusercontent.com/Homebrew/install/master/install" target="_blank" rel="external nofollow noopener noreferrer">https://raw.githubusercontent.com/Homebrew/install/master/install</a></p><p>内容如下：</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/ruby</span></span><br><span class="line"></span><br><span class="line">STDERR.print &lt;&lt;EOS</span><br><span class="line"><span class="symbol">Warning:</span> The Ruby Homebrew installer is now deprecated <span class="keyword">and</span> has been rewritten <span class="keyword">in</span></span><br><span class="line">Bash. Please migrate to the following <span class="symbol">command:</span></span><br><span class="line">  /bin/bash -c <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"</span></span><br><span class="line"></span><br><span class="line">EOS</span><br><span class="line"></span><br><span class="line">Kernel.exec <span class="string">"/bin/bash"</span>, <span class="string">"-c"</span>, <span class="string">'/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'</span></span><br></pre></td></tr></table></figure><p>意思是直接执行下面的语句，但是我们遇到的问题是无法连接 <code>https://raw.githubusercontent.com/</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)</span>"</span></span><br></pre></td></tr></table></figure><p>那么我们继续访问这里的链接</p><p><a href="https://raw.githubusercontent.com/Homebrew/install/master/install.sh" target="_blank" rel="external nofollow noopener noreferrer">https://raw.githubusercontent.com/Homebrew/install/master/install.sh</a></p><p>内容有点长，这里就不粘贴了，浏览器访问可以看到。将页面文本复制到 <code>brew_install.sh</code> 中</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">touch brew_install.sh</span><br><span class="line">chmod 777 brew_install.sh</span><br></pre></td></tr></table></figure><p>然后执行这个脚本文件就可以正常安装了。过程可能有点慢，耐心等一等，如果长时间卡住不动也可以先强制退出再次执行。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c brew_install.sh</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java-Mac系统配置JDK环境变量</title>
       <link href="/blog/47db/"/>
       <url>/blog/47db/</url>
