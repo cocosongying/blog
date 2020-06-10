@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-06-09T14:19:57.463Z</updated>
+  <updated>2020-06-10T13:27:53.351Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java-关于Lombok插件的记录</title>
+    <link href="https://mojipanda.com/blog/ad2d/"/>
+    <id>https://mojipanda.com/blog/ad2d/</id>
+    <published>2020-06-10T12:23:08.000Z</published>
+    <updated>2020-06-10T13:27:53.351Z</updated>
+    
+    <content type="html"><![CDATA[<p>遇到一个项目中使用了Lombok插件，这里记录一下如何使用以及自己的几点看法。</p><a id="more"></a><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近遇到一个项目，打算把项目跑起来看一下效果，结果导入项目到IDE中就一片红叉，报错的地方几乎都是使用 get set 的地方，打开类文件确实没有 get set 方法，只有成员属性。于是搜索了一下什么情况下可以去掉 get set。最终揪出了 lombok 这个东西。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>以我使用 eclipse 举例，其他 IDE 在官网有介绍使用步骤。</p><ol><li><p>在下面的链接下载 <code>lombok.jar</code></p><div class="note link"><p><a href="https://projectlombok.org/download" target="_blank" rel="external nofollow noopener noreferrer">lombok.jar 下载</a></p></div></li><li><p>将下载好的 <code>lombok.jar</code> 复制到 eclipse.ini 所在文件目录，找一下 eclipse 安装目录，很容易找到。</p></li><li><p>编辑 <code>eclipse.ini</code>，在最后添加以下代码并保存</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-javaagent:lombok.jar</span><br></pre></td></tr></table></figure></li><li><p>重启 eclipse 后 clean 一下项目解决</p></li></ol><h2 id="关于使用"><a href="#关于使用" class="headerlink" title="关于使用"></a>关于使用</h2><p>lombok 主要是用注解的方式达到精简代码的目的。首先使用 maven 导入依赖</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">&lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;version&gt;1.18.12&lt;&#x2F;version&gt;</span><br><span class="line">&lt;scope&gt;provided&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure><p>之后就可以使用 <code>@Data</code> 注解，相当于同时使用了 <code>@ToString</code>、<code>@EqualsAndHashCode</code>、<code>@Getter</code>、<code>@Setter</code> 和 <code>@RequiredArgsConstrutor</code> 这些注解。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer sex;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="几点看法"><a href="#几点看法" class="headerlink" title="几点看法"></a>几点看法</h2><p>这种方式确实省了不少代码，但是有利有弊。这个必须要 IDE 支持，所有开发人员都要安装这个插件，毕竟不安装的都会报错。究竟用不用，使用规模，还是视情况而定吧，不要过度依赖。参考资料里关于lombok的使用看法还是比较中肯的，我也比较认同。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;遇到一个项目中使用了Lombok插件，这里记录一下如何使用以及自己的几点看法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Java" scheme="https://mojipanda.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac上安装brew</title>
@@ -457,29 +480,6 @@
     
     
       <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue-使用全局静态常量</title>
-    <link href="https://mojipanda.com/blog/aa27/"/>
-    <id>https://mojipanda.com/blog/aa27/</id>
-    <published>2020-05-13T10:17:37.000Z</published>
-    <updated>2020-05-14T04:39:58.152Z</updated>
-    
-    <content type="html"><![CDATA[<p>有很多共通的东西，需要我们使用全局静态常量。在 Vue 中是如何实现的呢？一起来看看吧～</p><a id="more"></a><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>服务端定义了接口给前端调用，各个模块可能会调用到相同的接口，即使是不同的接口，如果服务端修改了接口定义，前端就要跟着改，这个时候，如果这些定义在一个指定文件，那么我们只要修改这一个文件就好了，其他模块都可以调用到。</p><h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>首先在 <code>src</code> 目录新建文件夹 <code>consts</code> 并创建 <code>index.js</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const Api &#x3D;  &#123;</span><br><span class="line">    BASE_URL: &#39;https:&#x2F;&#x2F;mojipanda.com&#39;,</span><br><span class="line">    DEMO_SHOW: &#39;&#x2F;demo&#x2F;show&#39;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    Api</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在 <code>main.js</code> 中引入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line">import consts from &#39;.&#x2F;consts&#39;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line">Vue.prototype.Global &#x3D; consts</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  store,</span><br><span class="line">  router,</span><br><span class="line">  render: h &#x3D;&gt; h(App),</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br></pre></td></tr></table></figure><p>主要是添加下面两行，这里 <code>Global</code> 的名字可以修改成其他命名，当然 <code>consts</code> 文件夹命名也可以修改</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import consts from &#39;.&#x2F;consts&#39;</span><br><span class="line">Vue.prototype.Global &#x3D; consts</span><br></pre></td></tr></table></figure><p>准备工作已经完成，接下来只要通过下面的语句就可以获取到我们在 <code>consts/index.js</code> 中定义的常量了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.Global.Api.BASE_URL</span><br></pre></td></tr></table></figure><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>总体感觉还是比较简单的，对于 <code>consts/index.js</code>，当常量越来越多，也是不方便管理的，我们可以进行拆分。对例子中的 <code>Api</code> 来说，我们可以在 <code>consts</code> 文件夹新建一个 <code>api.js</code>，在这里定义常量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const Api &#x3D; &#123;</span><br><span class="line">    BASE_URL: &#39;https:&#x2F;&#x2F;mojipanda.com&#39;,</span><br><span class="line">    DEMO_SHOW: &#39;&#x2F;demo&#x2F;show&#39;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Api</span><br></pre></td></tr></table></figure><p>修改 <code>consts/index.js</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Api from &#39;@&#x2F;consts&#x2F;api&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    Api</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样拆分就完成了，当我们需要新增其他类型的常量，只要再新建一个文件并在 <code>consts/index.js</code> 引入就可以正常使用了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有很多共通的东西，需要我们使用全局静态常量。在 Vue 中是如何实现的呢？一起来看看吧～&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="Vue" scheme="https://mojipanda.com/tags/Vue/"/>
     
   </entry>
   

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Java-关于Lombok插件的记录</title>
+      <link href="/blog/ad2d/"/>
+      <url>/blog/ad2d/</url>
+      
+        <content type="html"><![CDATA[<p>遇到一个项目中使用了Lombok插件，这里记录一下如何使用以及自己的几点看法。</p><a id="more"></a><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近遇到一个项目，打算把项目跑起来看一下效果，结果导入项目到IDE中就一片红叉，报错的地方几乎都是使用 get set 的地方，打开类文件确实没有 get set 方法，只有成员属性。于是搜索了一下什么情况下可以去掉 get set。最终揪出了 lombok 这个东西。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>以我使用 eclipse 举例，其他 IDE 在官网有介绍使用步骤。</p><ol><li><p>在下面的链接下载 <code>lombok.jar</code></p><div class="note link"><p><a href="https://projectlombok.org/download" target="_blank" rel="external nofollow noopener noreferrer">lombok.jar 下载</a></p></div></li><li><p>将下载好的 <code>lombok.jar</code> 复制到 eclipse.ini 所在文件目录，找一下 eclipse 安装目录，很容易找到。</p></li><li><p>编辑 <code>eclipse.ini</code>，在最后添加以下代码并保存</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-javaagent:lombok.jar</span><br></pre></td></tr></table></figure></li><li><p>重启 eclipse 后 clean 一下项目解决</p></li></ol><h2 id="关于使用"><a href="#关于使用" class="headerlink" title="关于使用"></a>关于使用</h2><p>lombok 主要是用注解的方式达到精简代码的目的。首先使用 maven 导入依赖</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">&lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;version&gt;1.18.12&lt;&#x2F;version&gt;</span><br><span class="line">&lt;scope&gt;provided&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure><p>之后就可以使用 <code>@Data</code> 注解，相当于同时使用了 <code>@ToString</code>、<code>@EqualsAndHashCode</code>、<code>@Getter</code>、<code>@Setter</code> 和 <code>@RequiredArgsConstrutor</code> 这些注解。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer sex;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="几点看法"><a href="#几点看法" class="headerlink" title="几点看法"></a>几点看法</h2><p>这种方式确实省了不少代码，但是有利有弊。这个必须要 IDE 支持，所有开发人员都要安装这个插件，毕竟不安装的都会报错。究竟用不用，使用规模，还是视情况而定吧，不要过度依赖。参考资料里关于lombok的使用看法还是比较中肯的，我也比较认同。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac上安装brew</title>
       <link href="/blog/8d6d/"/>
       <url>/blog/8d6d/</url>
