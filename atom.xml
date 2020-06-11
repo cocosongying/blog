@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-06-10T13:27:53.351Z</updated>
+  <updated>2020-06-11T13:37:38.273Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cron表达式详解</title>
+    <link href="https://mojipanda.com/blog/de33/"/>
+    <id>https://mojipanda.com/blog/de33/</id>
+    <published>2020-06-11T12:14:54.000Z</published>
+    <updated>2020-06-11T13:37:38.273Z</updated>
+    
+    <content type="html"><![CDATA[<p>任务调度经常会用到 cron 表达式来调度作业任务，本文记录 cron 的写法以及常用的表达式。</p><a id="more"></a><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Cron 表达式是一个由 5 或 6 个空格隔开而分为 6 或 7 个域的字符串。每个域对应各自含义，语法格式有如下两种：</p><ul><li><code>Seconds</code> <code>Minutes</code> <code>Hours</code> <code>DayofMonth</code> <code>Month</code> <code>DayofWeek</code> <code>Year</code></li><li><code>Seconds</code> <code>Minutes</code> <code>Hours</code> <code>DayofMonth</code> <code>Month</code> <code>DayofWeek</code></li></ul><h2 id="字段含义"><a href="#字段含义" class="headerlink" title="字段含义"></a>字段含义</h2><table><thead><tr><th>字段</th><th>允许的特殊字符</th><th>允许值</th></tr></thead><tbody><tr><td>秒 (Seconds)</td><td>, - * /</td><td>0 - 59 整数</td></tr><tr><td>分 (Minutes)</td><td>, - * /</td><td>0 - 59 整数</td></tr><tr><td>小时 (Hours)</td><td>, - * /</td><td>0 - 23 整数</td></tr><tr><td>日期 (DayofMonth)</td><td>, - * / ? L W</td><td>1 - 31 整数</td></tr><tr><td>月份 (Month)</td><td>, - * /</td><td>1 - 12 整数 或 JAN - DEC</td></tr><tr><td>星期 (DayofWeek)</td><td>, - * / ? L #</td><td>1 - 7 整数 或 SUN - SAT</td></tr><tr><td>年 (Year) (可选留空)</td><td>, - * /</td><td>1970 - 2099</td></tr></tbody></table><h2 id="特殊字符含义"><a href="#特殊字符含义" class="headerlink" title="特殊字符含义"></a>特殊字符含义</h2><table><thead><tr><th>字符</th><th>含义</th><th>举例</th></tr></thead><tbody><tr><td>*</td><td>表示匹配任意值</td><td>在分钟域使用 * 表示每分钟都会触发事件</td></tr><tr><td>?</td><td>只在日期和星期域使用表示非明确值</td><td>月份中的日期和星期中的日期这两个元素在一起互斥时应该通过设置一个问号来表明不想设置那个字段</td></tr><tr><td>-</td><td>表示范围</td><td>在小时域使用 3-5 表示 3点、4点、5点会触发事件</td></tr><tr><td>/</td><td>表示起始时间开始触发，之后每隔固定时间触发一次</td><td>在秒域使用 5/20 表示 5秒、25秒、45秒会触发事件</td></tr><tr><td>,</td><td>表示列出枚举值</td><td>在星期域使用 2,4,6 表示星期一、星期三、星期五会触发事件</td></tr><tr><td>L</td><td>只在日期和星期域使用表示最后</td><td>在星期域使用 5L 表示每月最后一个星期四会触发事件</td></tr><tr><td>W</td><td>只在日期域使用表示指定日期的最近工作日</td><td>在日期域使用 15W 表示如果15号是周六则14号触发，如果15号是周日则16号触发，不能跨月，也不能指定区间范围</td></tr><tr><td>LW</td><td>表示指定月最后一周的工作日</td><td>指定月最后一个星期五</td></tr><tr><td>#</td><td>只在星期域使用表示指定月第几周的星期几</td><td>在星期域使用 6#3 表示指定月第3周的星期五会触发事件</td></tr></tbody></table><h2 id="常用表达式"><a href="#常用表达式" class="headerlink" title="常用表达式"></a>常用表达式</h2><table><thead><tr><th>表达式</th><th>含义</th></tr></thead><tbody><tr><td>0/2 * * * * ?</td><td>表示每2秒执行</td></tr><tr><td>0 0/2 * * * ?</td><td>表示每2分钟执行</td></tr><tr><td>0 0 2 1 * ?</td><td>表示在每月的1日的凌晨2点执行</td></tr><tr><td>0 15 10 ? * MON-FRI</td><td>表示周一到周五每天上午10:15执行</td></tr><tr><td>0 15 10 ? 6L 2002-2006</td><td>表示2002-2006年的每个月的最后一个星期五上午10:15执行</td></tr><tr><td>0 0 10,14,16 * * ?</td><td>每天10点，14点，16点执行</td></tr><tr><td>0 0/30 9-17 * * ?</td><td>朝九晚五工作时间内每半小时执行</td></tr><tr><td>0 0 12 ? * WED</td><td>表示每个星期三中午12点执行</td></tr><tr><td>0 0 12 * * ?</td><td>每天中午12点执行</td></tr><tr><td>0 15 10 ? * *</td><td>每天上午10:15执行</td></tr><tr><td>0 15 10 * * ? 2005</td><td>2005年的每天上午10:15执行</td></tr><tr><td>0 * 14 * * ?</td><td>在每天下午2点到下午2:59期间的每1分钟执行</td></tr><tr><td>0 0/5 14 * * ?</td><td>在每天下午2点到下午2:55期间的每5分钟执行</td></tr><tr><td>0 0/5 14,18 * * ?</td><td>在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟执行</td></tr><tr><td>0 0-5 14 * * ?</td><td>在每天下午2点到下午2:05期间的每1分钟执行</td></tr><tr><td>0 10,44 14 ? 3 WED</td><td>每年三月的星期三的下午2:10和2:44执行</td></tr><tr><td>0 15 10 ? * MON-FRI</td><td>周一至周五的上午10:15执行</td></tr><tr><td>0 15 10 15 * ?</td><td>每月15日上午10:15执行</td></tr><tr><td>0 15 10 L * ?</td><td>每月最后一日的上午10:15执行</td></tr><tr><td>0 15 10 ? * 6L</td><td>每月的最后一个星期五上午10:15执行</td></tr><tr><td>0 15 10 ? * 6#3</td><td>每月的第三个星期五上午10:15执行</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;任务调度经常会用到 cron 表达式来调度作业任务，本文记录 cron 的写法以及常用的表达式。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Java-关于Lombok插件的记录</title>
@@ -455,29 +476,6 @@
     
     
       <category term="redis" scheme="https://mojipanda.com/tags/redis/"/>
-    
-      <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nodejs-基于Koa框架写个简单的接口</title>
-    <link href="https://mojipanda.com/blog/fb4f/"/>
-    <id>https://mojipanda.com/blog/fb4f/</id>
-    <published>2020-05-14T04:02:44.000Z</published>
-    <updated>2020-05-14T04:39:16.701Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文主要介绍如何使用 Nodejs 快速搭建服务端并提供简单的接口程序。</p><a id="more"></a><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先我们创建一个项目文件夹 <code>demo</code>，进入这个文件夹，运行 <code>npm init</code> 初始化项目</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir demo</span><br><span class="line"><span class="built_in">cd</span> demo</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure><p>执行 <code>npm init</code> 命令会让你填写项目相关信息，可以一路默认，之后再改都可以。它主要就是在项目中新建一个 <code>package.json</code> 的文件并初始化一些项目信息。</p><p>其次需要安装 <code>Koa</code> 框架及一些插件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install koa --save</span><br><span class="line">npm install koa-router --save</span><br><span class="line">npm install koa-bodyparser --save</span><br></pre></td></tr></table></figure><h2 id="编写主程序"><a href="#编写主程序" class="headerlink" title="编写主程序"></a>编写主程序</h2><p>新建文件 <code>index.js</code>，这个文件名可以修改，同步修改一下 <code>package.json</code> 里 <code>main</code>项对应的文件名，表示这个文件是启动入口。<code>index.js</code> 代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const router &#x3D; require(&#39;koa-router&#39;)();</span><br><span class="line">const bodyParser &#x3D; require(&#39;koa-bodyparser&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">const index &#x3D; router.get(&#39;&#x2F;demo&#39;, ctx &#x3D;&gt; &#123;</span><br><span class="line">    ctx.response.body &#x3D; &#123; code: 0, data: &#39;Hello World!&#39; &#125;;</span><br><span class="line">&#125;).routes();</span><br><span class="line"></span><br><span class="line">app.use(index);</span><br><span class="line">app.use(bodyParser());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 捕获未定义路由</span><br><span class="line">app.use((ctx) &#x3D;&gt; &#123;</span><br><span class="line">    ctx.response.body &#x3D; &#123; code: 404 &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 启动项目</span><br><span class="line">app.listen(3000, () &#x3D;&gt; &#123;</span><br><span class="line">    console.log(&#96;Server is starting at port 3000&#96;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="运行使用"><a href="#运行使用" class="headerlink" title="运行使用"></a>运行使用</h2><p>在 node 环境中可以直接通过下面的命令启动</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node index.js</span><br></pre></td></tr></table></figure><p>项目启动完毕就可以访问我们刚刚定义的接口 <code>http://localhost:3000/demo</code> 来查看返回信息了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;code: 0, data: &quot;Hello World!&quot;&#125;</span><br></pre></td></tr></table></figure><h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>前端页面调用接口可能会有跨域问题，解决方案有好几种，这里介绍简单一点的。</p><p>先安装一个插件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa2-cors --save</span><br></pre></td></tr></table></figure><p>在启动入口文件 <code>index.js</code> 加上这两句就可以了。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const cors = require(<span class="string">'koa2-cors'</span>);</span><br><span class="line">app.use(cors());</span><br></pre></td></tr></table></figure><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>Nodejs 这个脚本语言还是很强大的，能写前端就算了，居然还能写服务端。想想之前用 java 的时候要写好多东西，还有各种配置，最后打包运行花费好长时间。</p><p>当然 java 有它的强大，如果只是学习写写简单的接口，像 <code>Nodejs</code> <code>Python</code> <code>Go</code> 都有很简单的操作方法，也够简单的使用了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文主要介绍如何使用 Nodejs 快速搭建服务端并提供简单的接口程序。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
-    
     
       <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
     

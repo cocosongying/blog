@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Cron表达式详解</title>
+      <link href="/blog/de33/"/>
+      <url>/blog/de33/</url>
+      
+        <content type="html"><![CDATA[<p>任务调度经常会用到 cron 表达式来调度作业任务，本文记录 cron 的写法以及常用的表达式。</p><a id="more"></a><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Cron 表达式是一个由 5 或 6 个空格隔开而分为 6 或 7 个域的字符串。每个域对应各自含义，语法格式有如下两种：</p><ul><li><code>Seconds</code> <code>Minutes</code> <code>Hours</code> <code>DayofMonth</code> <code>Month</code> <code>DayofWeek</code> <code>Year</code></li><li><code>Seconds</code> <code>Minutes</code> <code>Hours</code> <code>DayofMonth</code> <code>Month</code> <code>DayofWeek</code></li></ul><h2 id="字段含义"><a href="#字段含义" class="headerlink" title="字段含义"></a>字段含义</h2><table><thead><tr><th>字段</th><th>允许的特殊字符</th><th>允许值</th></tr></thead><tbody><tr><td>秒 (Seconds)</td><td>, - * /</td><td>0 - 59 整数</td></tr><tr><td>分 (Minutes)</td><td>, - * /</td><td>0 - 59 整数</td></tr><tr><td>小时 (Hours)</td><td>, - * /</td><td>0 - 23 整数</td></tr><tr><td>日期 (DayofMonth)</td><td>, - * / ? L W</td><td>1 - 31 整数</td></tr><tr><td>月份 (Month)</td><td>, - * /</td><td>1 - 12 整数 或 JAN - DEC</td></tr><tr><td>星期 (DayofWeek)</td><td>, - * / ? L #</td><td>1 - 7 整数 或 SUN - SAT</td></tr><tr><td>年 (Year) (可选留空)</td><td>, - * /</td><td>1970 - 2099</td></tr></tbody></table><h2 id="特殊字符含义"><a href="#特殊字符含义" class="headerlink" title="特殊字符含义"></a>特殊字符含义</h2><table><thead><tr><th>字符</th><th>含义</th><th>举例</th></tr></thead><tbody><tr><td>*</td><td>表示匹配任意值</td><td>在分钟域使用 * 表示每分钟都会触发事件</td></tr><tr><td>?</td><td>只在日期和星期域使用表示非明确值</td><td>月份中的日期和星期中的日期这两个元素在一起互斥时应该通过设置一个问号来表明不想设置那个字段</td></tr><tr><td>-</td><td>表示范围</td><td>在小时域使用 3-5 表示 3点、4点、5点会触发事件</td></tr><tr><td>/</td><td>表示起始时间开始触发，之后每隔固定时间触发一次</td><td>在秒域使用 5/20 表示 5秒、25秒、45秒会触发事件</td></tr><tr><td>,</td><td>表示列出枚举值</td><td>在星期域使用 2,4,6 表示星期一、星期三、星期五会触发事件</td></tr><tr><td>L</td><td>只在日期和星期域使用表示最后</td><td>在星期域使用 5L 表示每月最后一个星期四会触发事件</td></tr><tr><td>W</td><td>只在日期域使用表示指定日期的最近工作日</td><td>在日期域使用 15W 表示如果15号是周六则14号触发，如果15号是周日则16号触发，不能跨月，也不能指定区间范围</td></tr><tr><td>LW</td><td>表示指定月最后一周的工作日</td><td>指定月最后一个星期五</td></tr><tr><td>#</td><td>只在星期域使用表示指定月第几周的星期几</td><td>在星期域使用 6#3 表示指定月第3周的星期五会触发事件</td></tr></tbody></table><h2 id="常用表达式"><a href="#常用表达式" class="headerlink" title="常用表达式"></a>常用表达式</h2><table><thead><tr><th>表达式</th><th>含义</th></tr></thead><tbody><tr><td>0/2 * * * * ?</td><td>表示每2秒执行</td></tr><tr><td>0 0/2 * * * ?</td><td>表示每2分钟执行</td></tr><tr><td>0 0 2 1 * ?</td><td>表示在每月的1日的凌晨2点执行</td></tr><tr><td>0 15 10 ? * MON-FRI</td><td>表示周一到周五每天上午10:15执行</td></tr><tr><td>0 15 10 ? 6L 2002-2006</td><td>表示2002-2006年的每个月的最后一个星期五上午10:15执行</td></tr><tr><td>0 0 10,14,16 * * ?</td><td>每天10点，14点，16点执行</td></tr><tr><td>0 0/30 9-17 * * ?</td><td>朝九晚五工作时间内每半小时执行</td></tr><tr><td>0 0 12 ? * WED</td><td>表示每个星期三中午12点执行</td></tr><tr><td>0 0 12 * * ?</td><td>每天中午12点执行</td></tr><tr><td>0 15 10 ? * *</td><td>每天上午10:15执行</td></tr><tr><td>0 15 10 * * ? 2005</td><td>2005年的每天上午10:15执行</td></tr><tr><td>0 * 14 * * ?</td><td>在每天下午2点到下午2:59期间的每1分钟执行</td></tr><tr><td>0 0/5 14 * * ?</td><td>在每天下午2点到下午2:55期间的每5分钟执行</td></tr><tr><td>0 0/5 14,18 * * ?</td><td>在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟执行</td></tr><tr><td>0 0-5 14 * * ?</td><td>在每天下午2点到下午2:05期间的每1分钟执行</td></tr><tr><td>0 10,44 14 ? 3 WED</td><td>每年三月的星期三的下午2:10和2:44执行</td></tr><tr><td>0 15 10 ? * MON-FRI</td><td>周一至周五的上午10:15执行</td></tr><tr><td>0 15 10 15 * ?</td><td>每月15日上午10:15执行</td></tr><tr><td>0 15 10 L * ?</td><td>每月最后一日的上午10:15执行</td></tr><tr><td>0 15 10 ? * 6L</td><td>每月的最后一个星期五上午10:15执行</td></tr><tr><td>0 15 10 ? * 6#3</td><td>每月的第三个星期五上午10:15执行</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java-关于Lombok插件的记录</title>
       <link href="/blog/ad2d/"/>
       <url>/blog/ad2d/</url>
