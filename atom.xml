@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-06-11T13:37:38.273Z</updated>
+  <updated>2020-06-13T02:53:50.103Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>栀子花开的香气</title>
+    <link href="https://mojipanda.com/blog/bebe/"/>
+    <id>https://mojipanda.com/blog/bebe/</id>
+    <published>2020-06-13T02:51:36.000Z</published>
+    <updated>2020-06-13T02:53:50.103Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近学院在做绿化改造工程，每天陪伴我们的除了日常工作，还有机械的轰鸣声，以及来来往往的民工们繁忙的身影～</p><a id="more"></a><p>每天吃完午饭回办公室的路上，总会看到零零散散的民工们躺在地上休息，或是铺个板子，或是铺个蛇皮袋，或是直接躺在水泥地面上，并不知道是不是睡着了，但是，周边的环境似乎一点都不会影响到他们休息，许是太累了吧～</p><p>突然想到前两天看到的一句话“如果每天都能赚到300块，我就带我姑父去坐一次高铁”，话是出自一个普通打工人，很朴素的一个小愿望，但他是作为自己奋斗的一个小目标的，一方面是自己坚持奋斗的希望，一方面又是持着一颗感恩的心～生活本是酸甜苦辣五味杂陈，可能会有很多小确幸，但也会有诸多的小困难，保持乐观的心态，保持感恩的心情，生活还是很美好的～</p><p>“小英夫妻”的“有活干，有舞跳，生活还是很美好”，还原了他们自己的生活，纵然他们的舞蹈比不得专业人士的舞姿，但这属于他们自己的生活艺术，带着积极向上的生活态度，丰富生活，幸福前行；有时候你改变不了一些客观条件，但是你可以改变自己生活的方式，以及生活的态度～</p><p>钢筋水泥的高楼，结合着格子挡板，似乎生活已经完全被一种生硬冰冷的气息包裹着，或许这也是城市里的夜生活比较丰富的原因，夜晚的灯光都会显得钢筋水泥中的城市暖暖的～</p><p>我们会羡慕李子柒那种云淡风轻，融入自然的洒脱生活，似乎是不理世俗，活在最自我的环境当中，很幸福，可是我们忘了，“采菊东篱下，悠然见南山”的生活，只能局限于喜欢，生活的继续，社会的发展，没有钢筋水泥中的奋斗，都会显得空白，顶多说，奋斗了，可以抽个空，去体验一下那种洒脱的生活环境～李子柒的生活是很美好的，但是她并没有脱离世俗，只是用了另一种生活方式去奋斗，获取洒脱生活所需的物质基础～</p><p>所以，云淡风轻的生活，我们可以很喜欢，也可以去体验，但是做不到纯粹的云淡风轻；或许有时候是真的很辛苦，或许有时候是真的觉得累，但是生活继续，一切都是发展过程中，累了可以短期休息，但不能停止～既然如此，那么就以一颗感恩的心，一种积极的生活态度，加油前行～</p><p>闻到了栀子花开的香气，嗯，真的很香～</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近学院在做绿化改造工程，每天陪伴我们的除了日常工作，还有机械的轰鸣声，以及来来往往的民工们繁忙的身影～&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="心情物语" scheme="https://mojipanda.com/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/"/>
+    
+    
+      <category term="心情" scheme="https://mojipanda.com/tags/%E5%BF%83%E6%83%85/"/>
+    
+  </entry>
   
   <entry>
     <title>Cron表达式详解</title>
@@ -451,31 +474,6 @@
     
     
       <category term="mysql" scheme="https://mojipanda.com/tags/mysql/"/>
-    
-      <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nodejs-如何使用Redis</title>
-    <link href="https://mojipanda.com/blog/1ab7/"/>
-    <id>https://mojipanda.com/blog/1ab7/</id>
-    <published>2020-05-15T14:14:47.000Z</published>
-    <updated>2020-05-16T07:43:40.700Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。</p><a id="more"></a><h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><p>我们需要安装 <code>redis</code> 依赖包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install redis --save</span><br></pre></td></tr></table></figure><p>可以在项目中新建一个 <code>cache</code> 文件夹用来管理 <code>redis</code> 的相关操作。</p><h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>在 <code>cache</code> 文件夹下新建 <code>connection.js</code>，内容如下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> redis = <span class="built_in">require</span>(<span class="string">'redis'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; promisify &#125; = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">const</span> client = redis.createClient(&#123;</span><br><span class="line">    host: <span class="string">"localhost"</span>,</span><br><span class="line">    password: <span class="string">"123456"</span>,</span><br><span class="line">    db: <span class="number">1</span>,</span><br><span class="line">    retry_strategy: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (options.error &amp;&amp; options.error.code === <span class="string">'ECONNREFUSED'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'The server refused the connection'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (options.total_retry_time &gt; <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Retry time exhausted'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (options.attempt &gt; <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.min(options.attempt * <span class="number">100</span>, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> expire = promisify(client.expire).bind(client);</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">get</span> = promisify(client.<span class="keyword">get</span>).bind(client);</span><br><span class="line">const <span class="keyword">set</span> = promisify(client.<span class="keyword">set</span>).bind(client);</span><br><span class="line">const del = promisify(client.del).bind(client);</span><br><span class="line"></span><br><span class="line">class Cache &#123;</span><br><span class="line">    Timeout = &#123;</span><br><span class="line">        Default: <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">get</span>(key) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> <span class="keyword">get</span>(key);</span><br><span class="line">    &#125;</span><br><span class="line">    async <span class="keyword">set</span>(key, value, timeout) &#123;</span><br><span class="line">        <span class="keyword">let</span> res = <span class="keyword">await</span> <span class="keyword">set</span>(key, value);</span><br><span class="line">        if (timeout) &#123;</span><br><span class="line">            <span class="keyword">await</span> expire(key, timeout);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">async</span> del(key) &#123;</span><br><span class="line">        <span class="keyword">await</span> del(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> Cache();</span><br></pre></td></tr></table></figure><p>这里主要是 <code>redis</code> 的连接以及 <code>redis</code> 的几个简单操作，如获取，设置，删除，如果需要其他功能可以继续封装。</p><p>关于 <code>redis</code> 的连接配置可以单独写到配置文件里，这里为了方便介绍，把配置写死在示例代码里了。</p><h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>在需要操作 <code>redis</code> 的文件中先引入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const Cache &#x3D; require(&#39;.&#x2F;connection&#39;);</span><br></pre></td></tr></table></figure><p>获取某个 key 对应的值：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await Cache.get(key);</span><br></pre></td></tr></table></figure><p>设置一个 key 对应的 value：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await Cache.set(key, value);</span><br></pre></td></tr></table></figure><p>如果需要指定缓存有效期限，比如 1 天：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await Cache.set(key, value, 24 * 60 * 60);</span><br></pre></td></tr></table></figure><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>推荐在 <code>cache</code> 文件夹下为每个 <code>key</code> 新建对应的文件程序来操作 <code>redis</code>，把这个 <code>cache</code> 当成一个缓存模块，其他地方使用只要引入这个模块操作就好了。这样管理起来方便，代码看起来更清晰。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文主要介绍在 Nodejs 中如何连接并使用 Redis，通过 Nodejs 操作使用 Redis 还是相对比较简单的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="redis" scheme="https://mojipanda.com/tags/redis/"/>
     
       <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
     
