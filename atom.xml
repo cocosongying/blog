@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-06-13T02:53:50.103Z</updated>
+  <updated>2020-06-14T10:44:31.835Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代码自动生成山水画</title>
+    <link href="https://mojipanda.com/blog/19b4/"/>
+    <id>https://mojipanda.com/blog/19b4/</id>
+    <published>2020-06-14T09:42:17.000Z</published>
+    <updated>2020-06-14T10:44:31.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>分享一个代码自动生成山水画的网站 <a href="https://lingdong-.github.io/shan-shui-inf/" target="_blank" rel="external nofollow noopener noreferrer">shan-shui-inf</a></p><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/19b4/01.jpg" alt></p><a id="more"></a><p>这是一个 js 实现的自动生成中国山水画的网站，每次刷新都可以自动绘制新的山水画。绘制的结果可以导出 svg 格式图片。随便生成一个都很有山水意境。</p><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/19b4/02.jpg" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;分享一个代码自动生成山水画的网站 &lt;a href=&quot;https://lingdong-.github.io/shan-shui-inf/&quot; target=&quot;_blank&quot; rel=&quot;external nofollow noopener noreferrer&quot;&gt;shan-shui-inf&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/img/loading.svg&quot; data-original=&quot;https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/19b4/01.jpg&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="趣味收藏" scheme="https://mojipanda.com/categories/%E8%B6%A3%E5%91%B3%E6%94%B6%E8%97%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>栀子花开的香气</title>
@@ -449,31 +470,6 @@
     
     
       <category term="mongodb" scheme="https://mojipanda.com/tags/mongodb/"/>
-    
-      <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nodejs-如何使用MySQL</title>
-    <link href="https://mojipanda.com/blog/56c7/"/>
-    <id>https://mojipanda.com/blog/56c7/</id>
-    <published>2020-05-16T07:28:21.000Z</published>
-    <updated>2020-05-16T07:50:05.394Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文主要介绍在 Nodejs 中如何连接并使用 MySQL</p><a id="more"></a><h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><p>我们需要安装 <code>mysql2</code> 依赖包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql2 --save</span><br></pre></td></tr></table></figure><p>可以在项目中新建一个 <code>mysql</code> 文件夹用来管理 <code>mysql</code> 的相关操作。</p><h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>在 <code>mysql</code> 文件夹下新建 <code>connection.js</code>，内容如下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql2'</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>);</span><br><span class="line"><span class="keyword">const</span> pool = mysql.createPool(config.mysql);</span><br><span class="line"><span class="keyword">const</span> client = pool.promise();</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    pool,</span><br><span class="line">    client</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>这里 <code>mysql</code> 的连接配置写在 <code>config.js</code> 文件中，示例配置项如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const initVal &#x3D; &#123;</span><br><span class="line">    mysql: &#123;</span><br><span class="line">        host: &#39;localhost&#39;,</span><br><span class="line">        port: 3306,</span><br><span class="line">        user: &#39;username&#39;,</span><br><span class="line">        password: &#39;123456&#39;,</span><br><span class="line">        database: &#39;demo&#39;,</span><br><span class="line">        charset: &#39;utf8mb4&#39;,</span><br><span class="line">        connectionLimit: 5,</span><br><span class="line">        dateStrings: true,</span><br><span class="line">        decimalNumbers: true,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; initVal;</span><br></pre></td></tr></table></figure><h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>在需要操作 <code>mysql</code> 的文件中先引入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; client &#125; &#x3D; require(&#39;.&#x2F;connection&#39;);</span><br></pre></td></tr></table></figure><p>之后就可以使用 sql 语句进行愉快的操作了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">async function getById(id) &#123;</span><br><span class="line">    let sql &#x3D; &#96;select * from demo where id &#x3D; ?&#96;;</span><br><span class="line">    let args &#x3D; [id];</span><br><span class="line">    let res &#x3D; await client.query(sql, args);</span><br><span class="line">    return res[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>需要注意的是 <code>return res[0]</code> 是返回的结果集，即对于查询有数据时，它返回的是数组。</p><h2 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h2><p>推荐在 <code>mysql</code> 文件夹下编写数据库连接操作部分，这样代码看起来更清晰。</p><p>在接口服务中使用 <code>mysql</code> 操作按照上面操作就可以了，如果是脚本操作，使用完毕需要关闭连接</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.end();</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文主要介绍在 Nodejs 中如何连接并使用 MySQL&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="mysql" scheme="https://mojipanda.com/tags/mysql/"/>
     
       <category term="Nodejs" scheme="https://mojipanda.com/tags/Nodejs/"/>
     
