@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Spring典型注解简介</title>
+      <link href="/blog/ed68/"/>
+      <url>/blog/ed68/</url>
+      
+        <content type="html"><![CDATA[<p>本文介绍 Spring 典型注解 @Controller @Component @Service @Repository 的异同。</p><a id="more"></a><h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><p>@Controller @Component @Service @Repository 这四个注解都可以说成是 Component 级别的注解。被这些注解修饰的类都会被 Spring 扫描到并注入到 Spring 容器中进行管理。</p><h2 id="异同点"><a href="#异同点" class="headerlink" title="异同点"></a>异同点</h2><table><thead><tr><th>注解</th><th>含义</th></tr></thead><tbody><tr><td>@Controller</td><td>作用于表现层 (spring-mvc)</td></tr><tr><td>@Service</td><td>作用于业务逻辑层</td></tr><tr><td>@Repository</td><td>作用于数据库访问持久层</td></tr><tr><td>@Component</td><td>基础注解，可以被注入到spring容器进行管理</td></tr></tbody></table><h3 id="Controller"><a href="#Controller" class="headerlink" title="@Controller"></a>@Controller</h3><p>标记这个类是一个 SpringMVC Controller 对象，用于暴露给前端的入口，对前端请求进行处理，转发，重定向等。通常在这里调用 Service 层的方法。</p><h3 id="Service"><a href="#Service" class="headerlink" title="@Service"></a>@Service</h3><p>标记这个类属于业务逻辑层。通常在这里调用数据库操作。</p><h3 id="Reposotory"><a href="#Reposotory" class="headerlink" title="@Reposotory"></a>@Reposotory</h3><p>标记这个类是用来直接访问数据库的持久层。这个类作为DAO对象（数据访问对象，Data Access Objects）可以直接对数据库进行操作。</p><h3 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h3><p>通用注解，用来表示一个平常的普通组件，当一个类不合适用以上的注解定义时用这个组件修饰。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用这些注解对应用进行分层之后，就可以将请求处理，业务逻辑处理，数据库操作处理分离出来，为代码解耦，方便以后项目的维护和开发。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>今日暴雨，水漫金陵</title>
       <link href="/blog/9821/"/>
       <url>/blog/9821/</url>
