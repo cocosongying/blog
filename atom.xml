@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-06-17T13:51:57.864Z</updated>
+  <updated>2020-06-18T14:18:43.875Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在线生成卡通头像</title>
+    <link href="https://mojipanda.com/blog/5346/"/>
+    <id>https://mojipanda.com/blog/5346/</id>
+    <published>2020-06-18T13:37:42.000Z</published>
+    <updated>2020-06-18T14:18:43.875Z</updated>
+    
+    <content type="html"><![CDATA[<p>收藏在线生成卡通头像的网站</p><ul><li><a href="https://make.girls.moe" target="_blank" rel="external nofollow noopener noreferrer">二次元萌妹子头像在线生成</a></li><li><a href="http://getavataaars.com" target="_blank" rel="external nofollow noopener noreferrer">卡通头像在线生成</a></li></ul><div class="gallery"><p><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/5346/01.png" alt><br><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/5346/02.png" alt></p></div><a id="more"></a><hr><p><a href="https://make.girls.moe" target="_blank" rel="external nofollow noopener noreferrer">二次元萌妹子头像在线生成</a></p><p>通过选择发色、发型、眼睛、皮肤、微笑、风格等特征生成二次元图片。生成出来的全是二次元萌妹子角色。<br><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/5346/03.png" alt></p><hr><p><a href="http://getavataaars.com" target="_blank" rel="external nofollow noopener noreferrer">卡通头像在线生成</a></p><p>通过选择发型、发色、眼睛、衣服、嘴形、肤色等特征生成卡通头像。生成的头像是中规中矩的卡通形象。<br><img src="/img/loading.svg" data-original="https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/5346/04.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;收藏在线生成卡通头像的网站&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://make.girls.moe&quot; target=&quot;_blank&quot; rel=&quot;external nofollow noopener noreferrer&quot;&gt;二次元萌妹子头像在线生成&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://getavataaars.com&quot; target=&quot;_blank&quot; rel=&quot;external nofollow noopener noreferrer&quot;&gt;卡通头像在线生成&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;gallery&quot;&gt;&lt;p&gt;&lt;img src=&quot;/img/loading.svg&quot; data-original=&quot;https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/5346/01.png&quot; alt&gt;&lt;br&gt;&lt;img src=&quot;/img/loading.svg&quot; data-original=&quot;https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/blog/5346/02.png&quot; alt&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    </summary>
+    
+    
+      <category term="趣味收藏" scheme="https://mojipanda.com/categories/%E8%B6%A3%E5%91%B3%E6%94%B6%E8%97%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Spring典型注解简介</title>
@@ -447,29 +468,6 @@
     
     
       <category term="工具" scheme="https://mojipanda.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx-记一次http转发https配置错误</title>
-    <link href="https://mojipanda.com/blog/8e63/"/>
-    <id>https://mojipanda.com/blog/8e63/</id>
-    <published>2020-05-20T01:08:51.000Z</published>
-    <updated>2020-05-20T03:16:53.072Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一次由于 nginx 配置错误导致的网页无法访问事故。</p><a id="more"></a><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在浏览器通过 <code>http</code> 访问网址会在地址栏左边提示 <code>不安全</code> 字样，而通过 <code>https</code> 则会显示一个带 🔒 的图标。我的网站刚建的时候就已经可以同时支持 <code>http</code> 和 <code>https</code> 了。</p><p>由于百度收录站点要填写好多个人隐私信息，不高兴填，于是就只提交了首页地址，也没抱什么希望，有次搜索出了我的网站，不过是通过 <code>http</code>方式访问的，于是我就想能不能做个跳转，把 <code>http</code> 请求全部转发到 <code>https</code>上。</p><h2 id="搞事"><a href="#搞事" class="headerlink" title="搞事"></a>搞事</h2><p>我查到了下面的配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite ^(.*)$ https:&#x2F;&#x2F;$host$1 permanent;</span><br></pre></td></tr></table></figure><p>然后我就直接复制到我的配置文件里：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server &#123; </span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    server_name mojipanda.com www.mojipanda.com;</span><br><span class="line">    rewrite ^(.*)$ https:&#x2F;&#x2F;$host$1 permanent;</span><br><span class="line">    ssl_certificate cert&#x2F;mojipanda.com_chain.crt;</span><br><span class="line">    ssl_certificate_key cert&#x2F;mojipanda.com_key.key;</span><br><span class="line">    ssl_session_timeout 4h;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">    error_page 500 502 503 504 404 &#x2F;404.html;</span><br><span class="line">    location &#x2F; &#123; </span><br><span class="line">        alias &#x2F;mojipanda&#x2F;blog&#x2F;;</span><br><span class="line">        index index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>执行一下 <code>nginx</code> 的热加载</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure><p>从百度搜索 <code>磨叽熊猫</code> 然后点击我的主页地址 <a href="http://mojipanda.com">http://mojipanda.com</a> ，果然跳转到 <a href="https://mojipanda.com">https://mojipanda.com</a> 。</p><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>这下可以休息一会了，于是我拿起手机，随手访问了一下我的网站，无法加载！！！</p><p>什么情况！微信试了，两个不同的手机浏览器也试了都不行，急忙打开电脑，电脑浏览器访问又是正常的。想想刚刚只改了那一个配置，赶紧先撤回修改查查原因。</p><p>恢复到之前版本之后，发现微信还是打开不了，不过手机浏览器已经可以访问了，这应该是微信缓存问题，先不管了，查查配置原因。</p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>原来 <code>http</code> 的 配置要和 <code>https</code> 的配置分开，在 <code>http</code> 的配置里做跳转到 <code>https</code> 就可以了。推荐使用 301 重定向方式，而不是 <code>rewrite</code> 网址。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return 301 https:&#x2F;&#x2F;mojipanda.com$request_uri;</span><br></pre></td></tr></table></figure><p>修改后的配置文件如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123; </span><br><span class="line">    listen 80;</span><br><span class="line">    server_name mojipanda.com www.mojipanda.com;</span><br><span class="line">    return 301 https:&#x2F;&#x2F;mojipanda.com$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    server_name mojipanda.com www.mojipanda.com;</span><br><span class="line">    ssl_certificate cert&#x2F;mojipanda.com_chain.crt;</span><br><span class="line">    ssl_certificate_key cert&#x2F;mojipanda.com_key.key;</span><br><span class="line">    ssl_session_timeout 4h;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">    error_page 500 502 503 504 404 &#x2F;404.html;</span><br><span class="line">    location &#x2F; &#123; </span><br><span class="line">        alias &#x2F;mojipanda&#x2F;blog&#x2F;;</span><br><span class="line">        index index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>首先电脑浏览器访问正常，<code>http</code> 请求也成功跳转到 <code>https</code> 了。</p><p>再试试手机浏览器访问也正常，<code>http</code> 请求也成功跳转到 <code>https</code> 了。</p><p>再打开微信，点一点以前的连接，发现还是不行，也没找到清缓存的地方，退出重启清后台，还是没有效果，最后只能等等看了。（当时应该找另外一个手机验证的）。等了一会，链接终于访问成功了，而分享的旧链接还不行，再等一会，终于恢复正常。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>遇到问题不用慌，对于不熟悉的地方，多尝试，多找找资料，还有多备份。发现问题，先恢复，在收集信息查找原因，定位问题找到解决办法，最后充分验证。遇到问题并没有啥，发现问题解决问题之后，感觉自己又积累了一份经验啦～</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是一次由于 nginx 配置错误导致的网页无法访问事故。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="nginx" scheme="https://mojipanda.com/tags/nginx/"/>
     
   </entry>
   
