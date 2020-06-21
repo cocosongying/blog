@@ -123,6 +123,8 @@ maven { url 'https://maven.aliyun.com/repository/jcenter' }
 maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
 ```
 
+再将
+
 ```
 https://storage.googleapis.com/download.flutter.io
 ```
@@ -135,6 +137,7 @@ http://download.flutter.io
 
 在命令行运行
 ```bash
+flutter clean
 flutter run
 ```
 
