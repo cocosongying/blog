@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Flutter-自定义Android应用名称和图标</title>
+      <link href="/blog/f9ad/"/>
+      <url>/blog/f9ad/</url>
+      
+        <content type="html"><![CDATA[<p>记录一下在 Flutter 项目中如何自定义 Android 应用名称和图标。</p><a id="more"></a><p>新建的 Flutter 项目默认的应用名称是创建的项目名称，图标也是 Flutter 默认的图标。我们往往希望应用名称是中文名称，图标也可以是自定义图标。</p><p>首先在项目中找到下面路径的文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目路径&#x2F;android&#x2F;app&#x2F;src&#x2F;main&#x2F;AndroidManifest.xml</span><br></pre></td></tr></table></figure><p>将图标拷贝到资源目录，这里有不同分辨率的文件夹</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目路径&#x2F;android&#x2F;app&#x2F;src&#x2F;main&#x2F;res&#x2F;mipmap-hdpi&#x2F;logo.png</span><br></pre></td></tr></table></figure><p>在 <code>application</code> 节点下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:name&#x3D;&quot;io.flutter.app.FlutterApplication&quot;</span><br><span class="line">android:label&#x3D;&quot;磨叽熊猫&quot;</span><br><span class="line">android:icon&#x3D;&quot;@mipmap&#x2F;logo&quot;&gt;</span><br></pre></td></tr></table></figure><p>其中 <code>android:label</code> 对应的值就是应用名称，<code>android:icon</code> 对应的值表示自定义的图标资源路径。</p><p>设置好这两个值重新打包运行就可以了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Flutter </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Flutter-第一个项目挖坑指南</title>
       <link href="/blog/2c56/"/>
       <url>/blog/2c56/</url>

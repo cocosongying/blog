@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mojipanda.com/"/>
-  <updated>2020-06-21T11:09:09.031Z</updated>
+  <updated>2020-06-22T13:57:16.112Z</updated>
   <id>https://mojipanda.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flutter-自定义Android应用名称和图标</title>
+    <link href="https://mojipanda.com/blog/f9ad/"/>
+    <id>https://mojipanda.com/blog/f9ad/</id>
+    <published>2020-06-22T13:47:45.000Z</published>
+    <updated>2020-06-22T13:57:16.112Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下在 Flutter 项目中如何自定义 Android 应用名称和图标。</p><a id="more"></a><p>新建的 Flutter 项目默认的应用名称是创建的项目名称，图标也是 Flutter 默认的图标。我们往往希望应用名称是中文名称，图标也可以是自定义图标。</p><p>首先在项目中找到下面路径的文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目路径&#x2F;android&#x2F;app&#x2F;src&#x2F;main&#x2F;AndroidManifest.xml</span><br></pre></td></tr></table></figure><p>将图标拷贝到资源目录，这里有不同分辨率的文件夹</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目路径&#x2F;android&#x2F;app&#x2F;src&#x2F;main&#x2F;res&#x2F;mipmap-hdpi&#x2F;logo.png</span><br></pre></td></tr></table></figure><p>在 <code>application</code> 节点下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:name&#x3D;&quot;io.flutter.app.FlutterApplication&quot;</span><br><span class="line">android:label&#x3D;&quot;磨叽熊猫&quot;</span><br><span class="line">android:icon&#x3D;&quot;@mipmap&#x2F;logo&quot;&gt;</span><br></pre></td></tr></table></figure><p>其中 <code>android:label</code> 对应的值就是应用名称，<code>android:icon</code> 对应的值表示自定义的图标资源路径。</p><p>设置好这两个值重新打包运行就可以了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录一下在 Flutter 项目中如何自定义 Android 应用名称和图标。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程学习" scheme="https://mojipanda.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Flutter" scheme="https://mojipanda.com/tags/Flutter/"/>
+    
+  </entry>
   
   <entry>
     <title>Flutter-第一个项目挖坑指南</title>
@@ -442,29 +465,6 @@
     
     
       <category term="Vue" scheme="https://mojipanda.com/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>孟母三迁都是为了娃</title>
-    <link href="https://mojipanda.com/blog/73d4/"/>
-    <id>https://mojipanda.com/blog/73d4/</id>
-    <published>2020-05-21T02:03:31.000Z</published>
-    <updated>2020-05-21T02:06:46.037Z</updated>
-    
-    <content type="html"><![CDATA[<p>娃快两岁了，意味着快要开始他的求学生涯了，最近听的最多的就是教育，兴趣班，学区房……，烧钱的路感觉已经在眼前了，就看有没有了～</p><a id="more"></a><p>虽说龙生龙凤生凤，但是，所有父母总归会有期盼，倒不是说一定成龙成凤，只是作为一个老母亲，希望他以后可以尽量生活的开心幸福～</p><p>闲来大概查了下南京的学区，价格就不说了，都是我这样的平民买不起的；其实都是双向的，能买在学区的，首先家庭起码有那个底子，其次家长重视子女教育，再次就是小孩本身资质不差。大概理了一下，嗯，学区房意味着大资本，重视意味着是有资本且舍得花心力财力投资的，至于孩子的资质，想来现在这个时代，除了个别的天才，那没的说，大部分孩子应该是差不多水平的，所以，大概率水平，还是要靠积累的资本，这里，资本不仅仅是经济上的，还有人脉上的以及精力上的，当然，都要排除一些个例，毕竟也会有天才的～</p><p>放眼现在我们自己，有时会想，我们那会都是自己上上学，也没花特别资本去做什么，现在也还好啊！但想想，时代早就不同了，我们父母那代，只要考上大学，就是一路前程似锦了，当然，能考上的，那会本身也是龙凤了，到了我们这代，已经没有分房分配工作啥的了，学业会划分层次，顺利完成学业只是完成了一部分任务而已，还有积累资本的工作还没完成，这个时候就是划分大层次的时候了，这里还是要排除那些特殊人物，毕竟，大部分还是我们这号普通人～但是学业好坏多多少少还是会与工作挂钩的，比如说，你是名校毕业，满身才华，意味着你已经积累了一部分资本，你是普通院校毕业，谁都看得出来差距了，不要较真说是北大也出来卖猪肉的，你想想，北大出来卖猪肉，他卖的水平也是不一样的，人家也开连锁创品牌了～</p><p>孟母三迁，还是有道理的，所谓近朱者赤，近墨者黑。只是有时也疑惑，不一定每个人孟母三迁都会成功吧？我不知道，是不是现在每个孟母三迁都会成功，但是之前有看过，迁到融不进去的圈子，那怎么办？看到过一个月薪5000，想给娃上5万幼儿园的帖子，我不知道帖子的真实性，但是作为举例还是可以的，我能想象的到的是，父母只能靠各种借款来支撑这样的日子，除非月薪改成日薪或者时薪吧！再者，这个圈子里确实有优秀，但是，如果我们自己没有那么优秀的时候，能融进去么？别人上这个幼儿园的同时，也是花了重金和精力在外面有辅导的，我们还有额外精力和重金么？</p><p>乱七八糟的写，想想，不能排除学区房的优势，首先，符合孟母三迁的文化熏陶，毕竟，买学区房的都是相对比较重视的，学校师资力量相对也是优秀的，只是，学区房的前提是资本，我们只能在能力范围内，择优选择好的学区，言传身教，身教很重要～还有，能力范围内，尽量给予好的教育吧，不要说以前，以前与现在早就十万八千里的差距，我们出来都看到差距了，更何况他们的未来，谁看得清？现在吃的苦，才有以后的甜，可能～凡事没有一定，只能从概率上来说，是大概率～</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;娃快两岁了，意味着快要开始他的求学生涯了，最近听的最多的就是教育，兴趣班，学区房……，烧钱的路感觉已经在眼前了，就看有没有了～&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="心情物语" scheme="https://mojipanda.com/categories/%E5%BF%83%E6%83%85%E7%89%A9%E8%AF%AD/"/>
-    
-    
-      <category term="育儿" scheme="https://mojipanda.com/tags/%E8%82%B2%E5%84%BF/"/>
     
   </entry>
   
