@@ -66,7 +66,7 @@ date: 2020-05-05 17:31:04
 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://fuun.fun/">
   <i class="fas fa-fan"></i>FUUN.FUN
 </a>
-<a target="_blank" rel="external nofollow noopener noreferrer" href="https://lingdong-.github.io/shan-shui-inf/">
+<a target="_blank" rel="external nofollow noopener noreferrer" href="http://shan-shui-inf.lingdong.works/">
   <i class="fas fa-fan"></i>代码生成山水画
 </a>
 {% endbtns %}
