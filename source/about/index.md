@@ -31,6 +31,8 @@ date: 2020-04-28 21:44:22
 {% p , 喜欢推理、数独、数学、算法。。。 %}
 {% p , 互相学习，互相交流，可以通过页脚的邮箱，GitHub，微博，B站联系我。 %}
 {% p , <code>Java</code> <code>NodeJs</code> <code>Mysql</code> <code>MongoDB</code> <code>Redis</code> <code>RabbitMq</code> <code>Linux</code> <code>Docker</code> <code>Bash</code> %}
+<br>
+<a href="https://mojipanda.com/public/download/app-release.apk">下载磨叽熊猫客户端</a>
 {% endpullquote %}
 
 {% btns circle center grid5 %}
@@ -45,5 +47,11 @@ date: 2020-04-28 21:44:22
   <b>微信赞赏码</b>
   {% p , 喜欢就打个赏吧 %}
   <img src='https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/pay_wx_v.jpg'>
+</a>
+<a>
+  <i class='fab fa-android'></i>
+  <b>下载客户端</b>
+  {% p , 磨叽熊猫的APP哦 %}
+  <img src='https://cdn.jsdelivr.net/gh/cocosongying/cdn-assets/common/app.png'>
 </a>
 {% endbtns %}
