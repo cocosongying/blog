@@ -401,7 +401,7 @@ footer:
       url: https://weibo.com/cocosongying
     - icon: fas fa-video
       url: https://space.bilibili.com/433441983
-  copyright: '[Copyright © 2020 磨叽熊猫](/) [苏ICP备20024709号-1](http://www.beian.miit.gov.cn/) <div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011202000408" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img no-lazy src="/img/beian.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">苏公网安备 32011202000408号</p></a></div>'
+  copyright: '[Copyright © 2020 磨叽熊猫](/) [苏ICP备20024709号-1](https://beian.miit.gov.cn/) <div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011202000408" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img no-lazy src="/img/beian.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">苏公网安备 32011202000408号</p></a></div>'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
